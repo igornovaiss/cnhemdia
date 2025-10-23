@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato - CNH em Dia Soluções</title>
-    <meta name="description" content="Soluções administrativas especializadas em CNH: multas, suspensão, cassação e perda de provisória. Orientação técnica para ajudar você a regularizar sua habilitação.">
+    <meta name="description" content="Entre em contato com a CNH em Dia Soluções. Atendimento especializado para orientar você na regularização da sua habilitação.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,12 +15,10 @@
                 <li><a href="index.html">Início</a></li>
                 <li><a href="servicos.html">Serviços</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="contato.html">Contato</a></li>
+                <li><a href="contato.html" class="active">Contato</a></li>
             </ul>
             <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </nav>
     </header>
@@ -28,7 +26,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Entre em Contato</h1>
-            <p>Estamos prontos para ajudar você a resolver problemas com sua CNH</p>
+            <p>Estamos prontos para orientar você na regularização da sua CNH</p>
         </div>
     </section>
 
@@ -69,9 +67,9 @@
 
     <section style="background: var(--light-gray);">
         <h2>Envie sua Mensagem</h2>
-        <p class="section-subtitle">Preencha o formulário abaixo e entraremos em contato o mais breve possível</p>
+        <p class="section-subtitle">Preencha o formulário abaixo e receba uma avaliação gratuita sobre sua situação</p>
         
-        <form action="https://formsubmit.co/igornovais.sft@gmail.com" method="POST" class="contact-form" id="contactForm">
+        <form action="https://formsubmit.co/igornovais.sft@gmail.com" method="POST" class="contact-form" id="contactForm" autocomplete="off" spellcheck="false">
             <div class="form-group">
                 <label for="nome">Nome Completo *</label>
                 <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
@@ -103,46 +101,44 @@
                 <label for="mensagem">Mensagem *</label>
                 <textarea id="mensagem" name="mensagem" required placeholder="Descreva sua situação ou dúvida..."></textarea>
             </div>
+
+            <!-- CONFIG FORM SUBMIT -->
             <input type="hidden" name="_next" value="https://igornovaiss.github.io/cnhemdia/contato.html">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_subject" value="Nova mensagem do site CNH em Dia!">
-            <button type="submit" class="submit-button">Enviar Mensagem</button>
+            <input type="hidden" name="_subject" value="Nova solicitação - CNH em Dia Soluções">
+
+            <button type="submit" class="submit-button">Solicitar Avaliação Gratuita</button>
         </form>
     </section>
 
     <section>
         <h2>Perguntas Frequentes</h2>
         <p class="section-subtitle">Respostas rápidas para as dúvidas mais comuns</p>
-        
+
         <div style="max-width: 900px; margin: 0 auto;">
-            <div style="margin-bottom: 2rem; padding: 1.5rem; background: var(--light-gray); border-radius: 10px; border-left: 4px solid var(--primary-blue);">
-                <h3 style="color: var(--black); margin-bottom: 0.5rem;">Quanto tempo leva para analisar meu caso?</h3>
-                <p>Realizamos a análise inicial em até 2 horas após o recebimento de toda documentação necessária. Em casos urgentes, priorizamos o atendimento.</p>
+            <div class="faq-item">
+                <h3>Quanto tempo leva para analisar minha solicitação?</h3>
+                <p>Realizamos a avaliação inicial em até 2 horas úteis após o envio de toda a documentação necessária.</p>
             </div>
 
-            <div style="margin-bottom: 2rem; padding: 1.5rem; background: var(--light-gray); border-radius: 10px; border-left: 4px solid var(--primary-blue);">
-                <h3 style="color: var(--black); margin-bottom: 0.5rem;">Quais documentos preciso enviar?</h3>
-                <p>Geralmente solicitamos cópia da CNH, notificação de autuação ou processo, e documentos do veículo. A lista completa varia conforme o tipo de caso e será informada no primeiro contato.</p>
+            <div class="faq-item">
+                <h3>Quais documentos preciso enviar?</h3>
+                <p>Geralmente: CNH, notificação de autuação ou processo e documentos do veículo. A lista completa é enviada após o primeiro contato.</p>
             </div>
 
-            <div style="margin-bottom: 2rem; padding: 1.5rem; background: var(--light-gray); border-radius: 10px; border-left: 4px solid var(--primary-blue);">
-                <h3 style="color: var(--black); margin-bottom: 0.5rem;">Vocês atendem em todo o Brasil?</h3>
-                <p>Sim! Atendemos condutores de todo o território nacional, atuando junto aos DETRANs e órgãos de trânsito de todos os estados.</p>
+            <div class="faq-item">
+                <h3>Vocês atendem em todo o Brasil?</h3>
+                <p>Sim, atendemos condutores em todos os estados, com suporte remoto e acompanhamento junto aos órgãos de trânsito.</p>
             </div>
 
-            <div style="margin-bottom: 2rem; padding: 1.5rem; background: var(--light-gray); border-radius: 10px; border-left: 4px solid var(--primary-blue);">
-                <h3 style="color: var(--black); margin-bottom: 0.5rem;">Qual a taxa de sucesso nos casos?</h3>
-                <p>Nossa taxa de sucesso varia conforme o tipo de caso e suas particularidades. Durante a análise inicial, informamos com transparência as chances reais de sucesso baseadas em nossa experiência.</p>
+            <div class="faq-item">
+                <h3>Como funciona o pagamento?</h3>
+                <p>Os valores e condições são apresentados após a avaliação inicial. Trabalhamos com diferentes formas de pagamento.</p>
             </div>
 
-            <div style="margin-bottom: 2rem; padding: 1.5rem; background: var(--light-gray); border-radius: 10px; border-left: 4px solid var(--primary-blue);">
-                <h3 style="color: var(--black); margin-bottom: 0.5rem;">Como funciona o pagamento?</h3>
-                <p>Trabalhamos com diferentes formas de pagamento para facilitar o acesso aos nossos serviços. Os valores e condições são apresentados após a análise inicial do caso.</p>
-            </div>
-
-            <div style="margin-bottom: 2rem; padding: 1.5rem; background: var(--light-gray); border-radius: 10px; border-left: 4px solid var(--primary-blue);">
-                <h3 style="color: var(--black); margin-bottom: 0.5rem;">Preciso comparecer pessoalmente?</h3>
-                <p>Na maioria dos casos, todo o atendimento pode ser realizado de forma remota, por telefone, e-mail ou WhatsApp. Apenas em situações específicas pode ser necessário comparecimento pessoal.</p>
+            <div class="faq-item">
+                <h3>Preciso comparecer pessoalmente?</h3>
+                <p>Na maioria dos casos, o atendimento é 100% remoto, por telefone, e-mail ou WhatsApp.</p>
             </div>
         </div>
     </section>
@@ -152,30 +148,38 @@
         <p class="section-subtitle">Estamos disponíveis para atendê-lo nos seguintes horários</p>
         
         <div style="max-width: 600px; margin: 2rem auto; padding: 2rem; background: var(--white); border-radius: 15px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);">
-            <div style="margin-bottom: 1.5rem;">
+            <div>
                 <h3 style="color: var(--primary-blue); margin-bottom: 0.5rem;">Segunda a Sexta-feira</h3>
-                <p style="font-size: 1.2rem; font-weight: bold; color: var(--black);">8h às 18h</p>
+                <p style="font-size: 1.2rem; font-weight: bold;">8h às 18h</p>
             </div>
-            
-            <div style="margin-bottom: 1.5rem;">
+            <div style="margin: 1.5rem 0;">
                 <h3 style="color: var(--primary-blue); margin-bottom: 0.5rem;">Sábados</h3>
-                <p style="font-size: 1.2rem; font-weight: bold; color: var(--black);">9h às 13h</p>
+                <p style="font-size: 1.2rem; font-weight: bold;">9h às 13h</p>
             </div>
-            
             <div>
                 <h3 style="color: var(--primary-blue); margin-bottom: 0.5rem;">Domingos e Feriados</h3>
-                <p style="font-size: 1.2rem; font-weight: bold; color: var(--black);">Fechado</p>
+                <p style="font-size: 1.2rem; font-weight: bold;">Fechado</p>
             </div>
         </div>
 
         <p style="font-style: italic; opacity: 0.8;">* Atendimento por e-mail disponível 24/7 com resposta em até 24h úteis</p>
     </section>
 
+    <!-- ✅ NOTA LEGAL PARA BLINDAGEM -->
+    <section class="legal-section" style="padding: 40px 10%; text-align: center; background: var(--white);">
+        <h2>Nota Legal</h2>
+        <p style="max-width: 800px; margin: 0 auto; opacity: 0.9;">
+            A <strong>CNH em Dia Soluções</strong> oferece suporte técnico e administrativo em processos de trânsito, 
+            sem exercer atividades privativas da advocacia. Casos que exijam atuação jurídica são encaminhados para 
+            <strong>advogados parceiros regularmente inscritos na OAB</strong>.
+        </p>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>CNH em Dia Soluções</h3>
-                <p>Soluções especializadas para manter sua habilitação regularizada e você na estrada.</p>
+                <p>Soluções administrativas e técnicas para manter sua habilitação regularizada.</p>
             </div>
 
             <div class="footer-section">
