@@ -1,0 +1,138 @@
+/* Variáveis de Cores (Reutilizando as do styles.css) */
+:root {
+    --primary-blue: #0066cc;
+    --dark-blue: #004494;
+    --light-blue: #3399ff;
+    --black: #000000;
+    --dark-gray: #1a1a1a;
+    --medium-gray: #333333;
+    --light-gray: #f5f5f5;
+    --white: #ffffff;
+    --warning-yellow: #ffc107;
+    --danger-red: #dc3545;
+}
+
+/* Estilo para a Seção de Penalidades (Substituindo a Tabela) */
+.penalties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.penalty-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--primary-blue);
+    transition: all 0.3s ease;
+}
+
+.penalty-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.15);
+    transform: translateY(-5px);
+}
+
+.penalty-card h3 {
+    font-size: 1.4rem;
+    color: var(--dark-blue);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.penalty-card h3::before {
+    content: '•';
+    color: var(--primary-blue);
+    font-size: 2rem;
+    line-height: 1;
+    margin-right: 10px;
+}
+
+.penalty-card p {
+    margin: 0;
+    color: var(--medium-gray);
+    font-size: 1rem;
+}
+
+.penalty-card.warning {
+    border-left-color: var(--warning-yellow);
+}
+
+.penalty-card.danger {
+    border-left-color: var(--danger-red);
+}
+
+/* Estilo para a Seção de Suporte Estratégico (Substituindo a Tabela) */
+.support-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: var(--light-gray);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+}
+
+.step-item:hover {
+    background: var(--white);
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.1);
+}
+
+.step-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-blue);
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+    line-height: 1;
+    padding-top: 0.2rem;
+}
+
+.step-content h4 {
+    font-size: 1.2rem;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+}
+
+.step-content p {
+    margin: 0;
+    color: var(--medium-gray);
+    line-height: 1.6;
+}
+
+/* Ajuste para o Aviso Importante */
+.important-note {
+    background: #fff3cd; /* Cor de fundo suave para aviso */
+    color: #856404; /* Cor do texto para contraste */
+    border: 1px solid #ffeeba;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .penalties-grid {
+        grid-template-columns: 1fr;
+    }
+    .step-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .step-number {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+}
