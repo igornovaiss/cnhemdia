@@ -212,7 +212,7 @@ section .section-subtitle {
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
-    border: 2px solid transparent;
+    border: 2px solid var(--primary-blue);
 }
 
 .card:hover {
