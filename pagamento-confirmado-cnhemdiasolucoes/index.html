@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cassação da CNH - CNH em Dia Soluções</title>
+    <meta name="description" content="Assessoria administrativa e técnica em processos de cassação da CNH. Orientação especializada para ajudar você a regularizar sua habilitação e entender seus direitos.">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body style="background: black;">
+    <header>
+        <nav>
+            <a href="/" class="logo">CNH em <span>Dia Soluções</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Início</a></li>
+                <li><a href="/servicos/">Serviços</a></li>
+                <li><a href="/sobre/">Sobre</a></li>
+                <li><a href="/contato/">Contato</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+     <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Pagamento Confirmado Com Sucesso!</h1>
+                <p style="text-align:center">PARABÉNS <strong>POR ESCOLHER A CNH EM DIA SOLUÇÕES.</strong><br><br><a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." 
+   target="_blank" 
+   class="cta-button">
+   Voltar ao WhatsApp
+   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+        alt="WhatsApp" 
+        width="30" 
+        height="30" 
+        style="vertical-align: middle; margin-left: 8px;">
+</a></p>
+
+    </section>
+
+    <footer>
+        <div class="footer-content">
+        <div class="footer-section">
+        <div class="footer-bottom">
+            <p>&copy; 2025 CNH em Dia Soluções. Todos os direitos reservados.</p>
+        </div>
+        </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
