@@ -245,7 +245,7 @@
     const contactForm = document.getElementById('contactForm');
 
     contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault(); // impede recarregar a página antes de enviar
+    e.preventDefault();
 
     const formData = new FormData(contactForm);
 
@@ -257,17 +257,24 @@
 
         if (response.ok) {
 
-            // Redireciona para o WhatsApp
-            window.location.href = "https://wa.me/5511994187695?text=Olá, preenchi o formulário e gostaria de atendimento.";
+            // pega o assunto selecionado
+            const assunto = document.getElementById('assunto').value;
 
-            // Limpa o formulário (opcional)
+            // monta a mensagem personalizada
+            const mensagem = `Olá, preenchi o formulário no site e meu assunto é: ${assunto}`;
+            const mensagemEncoded = encodeURIComponent(mensagem);
+
+            // redireciona para o WhatsApp com a mensagem personalizada
+            window.location.href = `https://wa.me/5511994187695?text=${mensagemEncoded}`;
+
             contactForm.reset();
 
         } else {
-            alert('❌ Erro ao enviar o formulário. Tente novamente mais tarde.');
+            alert('❌ Erro ao enviar o formulário. Tente novamente.');
         }
+
     } catch (error) {
-        alert('❌ Ocorreu um erro inesperado. Verifique sua conexão e tente novamente.');
+        alert('❌ Ocorreu um erro inesperado. Tente novamente.');
         console.error(error);
     }
 });
