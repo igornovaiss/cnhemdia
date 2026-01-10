@@ -257,10 +257,11 @@
         if (response.ok) {
 
             // pega o assunto selecionado
+            const nome = document.getElementById('nome').value;
             const assunto = document.getElementById('assunto').value;
 
             // monta a mensagem personalizada
-            const mensagem = `Olá, preenchi o formulário no site e meu assunto é: ${assunto}`;
+            const mensagem = `Olá me chamo ${nome}. Preenchi o formulario no site e gostaria de resolver o meu problema de ${assunto}`;
             const mensagemEncoded = encodeURIComponent(mensagem);
 
             // redireciona para o WhatsApp com a mensagem personalizada
