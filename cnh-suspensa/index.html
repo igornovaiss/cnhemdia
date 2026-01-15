@@ -1010,9 +1010,14 @@ function gtag_report_conversion(url, target) {
 
     // Botão do formulário
     document.getElementById("btnWhats")?.addEventListener("click", (e)=>{
-      e.preventDefault();
-      openWhats();
-    });
+  e.preventDefault();
+
+  const text = encodeURIComponent(buildWhatsMessage());
+  const url = `https://wa.me/${WHATS_NUMBER}?text=${text}`;
+
+  // Dispara conversão e abre o WhatsApp (em nova aba)
+  gtag_report_conversion(url, "_blank");
+});
 
     // ====== Menu mobile ======
     const menuToggle = document.querySelector('.menu-toggle');
@@ -1076,5 +1081,6 @@ function gtag_report_conversion(url, target) {
   </script>
 </body>
 </html>
+
 
 
