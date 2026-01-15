@@ -13,16 +13,26 @@
   <!-- Event snippet for WhatsApp - Clique (Página) conversion page
 In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
 <script>
-function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
+function gtag_report_conversion(url, target) {
+  var go = function () {
+    if (typeof url !== 'undefined') {
+      if (target === '_blank') window.open(url, '_blank');
+      else window.location = url;
     }
   };
-  gtag('event', 'conversion', {
-      'send_to': 'AW-17709604708/3A1hCK-KneYbEOS-zPxB',
-      'event_callback': callback
-  });
+
+  try {
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17709604708/3A1hCK-KneYbEOS-zPxB',
+        'event_callback': go
+      });
+      return false;
+    }
+  } catch (e) {}
+
+  // Se o gtag não existir, não bloqueia o usuário
+  go();
   return false;
 }
 </script>
@@ -733,7 +743,7 @@ function gtag_report_conversion(url) {
           <li><a href="/sobre/">Sobre</a></li>
           <li><a href="#contato">Contato</a></li>
           <li>
-            <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Lei+Seca%29.&type=phone_number&app_absent=0" target="_blank">
+            <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Lei+Seca%29.&type=phone_number&app_absent=0" target="_blank" onclick="return gtag_report_conversion(this.href, this.target);">
               <span style="color: white">Falar no WhatsApp</span>
               <span class="wa-dot" aria-hidden="true">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
@@ -777,7 +787,7 @@ function gtag_report_conversion(url) {
 </p>
 
       <div class="hero-actions">
-        <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Lei+Seca%29.&type=phone_number&app_absent=0" id="ctaHero" target="_blank">
+        <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Lei+Seca%29.&type=phone_number&app_absent=0" id="ctaHero" target="_blank" onclick="return gtag_report_conversion(this.href, this.target);">
           <span style="text-align:center;">Quero minha análise agora</span>
           <span class="wa-dot" aria-hidden="true">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="20" height="20">
@@ -1057,7 +1067,7 @@ function gtag_report_conversion(url) {
   </main>
 
   <!-- WhatsApp Float -->
-  <a class="whatsapp-float" id="waFloat" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Lei+Seca%29.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+  <a class="whatsapp-float" id="waFloat" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Lei+Seca%29.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp" onclick="return gtag_report_conversion(this.href, this.target);">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
                         alt="WhatsApp" 
                         width="50" 
@@ -1138,8 +1148,6 @@ function gtag_report_conversion(url) {
       window.open(url, "_blank", "noopener,noreferrer");
     }
 
-    document.getElementById("btnWhats").addEventListener("click", openWhats);
-
     // ====== Menu mobile ======
      const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
@@ -1190,6 +1198,16 @@ function gtag_report_conversion(url) {
       });
     });
 
+  document.getElementById("btnWhats")?.addEventListener("click", (e)=>{
+  e.preventDefault();
+
+  const text = encodeURIComponent(buildWhatsMessage());
+  const url = `https://wa.me/${WHATS_NUMBER}?text=${text}`;
+
+  // Dispara conversão e abre o WhatsApp (em nova aba)
+  gtag_report_conversion(url, "_blank");
+});
+
     // ====== Micro tracking (opcional) ======
     // Dispara eventos de clique (sem prometer conversão). Útil pra medir CTA.
     function track(eventName){
@@ -1199,9 +1217,10 @@ function gtag_report_conversion(url) {
     }
     document.getElementById("ctaHero")?.addEventListener("click", ()=>track("cta_hero_click"));
     document.getElementById("ctaBand")?.addEventListener("click", ()=>track("cta_band_click"));
-    document.getElementById("btnWhats")?.addEventListener("click", ()=>track("whatsapp_click"));
+    document.getElementById("btnWhats")?.addEventListener("click", ()=>track("form_whatsapp_click"));
     document.getElementById("waFloat")?.addEventListener("click", ()=>track("whatsapp_float_click"));
   </script>
 </body>
 </html>
+
 
