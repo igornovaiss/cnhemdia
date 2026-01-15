@@ -62,7 +62,7 @@ nav {
 }
 
 .logo span {
-    color: color: var(--cyan);
+    color: var(--cyan);
 }
 
 .logo:hover {
