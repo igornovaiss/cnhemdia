@@ -13,16 +13,26 @@
     <!-- Event snippet for WhatsApp - Clique (Página) conversion page
 In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
 <script>
-function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
+function gtag_report_conversion(url, target) {
+  var go = function () {
+    if (typeof url !== 'undefined') {
+      if (target === '_blank') window.open(url, '_blank');
+      else window.location = url;
     }
   };
-  gtag('event', 'conversion', {
-      'send_to': 'AW-17709604708/3A1hCK-KneYbEOS-zPxB',
-      'event_callback': callback
-  });
+
+  try {
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17709604708/3A1hCK-KneYbEOS-zPxB',
+        'event_callback': go
+      });
+      return false;
+    }
+  } catch (e) {}
+
+  // Se o gtag não existir, não bloqueia o usuário
+  go();
   return false;
 }
 </script>
@@ -69,7 +79,8 @@ function gtag_report_conversion(url) {
                 </div>
                 <a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." 
                    target="_blank" 
-                   class="cta-button">
+                   class="cta-button"
+                    onclick="return gtag_report_conversion(this.href, this.target);">
                    Falar Com Especialista
                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
                         alt="WhatsApp" 
@@ -126,7 +137,8 @@ function gtag_report_conversion(url) {
      <section style="background: rgba(0, 0, 0, 0.822); padding: 40px 5%;" class="cta-final-section">
         <a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." 
            target="_blank" 
-           class="cta-button">
+           class="cta-button"
+            onclick="return gtag_report_conversion(this.href, this.target);">
            Falar Com Especialista
            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
                 alt="WhatsApp" 
@@ -226,7 +238,8 @@ function gtag_report_conversion(url) {
         <p class="section-subtitle">Entre em contato agora e receba uma análise gratuita da sua situação administrativa</p>
         <a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." 
            target="_blank" 
-           class="cta-button">
+           class="cta-button"
+            onclick="return gtag_report_conversion(this.href, this.target);">
            Falar Com Especialista
            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
                 alt="WhatsApp" 
@@ -244,7 +257,7 @@ function gtag_report_conversion(url) {
     </main>
 
     <!-- BOTÃO WHATSAPP -->
-    <a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." class="whatsapp-float" target="_blank" rel="noopener noreferrer" onclick="return gtag_report_conversion(this.href, this.target);">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
     </a>
 
