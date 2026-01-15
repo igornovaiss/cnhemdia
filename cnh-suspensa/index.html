@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Google tag (gtag.js) - mantenha o mesmo ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17709604708"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17709604708');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Suspensão da CNH | CNH em Dia Soluções</title>
+  <meta name="description" content="CNH suspensa? Entenda prazos, notificações e como agir. Análise do seu caso e orientação clara no WhatsApp. Atendimento humanizado e sigilo total." />
+
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+
+  <style>
+    :root{
+      --bg:#070B14;
+      --bg2:#0B1224;
+      --card:#0E1A33;
+      --stroke: rgba(255,255,255,.10);
+      --stroke2: rgba(255,255,255,.14);
+      --text:#EAF1FF;
+      --muted: rgba(234,241,255,.78);
+      --muted2: rgba(234,241,255,.62);
+      --blue:#1E6BFF;
+      --blue2:#0A4BFF;
+      --cyan:#35D0FF;
+      --ok:#27D17F;
+      --warn:#FFB020;
+      --shadow: 0 18px 45px rgba(0,0,0,.40);
+      --shadow2: 0 10px 25px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1200px;
+      --whats:#25D366;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{
+      margin:0; padding:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 700px at 15% -10%, rgba(30,107,255,.28), transparent 60%),
+        radial-gradient(900px 600px at 95% 15%, rgba(53,208,255,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color:var(--text);
+    }
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+    .container{ width: min(var(--max), 92%); margin: 0 auto; }
+
+    /* Header */
+    header{
+      position: sticky; top:0; z-index:50;
+      background: rgba(7,11,20,.55);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 16px;
+      position: relative;
+    }
+    .logo{
+      font-weight: 800;
+      letter-spacing: .2px;
+      font-size: 18px;
+      white-space: nowrap;
+    }
+    .logo span{ color: var(--cyan); }
+    .nav-links{ list-style:none; display:flex; gap: 18px; padding:0; margin:0; align-items:center; }
+    .nav-links a{
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 14px;
+      padding: 10px 10px;
+      border-radius: 12px;
+      transition: .2s ease;
+    }
+    .nav-links a:hover{ background: rgba(255,255,255,.06); color: var(--text); }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      border: 1px solid rgba(255,255,255,.12);
+      transition: .18s ease;
+      cursor:pointer;
+      white-space: nowrap;
+    }
+    .btn-primary{
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      box-shadow: 0 14px 35px rgba(30,107,255,.35);
+      border-color: rgba(255,255,255,.10);
+    }
+    .btn-primary:hover{ transform: translateY(-1px); filter: brightness(1.03); }
+    .btn-ghost{
+      background: rgba(255,255,255,.04);
+    }
+    .btn-ghost:hover{ background: rgba(255,255,255,.07); transform: translateY(-1px); }
+
+    .btn .wa-dot{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:auto; height:auto; border:none; background:transparent; padding:0;
+    }
+    .btn .wa-dot img{ width:20px; height:20px; display:block; }
+
+    /* Hamburger */
+    .menu-toggle{
+      display:none;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      padding: 0;
+      position: relative;
+    }
+    .menu-toggle span{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 18px;
+      height: 2px;
+      background: rgba(234,241,255,.90);
+      border-radius: 10px;
+      transform-origin: center;
+      transition: .22s ease;
+    }
+    .menu-toggle span:nth-child(1){ transform: translate(-50%, calc(-50% - 6px)); }
+    .menu-toggle span:nth-child(2){ transform: translate(-50%, -50%); }
+    .menu-toggle span:nth-child(3){ transform: translate(-50%, calc(-50% + 6px)); }
+    .menu-toggle.active span:nth-child(1){ transform: translate(-50%, -50%) rotate(45deg); }
+    .menu-toggle.active span:nth-child(2){ opacity: 0; }
+    .menu-toggle.active span:nth-child(3){ transform: translate(-50%, -50%) rotate(-45deg); }
+
+    /* Hero */
+    .hero{ padding: 44px 0 18px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+    .hero-card{
+      border-radius: var(--radius2);
+      background: linear-gradient(180deg, rgba(14,26,51,.86), rgba(14,26,51,.62));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(700px 220px at 30% 0%, rgba(53,208,255,.18), transparent 60%),
+        radial-gradient(680px 260px at 80% 10%, rgba(30,107,255,.22), transparent 65%);
+      pointer-events:none;
+    }
+    .hero-inner{ position: relative; padding: 26px 26px 24px; }
+
+    .kicker{
+      display:inline-flex; align-items:center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-weight: 750;
+      font-size: 13px;
+      width: fit-content;
+    }
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height: 1.05;
+      letter-spacing: -.6px;
+    }
+    .sub{
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+      margin: 0 0 14px;
+      max-width: 72ch;
+    }
+    .sub strong{ color: rgba(234,241,255,.95); }
+
+    .hero-actions{
+      display:flex; flex-wrap:wrap;
+      gap: 12px;
+      align-items:center;
+      margin-top: 16px;
+    }
+    .trust-row{
+      display:flex; flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 14px;
+      align-items:center;
+      color: var(--muted2);
+      font-size: 13px;
+    }
+    .trust-chip{
+      display:inline-flex; align-items:center; gap: 8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .trust-chip .dot{
+      width: 9px; height: 9px; border-radius: 99px;
+      background: var(--ok);
+      box-shadow: 0 0 0 4px rgba(39,209,127,.14);
+    }
+
+    /* Hero with photo */
+    .hero-top{
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: center;
+    }
+    .hero-photo{
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow2);
+      position: relative;
+    }
+    .hero-photo img{
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: contrast(1.03) saturate(1.02);
+    }
+    .hero-photo .hero-badge{
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(7,11,20,.70);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(10px);
+      font-weight: 850;
+      font-size: 12.5px;
+      color: rgba(234,241,255,.92);
+    }
+
+    .hero-points{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .mini{
+      border-radius: 16px;
+      padding: 12px 12px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow2);
+      min-height: 76px;
+    }
+    .mini .t{ font-weight: 850; font-size: 13px; margin-bottom: 4px; }
+    .mini .d{ font-size: 12.5px; color: var(--muted2); line-height: 1.35; }
+
+    /* Side card */
+    .side{
+      border-radius: var(--radius2);
+      background: linear-gradient(180deg, rgba(14,26,51,.70), rgba(14,26,51,.52));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      position: relative;
+    }
+    .side::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(600px 250px at 50% 0%, rgba(255,176,32,.12), transparent 62%);
+      pointer-events:none;
+    }
+    .side-inner{ position:relative; padding: 18px; }
+    .side h2{
+      margin: 4px 0 10px;
+      font-size: 18px;
+      letter-spacing: -.2px;
+    }
+    .side p{ margin: 0 0 12px; color: var(--muted); line-height: 1.45; font-size: 13.7px; }
+    .side .divider{ height:1px; background: rgba(255,255,255,.08); margin: 14px 0; }
+
+    .form{ display:grid; gap: 10px; }
+    .field{ display:grid; gap: 6px; }
+    .field label{
+      font-size: 12px;
+      color: var(--muted2);
+      font-weight: 750;
+    }
+    .input, .select, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      background: rgba(7,11,20,.45);
+      border: 1px solid rgba(255,255,255,.12);
+      color: var(--text);
+      outline: none;
+      font-size: 14px;
+    }
+    textarea{ min-height: 84px; resize: vertical; }
+    .help{
+      font-size: 12px;
+      color: var(--muted2);
+      line-height: 1.35;
+    }
+    .cta-box{
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(30,107,255,.12);
+      border: 1px solid rgba(30,107,255,.22);
+      display:grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .cta-box .big{ font-weight: 900; letter-spacing: -.2px; font-size: 14px; }
+    .cta-box .small{ color: rgba(234,241,255,.72); font-size: 12.5px; line-height: 1.35; }
+
+    /* Sections */
+    section{ padding: 32px 0; }
+    .section-title{ font-size: 28px; margin: 0 0 10px; letter-spacing: -.5px; text-align:center; }
+    .section-sub{
+      margin: 0 auto 18px;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 80ch;
+      text-align: center;
+    }
+    .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+
+    .card{
+      border-radius: var(--radius);
+      padding: 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow2);
+      position: relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(420px 160px at 20% 0%, rgba(53,208,255,.08), transparent 55%);
+      pointer-events:none;
+    }
+    .card > *{ position: relative; }
+    .icon{
+      width: 40px; height: 40px;
+      border-radius: 16px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    .card h3{ margin: 0 0 6px; font-size: 16px; letter-spacing: -.2px; }
+    .card p{ margin: 0; color: var(--muted); font-size: 13.6px; line-height: 1.5; }
+
+    /* Timeline */
+    .timeline{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 14px; }
+    .step{
+      border-radius: var(--radius);
+      padding: 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow2);
+    }
+    .step .n{
+      display:inline-grid; place-items:center;
+      width: 34px; height: 34px;
+      border-radius: 14px;
+      background: rgba(30,107,255,.16);
+      border: 1px solid rgba(30,107,255,.26);
+      font-weight: 950;
+      margin-bottom: 10px;
+    }
+    .step .h{ font-weight: 900; margin: 0 0 6px; }
+    .step .p{ margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+
+    /* FAQ */
+    details{
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow2);
+      padding: 12px 14px;
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor:pointer;
+      font-weight: 850;
+      list-style:none;
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .faq-a{
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 13.6px;
+    }
+    .chev{
+      width: 28px; height: 28px;
+      border-radius: 12px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      transition: .2s ease;
+      flex: 0 0 auto;
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+
+    /* CTA band */
+    .cta-band{ padding: 28px 0; }
+    .cta-wrap{
+      border-radius: var(--radius2);
+      padding: 22px;
+      background: linear-gradient(135deg, rgba(30,107,255,.16), rgba(53,208,255,.10));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap: wrap;
+    }
+    .cta-wrap .txt{ max-width: 70ch; }
+    .cta-wrap .txt h2{ margin: 0 0 6px; font-size: 22px; letter-spacing: -.3px; }
+    .cta-wrap .txt p{ margin: 0; color: var(--muted); line-height: 1.5; font-size: 14px; }
+
+    /* Legal */
+    .legal{ padding: 18px 0 30px; }
+    .legal .note{
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 12.8px;
+    }
+
+    /* Whats float */
+    .whatsapp-float{
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      z-index: 60;
+      transition: .18s ease;
+    }
+    .whatsapp-float:hover{ transform: translateY(-2px); filter: brightness(1.05); }
+
+    /* Footer */
+    footer{
+      border-top: 1px solid rgba(255,255,255,.06);
+      background: rgba(0,0,0,.25);
+      padding: 34px 0 20px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      gap: 16px;
+      align-items:start;
+    }
+    .footer h3{ margin:0 0 10px; font-size: 14px; letter-spacing: .1px; }
+    .footer p, .footer li, .footer a{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .footer ul{ list-style:none; padding:0; margin:0; display:grid; gap: 7px; }
+    .footer a:hover{ color: var(--text); }
+    .footer-bottom{
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      color: rgba(234,241,255,.55);
+      font-size: 12.5px;
+      text-align:center;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .hero-top{ grid-template-columns: 1fr; }
+      .hero-photo img{ height: 320px; }
+
+      .grid-3{ grid-template-columns: 1fr; }
+      .timeline{ grid-template-columns: 1fr; }
+      .hero-points{ grid-template-columns: 1fr; }
+
+      .menu-toggle{ display:flex; }
+      .nav-links{
+        position: absolute;
+        top: 64px;
+        right: 4%;
+        width: min(320px, 92vw);
+        background: rgba(7,11,20,.92);
+        border: 1px solid rgba(255,255,255,.10);
+        border-radius: 18px;
+        padding: 10px;
+        display:none;
+        flex-direction: column;
+        box-shadow: var(--shadow);
+      }
+      .nav-links.active{ display:flex; }
+      .footer-grid{ grid-template-columns: 1fr; }
+
+      .btn{
+        width: 100%;
+        justify-content: center;
+        white-space: normal;
+      }
+      .hero-actions{ display:grid; grid-template-columns: 1fr; }
+      .trust-row{ display:grid; grid-template-columns: 1fr; }
+      body{ overflow-x: hidden; }
+    }
+
+    /* Notebook hero fine-tune */
+    @media (max-width: 1366px){
+      .hero-top{ grid-template-columns: 1.45fr .55fr; gap: 16px; }
+      .hero-inner{ padding: 22px 22px 20px; }
+      .hero-photo{ max-width: 380px; margin-left: auto; }
+      .hero-photo img{ height: 340px; }
+      h1{ font-size: clamp(26px, 2.9vw, 40px); line-height: 1.04; }
+      .sub{ font-size: 15.5px; line-height: 1.5; }
+    }
+    @media (max-width: 1200px){
+      .hero-top{ grid-template-columns: 1fr; }
+      .hero-photo{ max-width: 520px; margin: 10px auto 0; }
+      .hero-photo img{ height: 320px; }
+    }
+
+    /* Simple animation */
+    .fade-in{ opacity: 1; transform: translateY(0); }
+    .reveal{
+      opacity: 0;
+      transform: translateY(10px);
+      transition: .5s ease;
+    }
+    .reveal.fade-in{ opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="logo">CNH em <span>Dia Soluções</span></a>
+
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/servicos/">Serviços</a></li>
+          <li><a href="/sobre/">Sobre</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li>
+            <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Suspens%C3%A3o+da+CNH%29.&type=phone_number&app_absent=0" target="_blank">
+              <span style="color:white">Falar no WhatsApp</span>
+              <span class="wa-dot" aria-hidden="true">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30" height="30">
+              </span>
+            </a>
+          </li>
+        </ul>
+
+        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" type="button">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-card reveal">
+            <div class="hero-inner">
+
+              <div class="hero-top">
+                <div>
+                  <div class="kicker">
+                    <span>Suspensão da CNH • Pontos • Notificação • Prazos</span>
+                  </div>
+
+                  <h1>Recebeu notificação de suspensão da CNH ou estourou pontos?</h1>
+
+                  <p class="sub">
+                    Isso pode virar <strong>meses sem dirigir</strong>, dor de cabeça com <strong>prazos</strong> e decisões erradas por falta de orientação.
+                    Antes de aceitar o pior, faça uma <strong>análise do seu caso</strong> e receba <strong>um plano claro do que fazer agora</strong> no WhatsApp.
+                  </p>
+
+                  <div class="hero-actions">
+                    <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Suspens%C3%A3o+da+CNH%29.&type=phone_number&app_absent=0" id="ctaHero" target="_blank">
+                      <span style="text-align:center;">Quero minha análise agora</span>
+                      <span class="wa-dot" aria-hidden="true">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="20" height="20">
+                      </span>
+                    </a>
+
+                    <a class="btn btn-ghost" href="#como-funciona">Como funciona</a>
+                  </div>
+
+                  <div class="trust-row">
+                    <span class="trust-chip"><span class="dot"></span> Atendimento humanizado</span>
+                    <span class="trust-chip">🔒 Sigilo total</span>
+                    <span class="trust-chip">⚡ Resposta rápida</span>
+                  </div>
+                </div>
+
+                <!-- Foto -->
+                <div class="hero-photo">
+                  <img src="/static/images/fotopessoal.jpeg" alt="Especialista Igor Novais" loading="lazy">
+                  <div class="hero-badge">Especialista Igor Novais</div>
+                </div>
+              </div>
+
+              <div class="hero-points">
+                <div class="mini reveal">
+                  <div class="t">Notificação de suspensão</div>
+                  <div class="d">Entenda o que chegou, qual etapa é, e o que dá para fazer dentro do prazo.</div>
+                </div>
+                <div class="mini reveal">
+                  <div class="t">Pontos na CNH</div>
+                  <div class="d">Avaliação do histórico e do enquadramento: cada caso tem detalhes que mudam tudo.</div>
+                </div>
+                <div class="mini reveal">
+                  <div class="t">Estratégia e acompanhamento</div>
+                  <div class="d">Você não fica no escuro: plano claro e suporte durante o processo.</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Side / Lead capture -->
+          <aside class="side reveal" id="contato">
+            <div class="side-inner">
+              <div class="badge">📌 Entre em contato agora conosco.</div>
+              <h2>Receba uma orientação imediata</h2>
+              <p>
+                Preencha 3 campos e clique no WhatsApp. A mensagem vai pronta, objetiva e com as informações que aceleram a análise.
+              </p>
+
+              <div class="divider"></div>
+
+              <form class="form" id="leadForm">
+                <div class="field">
+                  <label for="nome">Seu nome</label>
+                  <input class="input" id="nome" name="nome" placeholder="Ex.: João" autocomplete="name" />
+                </div>
+
+                <div class="field">
+                  <label for="cidade">Cidade</label>
+                  <input class="input" id="cidade" name="cidade" placeholder="Ex.: São Paulo" autocomplete="address-level2" />
+                </div>
+
+                <div class="field">
+                  <label for="tipo">Seu caso é…</label>
+                  <select class="select" id="tipo" name="tipo">
+                    <option value="CNH suspensa (notificação recebida)">CNH suspensa (notificação recebida)</option>
+                    <option value="Pontuação estourada (muitos pontos)">Pontuação estourada (muitos pontos)</option>
+                    <option value="Processo administrativo em andamento">Processo administrativo em andamento</option>
+                    <option value="Dúvida geral (quero entender meu caso)">Dúvida geral (quero entender meu caso)</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="detalhes">Detalhes (opcional)</label>
+                  <textarea id="detalhes" placeholder="Ex.: data da notificação, quantidade de pontos, se já fez reciclagem..."></textarea>
+                  <div class="help">Dica: se souber, informe a data da notificação e se já houve recurso anterior. Isso melhora a precisão da análise.</div>
+                </div>
+
+                <div class="cta-box">
+                  <div class="big" style="text-align:center;">✅ Análise gratuita + plano de ação</div>
+                  <div class="small" style="text-align:center;">Você entende o cenário e sai com um caminho claro. Sem enrolação.</div>
+                </div>
+
+                <button type="button" class="btn btn-primary" id="btnWhats">
+                  <span style="color:white;">Enviar no WhatsApp</span>
+                  <span class="wa-dot" aria-hidden="true">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30" height="30">
+                  </span>
+                </button>
+
+                <div class="help">
+                  Ao clicar, você será redirecionado ao WhatsApp com uma mensagem pronta. Atendimento: (11) 99418-7695
+                </div>
+              </form>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEMAS / DORES -->
+    <section>
+      <div class="container">
+        <h2 class="section-title reveal">O que costuma acontecer quando a CNH entra em suspensão</h2>
+        <p class="section-sub reveal">
+          Vem a ansiedade: <strong>notificação chegando</strong>, <strong>prazo correndo</strong> e medo de errar no próximo passo.
+          Só que isso não é “sorte” — é procedimento. E procedimento se vence com estratégia.
+        </p>
+
+        <div class="grid-3">
+          <div class="card reveal">
+            <div class="icon">📬</div>
+            <h3>Notificações e prazos</h3>
+            <p>Você não precisa adivinhar. Organizamos o que chegou, o que falta, e o que fazer no tempo certo.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon">🧩</div>
+            <h3>Confusão com pontos</h3>
+            <p>Pontuação, enquadramento, datas… cada detalhe muda a leitura do caso. A análise evita decisões ruins.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon">🚗</div>
+            <h3>Rotina travada</h3>
+            <p>Trabalho, família, logística. A CNH é mobilidade. Um plano claro reduz risco e estresse.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- O QUE VOCÊ RECEBE -->
+    <section>
+      <div class="container">
+        <h2 class="section-title reveal">O que você recebe com a CNH em Dia Soluções</h2>
+        <p class="section-sub reveal">
+          Aqui não tem promessa vazia. Tem método: diagnóstico, plano e execução — com comunicação clara.
+        </p>
+
+        <div class="grid-3">
+          <div class="card reveal">
+            <div class="icon">🔎</div>
+            <h3>Leitura técnica do processo</h3>
+            <p>Análise do que foi instaurado, do que foi notificado e dos pontos críticos do seu caso.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon">🧭</div>
+            <h3>Estratégia administrativa</h3>
+            <p>Direcionamento objetivo: etapas, documentos, prazos e melhores decisões para o seu cenário.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon">🤝</div>
+            <h3>Suporte e acompanhamento</h3>
+            <p>Você entende o que está acontecendo e por quê. Atualizações e suporte durante o caminho.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section id="como-funciona">
+      <div class="container">
+        <h2 class="section-title reveal">Como funciona: do susto ao controle</h2>
+        <p class="section-sub reveal">
+          Entra demanda, faz diagnóstico, desenha estratégia e executa com cadência. Sem ruído. Sem achismo.
+        </p>
+
+        <div class="timeline">
+          <div class="step reveal">
+            <div class="n">1</div>
+            <p class="h">Contato e triagem</p>
+            <p class="p">Você chama no WhatsApp e informa o essencial (notificação, datas e contexto).</p>
+          </div>
+          <div class="step reveal">
+            <div class="n">2</div>
+            <p class="h">Análise do caso</p>
+            <p class="p">Entendemos o estágio do processo e quais prazos estão vivos.</p>
+          </div>
+          <div class="step reveal">
+            <div class="n">3</div>
+            <p class="h">Plano de ação</p>
+            <p class="p">Você recebe um caminho claro: o que fazer, como fazer e quando fazer.</p>
+          </div>
+          <div class="step reveal">
+            <div class="n">4</div>
+            <p class="h">Execução e acompanhamento</p>
+            <p class="p">Suporte com atualização e estratégia durante a tramitação.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <div class="container">
+        <h2 class="section-title reveal">Perguntas frequentes (sem juridiquês)</h2>
+        <p class="section-sub reveal">
+          Clareza vende. E aqui a gente joga limpo.
+        </p>
+
+        <details class="reveal">
+          <summary>
+            CNH suspensa é “automaticamente” ficar sem dirigir?
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="faq-a">
+            Depende do estágio do processo e do que foi notificado. Por isso, a análise do seu caso é essencial:
+            documento, datas e andamento mudam o próximo passo.
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>
+            Se eu já recebi notificação, ainda dá tempo?
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="faq-a">
+            Muitas vezes, sim — mas o relógio é o adversário. Quanto antes você organizar documentos e datas,
+            mais precisa fica a estratégia.
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>
+            Vocês prometem “ganhar” o caso?
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="faq-a">
+            Não vendemos fantasia. Vendemos método: avaliação séria do cenário, riscos e possibilidades,
+            e atuação dentro do que é técnico e cabível.
+          </div>
+        </details>
+
+        <details class="reveal">
+          <summary>
+            O atendimento é sigiloso?
+            <span class="chev">⌄</span>
+          </summary>
+          <div class="faq-a">
+            Total. Seu caso é tratado com confidencialidade e foco em solução.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="cta-band">
+      <div class="container">
+        <div class="cta-wrap reveal">
+          <div class="txt">
+            <h2>Vamos transformar esse problema em plano.</h2>
+            <p>Você entra com as informações. Nós entramos com estratégia, cadência e execução.</p>
+          </div>
+          <a class="btn btn-primary" href="#contato" id="ctaBand">
+            <span style="text-align:center;">Falar com especialista agora</span>
+            <span class="wa-dot" aria-hidden="true">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30" height="30">
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEGAL -->
+    <section class="legal">
+      <div class="container">
+        <div class="note reveal">
+          <strong>⚠️ Aviso Legal:</strong> A CNH em Dia Soluções atua como consultoria administrativa e suporte técnico,
+          com parceria com advogados regularmente inscritos na OAB, responsáveis pela condução e representação judicial
+          dos clientes quando necessário. Todos os serviços seguem as normas e regulamentações aplicáveis.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- WhatsApp Float -->
+  <a class="whatsapp-float" id="waFloat" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Suspens%C3%A3o+da+CNH%29.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="50" height="50">
+  </a>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>CNH em Dia Soluções</h3>
+          <p>CPNJ: 63.687.598/0001-59</p>
+          <p>Soluções especializadas para suspensão da CNH e regularização administrativa. Atendimento com foco em clareza, técnica e confidencialidade.</p>
+        </div>
+        <div>
+          <h3>Serviços</h3>
+          <ul>
+            <li><a href="/lei-seca/">Lei Seca</a></li>
+            <li><a href="/multas/">Multas de Trânsito</a></li>
+            <li><a href="/suspensao/">Suspensão da CNH</a></li>
+            <li><a href="/cassacao/">Cassação da CNH</a></li>
+            <li><a href="/provisoria/">Perda da Provisória</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Institucional</h3>
+          <ul>
+            <li><a href="/sobre/">Sobre Nós</a></li>
+            <li><a href="/servicos/">Nossos Serviços</a></li>
+            <li><a href="/contato/">Contato</a></li>
+            <li><a href="/curso-de-reciclagem/">Reciclagem</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contato</h3>
+          <ul>
+            <li>📞 (11) 99418-7695</li>
+            <li>✉️ cnhemdiasolucoes@gmail.com</li>
+            <li>📍 Guarulhos - SP</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 CNH em Dia Soluções. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ====== Config WhatsApp + Mensagem dinâmica ======
+    const WHATS_NUMBER = "5511994187695";
+
+    function buildWhatsMessage(){
+      const nome = (document.getElementById("nome").value || "").trim();
+      const cidade = (document.getElementById("cidade").value || "").trim();
+      const tipo = (document.getElementById("tipo").value || "").trim();
+      const detalhes = (document.getElementById("detalhes").value || "").trim();
+
+      const parts = [];
+      parts.push("Olá! Vim pelo Google e quero uma análise do meu caso (Suspensão da CNH).");
+      parts.push("");
+
+      if (nome) parts.push(`Nome: ${nome}`);
+      if (cidade) parts.push(`Cidade: ${cidade}`);
+      if (tipo) parts.push(`Tipo: ${tipo}`);
+      if (detalhes) parts.push(`Detalhes: ${detalhes}`);
+
+      parts.push("");
+      parts.push("Quero saber quais são os próximos passos e prazos.");
+
+      return parts.join("\n");
+    }
+
+    function openWhats(){
+      const text = encodeURIComponent(buildWhatsMessage());
+      const url = `https://wa.me/${WHATS_NUMBER}?text=${text}`;
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    // Botão do formulário
+    document.getElementById("btnWhats")?.addEventListener("click", (e)=>{
+      e.preventDefault();
+      openWhats();
+    });
+
+    // ====== Menu mobile ======
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+
+      const opened = navLinks.classList.contains('active');
+      menuToggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link=>{
+      link.addEventListener('click', ()=>{
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.addEventListener('click', (e)=>{
+      const clickedInside = navLinks.contains(e.target) || menuToggle.contains(e.target);
+      if(!clickedInside){
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // ====== Scroll reveal ======
+    const observerOptions = { threshold: 0.12, rootMargin: '0px 0px -90px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('fade-in'); });
+    }, observerOptions);
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ====== Smooth anchor ======
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener("click", (e)=>{
+        const id = a.getAttribute("href");
+        const target = document.querySelector(id);
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block:"start" });
+          navLinks.classList.remove('active');
+        }
+      });
+    });
+
+    // ====== Micro tracking (opcional) ======
+    function track(eventName){
+      try{
+        gtag('event', eventName, { 'event_category': 'suspensao_cnh_lp' });
+      }catch(e){}
+    }
+    document.getElementById("ctaHero")?.addEventListener("click", ()=>track("cta_hero_click"));
+    document.getElementById("ctaBand")?.addEventListener("click", ()=>track("cta_band_click"));
+    document.getElementById("btnWhats")?.addEventListener("click", ()=>track("whatsapp_click"));
+    document.getElementById("waFloat")?.addEventListener("click", ()=>track("whatsapp_float_click"));
+  </script>
+</body>
+</html>
