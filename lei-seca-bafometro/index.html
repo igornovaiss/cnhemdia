@@ -665,15 +665,15 @@ function gtag_report_conversion(url, target) {
 
 .hero-photo .hero-badge{
   position: absolute;
-  left: 14px;
+  align-items: center;
   bottom: 14px;
   padding: 10px 12px;
   border-radius: 999px;
   background: rgba(7,11,20,.70);
   border: 1px solid rgba(255,255,255,.14);
   backdrop-filter: blur(10px);
-  font-weight: 850;
-  font-size: 12.5px;
+  font-weight: 700;
+  font-size: 14px;
   color: rgba(234,241,255,.92);
 }
 
@@ -727,7 +727,11 @@ function gtag_report_conversion(url, target) {
   .menu-toggle{ display:flex; }
 }
 
-
+@media (max-width: 600px){
+  .trust-row{display: none; }
+  .btn-ghost{display: none;}
+  .kicker{display: none;}
+}
   </style>
 </head>
 
@@ -743,7 +747,7 @@ function gtag_report_conversion(url, target) {
           <li><a href="/sobre/">Sobre</a></li>
           <li><a href="#contato">Contato</a></li>
           <li>
-            <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Lei+Seca%29.&type=phone_number&app_absent=0" target="_blank" onclick="return gtag_report_conversion(this.href, this.target);">
+            <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Lei+Seca%29.&type=phone_number&app_absent=0" target="_blank">
               <span style="color: white">Falar no WhatsApp</span>
               <span class="wa-dot" aria-hidden="true">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
@@ -775,19 +779,18 @@ function gtag_report_conversion(url, target) {
   <div class="hero-top">
     <div>
       <div class="kicker">
-        <span>Lei Seca • Recusa ao Bafômetro • Penalidades</span>
+        <span>Bafômetro Positivo • Recusa ao Bafômetro • Penalidades</span>
       </div>
 
-      <h1>Assoprou o Teste, Constou Alcool ou Se Recusou A Fazer o Teste do Bafômetro?</h1>
+      <h1>Caiu Na Blitz Do Bafômetro e Tomou a Multa?</h1>
 
       <p class="sub">
          Isso <strong>pode</strong> virar <strong>12 meses de suspensão</strong> e <strong>multa de R$ 2.934,70</strong>.
-  Antes de aceitar o pior, faça uma <strong>análise do seu caso</strong> e receba
-  <strong>orientação clara do que fazer agora</strong> no WhatsApp.
+  Antes de aceitar a multa, saiba que <strong>a maioria das multas por Bafômetro</strong> são aplicadas de forma indevida.<br><strong>Clique no Botão Abaixo E Saiba Se a Sua Multa Foi Aplicada Indevida.</strong> 
 </p>
 
       <div class="hero-actions">
-        <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Lei+Seca%29.&type=phone_number&app_absent=0" id="ctaHero" target="_blank" onclick="return gtag_report_conversion(this.href, this.target);">
+        <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Lei+Seca%29.&type=phone_number&app_absent=0" id="ctaHero" target="_blank">
           <span style="text-align:center;">Quero minha análise agora</span>
           <span class="wa-dot" aria-hidden="true">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="20" height="20">
@@ -807,7 +810,7 @@ function gtag_report_conversion(url, target) {
     <!-- Foto -->
     <div class="hero-photo">
       <img src="/static/images/fotopessoal.jpeg" alt="Especialista Igor Novais" loading="lazy">
-      <div class="hero-badge">Especialista Igor Novais</div>
+      <div class="hero-badge" style="text-align: center;">Consultor Igor - CNH em Dia Soluções</div>
     </div>
   </div>
               <div class="hero-points">
@@ -817,7 +820,7 @@ function gtag_report_conversion(url, target) {
                 </div>
                 <div class="mini reveal">
                   <div class="t">Auto de infração</div>
-                  <div class="d">Análise técnica: inconsistências, formalidades e prazos.</div>
+                  <div class="d">Análise: inconsistências, formalidades e prazos.</div>
                 </div>
                 <div class="mini reveal">
                   <div class="t">Acompanhamento</div>
@@ -1222,5 +1225,6 @@ function gtag_report_conversion(url, target) {
   </script>
 </body>
 </html>
+
 
 
