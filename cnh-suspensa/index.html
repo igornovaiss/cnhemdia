@@ -279,18 +279,18 @@ function gtag_report_conversion(url, target) {
       filter: contrast(1.03) saturate(1.02);
     }
     .hero-photo .hero-badge{
-      position: absolute;
-      left: 14px;
-      bottom: 14px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: rgba(7,11,20,.70);
-      border: 1px solid rgba(255,255,255,.14);
-      backdrop-filter: blur(10px);
-      font-weight: 850;
-      font-size: 12.5px;
-      color: rgba(234,241,255,.92);
-    }
+  position: absolute;
+  align-items: center;
+  bottom: 14px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(7,11,20,.70);
+  border: 1px solid rgba(255,255,255,.14);
+  backdrop-filter: blur(10px);
+  font-weight: 700;
+  font-size: 14px;
+  color: rgba(234,241,255,.92);
+}
 
     .hero-points{
       display:grid;
@@ -601,6 +601,12 @@ function gtag_report_conversion(url, target) {
       transition: .5s ease;
     }
     .reveal.fade-in{ opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 600px){
+  .trust-row{display: none; }
+  .btn-ghost{display: none;}
+  .kicker{display: none;}
+}
   </style>
 </head>
 
@@ -646,16 +652,13 @@ function gtag_report_conversion(url, target) {
                     <span>Suspensão da CNH • Pontos • Notificação • Prazos</span>
                   </div>
 
-                  <h1>Recebeu notificação de suspensão da CNH ou estourou pontos?</h1>
+                  <h1>Recebeu notificação de suspensão ou Está com a CNH Suspensa?</h1>
 
-                  <p class="sub">
-                    Isso pode virar <strong>meses sem dirigir</strong>, dor de cabeça com <strong>prazos</strong> e decisões erradas por falta de orientação.
-                    Antes de aceitar o pior, faça uma <strong>análise do seu caso</strong> e receba <strong>um plano claro do que fazer agora</strong> no WhatsApp.
-                  </p>
+                  <p class="sub">Aqui na <strong>CNH em Dia Soluções</strong>, nós temos a solução para o seu problema. <strong>Não fique sem a sua CNH</strong>, nós cuidaremos de tudo para você, do começo ao fim! <br><strong>Clique no botão abaixo e fale com especialista.</strong></p>
 
                   <div class="hero-actions">
                     <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Suspens%C3%A3o+da+CNH%29.&type=phone_number&app_absent=0" id="ctaHero" target="_blank" onclick="return gtag_report_conversion(this.href, this.target);">
-                      <span style="text-align:center;">Quero minha análise agora</span>
+                      <span style="text-align:center;">Clique aqui e Fale com Especialista</span>
                       <span class="wa-dot" aria-hidden="true">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="20" height="20">
                       </span>
@@ -674,7 +677,7 @@ function gtag_report_conversion(url, target) {
                 <!-- Foto -->
                 <div class="hero-photo">
                   <img src="/static/images/fotopessoal.jpg" alt="Especialista Igor Novais" loading="lazy">
-                  <div class="hero-badge">Especialista Igor Novais</div>
+                  <div class="hero-badge" style="text-align: center;">Consultor Igor - CNH em Dia Soluções</div>
                 </div>
               </div>
 
@@ -908,7 +911,7 @@ function gtag_report_conversion(url, target) {
             <p>Você entra com as informações. Nós entramos com estratégia, cadência e execução.</p>
           </div>
           <a class="btn btn-primary" href="#contato" id="ctaBand">
-            <span style="text-align:center;">Falar com especialista agora</span>
+            <span style="text-align:center;">Clique aqui e Fale com Especialista</span>
             <span class="wa-dot" aria-hidden="true">
               <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="30" height="30">
             </span>
@@ -1081,7 +1084,6 @@ function gtag_report_conversion(url, target) {
   </script>
 </body>
 </html>
-
 
 
 
