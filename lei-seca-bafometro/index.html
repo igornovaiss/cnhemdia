@@ -922,88 +922,117 @@
   </div>
 
   <script>
-    const WHATS_NUMBER = "5511994187695";
+  const WHATS_NUMBER = "5511994187695";
 
-    function openWhats(text, targetBlank=true){
-      const url = `https://wa.me/${WHATS_NUMBER}?text=${encodeURIComponent(text)}`;
-      return gtag_report_conversion(url, targetBlank ? "_blank" : "_self");
+  function isIOS(){
+    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }
+
+  // WhatsApp: no iOS (principalmente Safari anônimo) evite _blank + evite depender de window.open
+  function openWhats(text, targetBlank=true){
+    // iOS costuma funcionar melhor com api.whatsapp.com e navegação na mesma aba
+    const urlIOS = `https://api.whatsapp.com/send/?phone=${WHATS_NUMBER}&text=${encodeURIComponent(text)}`;
+    const urlDefault = `https://wa.me/${WHATS_NUMBER}?text=${encodeURIComponent(text)}`;
+
+    const url = isIOS() ? urlIOS : urlDefault;
+
+    // Dispara conversão (seu gtag_report_conversion já existe no HEAD)
+    // Observação: no iOS vamos forçar navegação na mesma aba para não ser bloqueado.
+    if (isIOS()){
+      try{
+        if (typeof gtag === "function") {
+          gtag("event", "conversion", {
+            send_to: "AW-17709604708/3A1hCK-KneYbEOS-zPxB",
+            transport_type: "beacon",
+            event_callback: function(){},
+            event_timeout: 1200
+          });
+        }
+      }catch(e){}
+      window.location.href = url; // navegação direta = mais compatível no Safari anônimo
+      return false;
     }
 
-    // Menu
-    const menuBtn = document.getElementById("menuBtn");
-    const menu = document.getElementById("menu");
-    menuBtn?.addEventListener("click", ()=>{
-      const isOpen = menu.style.display === "block";
-      menu.style.display = isOpen ? "none" : "block";
-      menuBtn.setAttribute("aria-expanded", isOpen ? "false" : "true");
-    });
+    // Desktop/Android etc: pode usar sua função padrão de conversão com _blank
+    return gtag_report_conversion(url, targetBlank ? "_blank" : "_self");
+  }
 
-    // CTA Top
-    document.getElementById("ctaTop")?.addEventListener("click", ()=>{
-      const msg = "Olá! Vim pelo Google. Preciso de orientação sobre Lei Seca/bafômetro. Pode me ajudar?";
+  // Menu
+  const menuBtn = document.getElementById("menuBtn");
+  const menu = document.getElementById("menu");
+  menuBtn?.addEventListener("click", ()=>{
+    const isOpen = menu.style.display === "block";
+    menu.style.display = isOpen ? "none" : "block";
+    menuBtn.setAttribute("aria-expanded", isOpen ? "false" : "true");
+  });
+
+  // CTA Top
+  document.getElementById("ctaTop")?.addEventListener("click", ()=>{
+    const msg = "Olá! Vim pelo Google. Preciso de orientação sobre Lei Seca/bafômetro. Pode me ajudar?";
+    openWhats(msg, true);
+  });
+
+  // Botões “Falar com especialista”
+  document.querySelectorAll(".js-wa").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const topic = btn.getAttribute("data-topic") || "Lei Seca/bafômetro";
+      const msg = `Olá! Vim pelo site. Quero falar com um especialista sobre: ${topic}.`;
       openWhats(msg, true);
     });
+  });
 
-    // Botões “Falar com especialista”
-    document.querySelectorAll(".js-wa").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const topic = btn.getAttribute("data-topic") || "Lei Seca/bafômetro";
-        const msg = `Olá! Vim pelo site. Quero falar com um especialista sobre: ${topic}.`;
-        openWhats(msg, true);
+  // Sticky
+  document.getElementById("stickyGo")?.addEventListener("click", ()=>{
+    const msg = "Olá! Vim pelo Google. Preciso de orientação sobre Lei Seca/bafômetro. Pode me ajudar?";
+    openWhats(msg, true);
+  });
+
+  // FormSubmit + Redireciona pro WhatsApp (com mensagem personalizada)
+  const contactForm = document.getElementById('contactForm');
+  contactForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(contactForm);
+
+    try {
+      const response = await fetch("https://formsubmit.co/cnhemdiasolucoes@gmail.com", {
+        method: "POST",
+        body: formData
       });
-    });
 
-    // Sticky
-    document.getElementById("stickyGo")?.addEventListener("click", ()=>{
-      const msg = "Olá! Vim pelo Google. Preciso de orientação sobre Lei Seca/bafômetro. Pode me ajudar?";
-      openWhats(msg, true);
-    });
+      if (response.ok) {
+        const nome = document.getElementById('nome')?.value || "";
+        const assunto = document.getElementById('assunto')?.value || "Lei Seca";
+        const telefone = document.getElementById('telefone')?.value || "";
 
-    // FormSubmit + Redireciona pro WhatsApp (com mensagem personalizada)
-    const contactForm = document.getElementById('contactForm');
-    contactForm?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const formData = new FormData(contactForm);
-
-      try {
-        const response = await fetch("https://formsubmit.co/cnhemdiasolucoes@gmail.com", {
-          method: "POST",
-          body: formData
-        });
-
-        if (response.ok) {
-          const nome = document.getElementById('nome').value || "";
-          const assunto = document.getElementById('assunto').value || "Lei Seca";
-          const cidadeTel = document.getElementById('telefone').value || "";
-
-          const mensagem =
+        const mensagem =
 `Olá! Me chamo ${nome}.
 Preenchi o formulário no site e quero resolver meu problema de: ${assunto}.
-Telefone/WhatsApp: ${cidadeTel}`;
+Telefone/WhatsApp: ${telefone}`;
 
-          // Redireciona para WhatsApp (com conversão)
-          openWhats(mensagem, true);
+        // Redireciona para WhatsApp (com conversão)
+        openWhats(mensagem, true);
 
-          contactForm.reset();
-        } else {
-          alert('❌ Erro ao enviar o formulário. Tente novamente.');
-        }
-
-      } catch (error) {
-        alert('❌ Ocorreu um erro inesperado. Tente novamente.');
-        console.error(error);
+        contactForm.reset();
+      } else {
+        alert('❌ Erro ao enviar o formulário. Tente novamente.');
       }
-    });
 
-    // Micro tracking (opcional)
-    function track(eventName){
-      try { gtag('event', eventName, { 'event_category': 'lei_seca_lp_easy_style' }); } catch(e){}
+    } catch (error) {
+      alert('❌ Ocorreu um erro inesperado. Tente novamente.');
+      console.error(error);
     }
-    document.getElementById("waFloat")?.addEventListener("click", ()=>track("whatsapp_float_click"));
-    document.getElementById("ctaTop")?.addEventListener("click", ()=>track("cta_top_click"));
-    document.getElementById("stickyGo")?.addEventListener("click", ()=>track("sticky_click"));
-  </script>
+  });
+
+  // Micro tracking (opcional)
+  function track(eventName){
+    try { gtag('event', eventName, { 'event_category': 'lei_seca_lp_easy_style' }); } catch(e){}
+  }
+  document.getElementById("waFloat")?.addEventListener("click", ()=>track("whatsapp_float_click"));
+  document.getElementById("ctaTop")?.addEventListener("click", ()=>track("cta_top_click"));
+  document.getElementById("stickyGo")?.addEventListener("click", ()=>track("sticky_click"));
+</script>
 </body>
 </html>
+
 
