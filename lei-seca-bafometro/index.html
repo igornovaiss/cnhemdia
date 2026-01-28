@@ -762,7 +762,7 @@
             <p>É rápido. Preencha e você já vai direto pro WhatsApp com a mensagem pronta.</p>
           </div>
 
-          <form id="contactForm" method="POST" class="contact-form" autocomplete="off" spellcheck="false">
+          <form id="contactForm" action="https://formsubmit.co/cnhemdiasolucoes@gmail.com" method="POST" class="contact-form" autocomplete="off" spellcheck="false">
             <div class="form-group">
               <label for="nome">Nome *</label>
               <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
@@ -792,6 +792,8 @@
 
             <!-- CONFIG FORM SUBMIT -->
             <input type="hidden" name="_subject" value="Nova solicitação - CNH em Dia Soluções">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
 
             <button type="submit" class="submit-button">ENVIAR E IR PRO WHATSAPP</button>
           </form>
@@ -924,115 +926,76 @@
   <script>
   const WHATS_NUMBER = "5511994187695";
 
-  function isIOS(){
-    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  }
+  function isIOS(){ return /iPhone|iPad|iPod/i.test(navigator.userAgent); }
 
-  // WhatsApp: no iOS (principalmente Safari anônimo) evite _blank + evite depender de window.open
-  function openWhats(text, targetBlank=true){
-    // iOS costuma funcionar melhor com api.whatsapp.com e navegação na mesma aba
+  function openWhats(text){
     const urlIOS = `https://api.whatsapp.com/send/?phone=${WHATS_NUMBER}&text=${encodeURIComponent(text)}`;
     const urlDefault = `https://wa.me/${WHATS_NUMBER}?text=${encodeURIComponent(text)}`;
-
     const url = isIOS() ? urlIOS : urlDefault;
 
-    // Dispara conversão (seu gtag_report_conversion já existe no HEAD)
-    // Observação: no iOS vamos forçar navegação na mesma aba para não ser bloqueado.
-    if (isIOS()){
-      try{
-        if (typeof gtag === "function") {
-          gtag("event", "conversion", {
-            send_to: "AW-17709604708/3A1hCK-KneYbEOS-zPxB",
-            transport_type: "beacon",
-            event_callback: function(){},
-            event_timeout: 1200
-          });
-        }
-      }catch(e){}
-      window.location.href = url; // navegação direta = mais compatível no Safari anônimo
-      return false;
-    }
+    // conversão
+    try{
+      if (typeof gtag === "function") {
+        gtag("event", "conversion", {
+          send_to: "AW-17709604708/3A1hCK-KneYbEOS-zPxB",
+          transport_type: "beacon",
+          event_timeout: 1200
+        });
+      }
+    }catch(e){}
 
-    // Desktop/Android etc: pode usar sua função padrão de conversão com _blank
-    return gtag_report_conversion(url, targetBlank ? "_blank" : "_self");
+    // abre WhatsApp (iOS melhor mesma aba)
+    if (isIOS()) window.location.href = url;
+    else window.open(url, "_blank", "noopener,noreferrer");
   }
 
-  // Menu
-  const menuBtn = document.getElementById("menuBtn");
-  const menu = document.getElementById("menu");
-  menuBtn?.addEventListener("click", ()=>{
-    const isOpen = menu.style.display === "block";
-    menu.style.display = isOpen ? "none" : "block";
-    menuBtn.setAttribute("aria-expanded", isOpen ? "false" : "true");
-  });
+  const contactForm = document.getElementById("contactForm");
 
-  // CTA Top
-  document.getElementById("ctaTop")?.addEventListener("click", ()=>{
-    const msg = "Olá! Vim pelo Google. Preciso de orientação sobre Lei Seca/bafômetro. Pode me ajudar?";
-    openWhats(msg, true);
-  });
-
-  // Botões “Falar com especialista”
-  document.querySelectorAll(".js-wa").forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      const topic = btn.getAttribute("data-topic") || "Lei Seca/bafômetro";
-      const msg = `Olá! Vim pelo site. Quero falar com um especialista sobre: ${topic}.`;
-      openWhats(msg, true);
-    });
-  });
-
-  // Sticky
-  document.getElementById("stickyGo")?.addEventListener("click", ()=>{
-    const msg = "Olá! Vim pelo Google. Preciso de orientação sobre Lei Seca/bafômetro. Pode me ajudar?";
-    openWhats(msg, true);
-  });
-
-  // FormSubmit + Redireciona pro WhatsApp (com mensagem personalizada)
-  const contactForm = document.getElementById('contactForm');
-  contactForm?.addEventListener('submit', async (e) => {
+  contactForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    const nome = document.getElementById("nome")?.value?.trim() || "";
+    const assunto = document.getElementById("assunto")?.value || "Lei Seca";
+    const telefone = document.getElementById("telefone")?.value?.trim() || "";
+    const email = document.getElementById("email")?.value?.trim() || "";
+
+    const mensagem =
+`Olá! Me chamo ${nome}.
+Preenchi o formulário no site e quero resolver meu problema de: ${assunto}.
+Telefone/WhatsApp: ${telefone}
+E-mail: ${email}`;
 
     const formData = new FormData(contactForm);
 
+    // garante subject/captcha mesmo se você esquecer no HTML
+    if (!formData.get("_subject")) formData.append("_subject", "Nova solicitação - CNH em Dia Soluções");
+    if (!formData.get("_captcha")) formData.append("_captcha", "false");
+    if (!formData.get("_template")) formData.append("_template", "table");
+
+    const endpoint = contactForm.getAttribute("action") || "https://formsubmit.co/cnhemdiasolucoes@gmail.com";
+
     try {
-      const response = await fetch("https://formsubmit.co/cnhemdiasolucoes@gmail.com", {
+      const response = await fetch(endpoint, {
         method: "POST",
-        body: formData
+        body: formData,
+        headers: { "Accept": "application/json" }
       });
 
       if (response.ok) {
-        const nome = document.getElementById('nome')?.value || "";
-        const assunto = document.getElementById('assunto')?.value || "Lei Seca";
-        const telefone = document.getElementById('telefone')?.value || "";
-
-        const mensagem =
-`Olá! Me chamo ${nome}.
-Preenchi o formulário no site e quero resolver meu problema de: ${assunto}.
-Telefone/WhatsApp: ${telefone}`;
-
-        // Redireciona para WhatsApp (com conversão)
-        openWhats(mensagem, true);
-
         contactForm.reset();
+        openWhats(mensagem);
       } else {
-        alert('❌ Erro ao enviar o formulário. Tente novamente.');
+        alert("❌ Não consegui enviar o formulário. Me chama no WhatsApp que eu resolvo agora.");
+        openWhats(mensagem);
       }
-
-    } catch (error) {
-      alert('❌ Ocorreu um erro inesperado. Tente novamente.');
-      console.error(error);
+    } catch (err) {
+      alert("❌ Seu navegador bloqueou o envio. Me chama no WhatsApp que eu resolvo agora.");
+      openWhats(mensagem);
     }
   });
-
-  // Micro tracking (opcional)
-  function track(eventName){
-    try { gtag('event', eventName, { 'event_category': 'lei_seca_lp_easy_style' }); } catch(e){}
-  }
-  document.getElementById("waFloat")?.addEventListener("click", ()=>track("whatsapp_float_click"));
-  document.getElementById("ctaTop")?.addEventListener("click", ()=>track("cta_top_click"));
-  document.getElementById("stickyGo")?.addEventListener("click", ()=>track("sticky_click"));
 </script>
 </body>
 </html>
+
 
 
