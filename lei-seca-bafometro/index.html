@@ -948,19 +948,96 @@
   </div>
 
   <script>
-    // Mantém só o menu (WhatsApp agora é 100% link direto -> não dá pau no Safari anônimo)
-    const menuBtn = document.getElementById("menuBtn");
-    const menu = document.getElementById("menu");
-    menuBtn?.addEventListener("click", ()=>{
-      const isOpen = menu.style.display === "block";
-      menu.style.display = isOpen ? "none" : "block";
-      menuBtn.setAttribute("aria-expanded", isOpen ? "false" : "true");
-    });
+  const WHATS_NUMBER = "5511994187695";
 
-    // Fecha menu ao clicar em um item
-    document.querySelectorAll('#menu a').forEach(a=>{
-      a.addEventListener('click', ()=>{ menu.style.display = "none"; menuBtn?.setAttribute("aria-expanded","false"); });
-    });
-  </script>
-</body>
+  function isIOS(){
+    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }
+
+  function safeTrackConversion(){
+    try{
+      if (typeof gtag === "function") {
+        gtag("event", "conversion", {
+          send_to: "AW-17709604708/3A1hCK-KneYbEOS-zPxB",
+          transport_type: "beacon",
+          event_timeout: 1200
+        });
+      }
+    }catch(e){}
+  }
+
+  function openWhats(text){
+    const msg = encodeURIComponent(text);
+    const urlIOS = `https://api.whatsapp.com/send/?phone=${WHATS_NUMBER}&text=${msg}`;
+    const urlDefault = `https://wa.me/${WHATS_NUMBER}?text=${msg}`;
+    const url = isIOS() ? urlIOS : urlDefault;
+
+    safeTrackConversion();
+
+    // iOS (especialmente privado): melhor na mesma aba
+    if (isIOS()) {
+      window.location.href = url;
+    } else {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  }
+
+  function buildMsgFromForm(){
+    const nome = document.getElementById("nome")?.value?.trim() || "";
+    const assunto = document.getElementById("assunto")?.value || "Lei Seca";
+    const telefone = document.getElementById("telefone")?.value?.trim() || "";
+    const email = document.getElementById("email")?.value?.trim() || "";
+
+    return `Olá! Me chamo ${nome}.
+Preenchi o formulário no site e quero resolver meu problema de: ${assunto}.
+Telefone/WhatsApp: ${telefone}
+E-mail: ${email}`;
+  }
+
+  const contactForm = document.getElementById("contactForm");
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault(); // impede ir pra página do formsubmit
+
+      const mensagem = buildMsgFromForm();
+      const formData = new FormData(contactForm);
+
+      // garante configs essenciais
+      if (!formData.get("_subject")) formData.append("_subject", "Nova solicitação - CNH em Dia Soluções");
+      if (!formData.get("_captcha")) formData.append("_captcha", "false");
+      if (!formData.get("_template")) formData.append("_template", "table");
+
+      const endpoint = contactForm.getAttribute("action") || "https://formsubmit.co/cnhemdiasolucoes@gmail.com";
+
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          body: formData,
+          headers: { "Accept": "application/json" }
+        });
+
+        // Formsubmit responde 200/OK com JSON quando aceita
+        if (response.ok) {
+          contactForm.reset();
+          openWhats(mensagem);
+          return;
+        }
+
+        // se não ok, abre WhatsApp e avisa
+        alert("⚠️ Não consegui confirmar o envio do formulário aqui. Me chama no WhatsApp que eu resolvo agora.");
+        openWhats(mensagem);
+
+      } catch (err) {
+        // Safari privado às vezes bloqueia fetch/requests
+        alert("⚠️ Seu navegador bloqueou o envio do formulário. Me chama no WhatsApp que eu resolvo agora.");
+        openWhats(mensagem);
+      }
+    }, { passive: false });
+  }
+</script>
+
+  
+ </body>
 </html>
+
