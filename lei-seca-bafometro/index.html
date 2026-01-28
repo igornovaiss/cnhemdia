@@ -10,37 +10,35 @@
     gtag('config', 'AW-17709604708');
   </script>
 
-  <!-- Event snippet for WhatsApp - Clique (Página) conversion page
-In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
-<script>
-function gtag_report_conversion(url, target) {
-  var go = function () {
-    if (typeof url !== 'undefined') {
-      if (target === '_blank') window.open(url, '_blank');
-      else window.location = url;
-    }
-  };
+  <!-- Conversão WhatsApp (abre link e registra conversão) -->
+  <script>
+    function gtag_report_conversion(url, target) {
+      var go = function () {
+        if (typeof url !== 'undefined') {
+          if (target === '_blank') window.open(url, '_blank', "noopener,noreferrer");
+          else window.location = url;
+        }
+      };
 
-  try {
-    if (typeof gtag === 'function') {
-      gtag('event', 'conversion', {
-        'send_to': 'AW-17709604708/3A1hCK-KneYbEOS-zPxB',
-        'event_callback': go
-      });
+      try {
+        if (typeof gtag === 'function') {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-17709604708/3A1hCK-KneYbEOS-zPxB',
+            'event_callback': go
+          });
+          return false;
+        }
+      } catch (e) {}
+
+      go();
       return false;
     }
-  } catch (e) {}
-
-  // Se o gtag não existir, não bloqueia o usuário
-  go();
-  return false;
-}
-</script>
+  </script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lei Seca | Problemas com Bafômetro | CNH em Dia Soluções</title>
-  <meta name="description" content="Lei seca | bafômetro: análise gratuita do seu caso, estratégia administrativa e acompanhamento completo. Fale com um especialista no WhatsApp." />
+  <title>Pego No Bafômetro? Nós Temos a solução| CNH em Dia Soluções</title>
+  <meta name="description" content="Recusou ou assoprou o bafômetro e tomou a multa, entenda o que fazer agora. Fale com a CNH em Dia Soluções e receba orientação clara, sem complicação." />
 
   <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
   <link rel="shortcut icon" href="/favicon.png">
@@ -48,1192 +46,963 @@ function gtag_report_conversion(url, target) {
 
   <style>
     :root{
-      --bg:#070B14;
-      --bg2:#0B1224;
-      --card:#0E1A33;
-      --stroke: rgba(255,255,255,.10);
-      --stroke2: rgba(255,255,255,.14);
-      --text:#EAF1FF;
-      --muted: rgba(234,241,255,.78);
-      --muted2: rgba(234,241,255,.62);
-      --blue:#1E6BFF;
-      --blue2:#0A4BFF;
-      --cyan:#35D0FF;
-      --ok:#27D17F;
-      --warn:#FFB020;
-      --shadow: 0 18px 45px rgba(0,0,0,.40);
-      --shadow2: 0 10px 25px rgba(0,0,0,.35);
-      --radius: 18px;
-      --radius2: 26px;
-      --max: 1200px;
+      --bg: #FFF8D6;      /* amarelo suave */
+      --bg2:#FFFFFF;
+      --ink:#0B1220;
+      --muted: rgba(11,18,32,.78);
+      --muted2: rgba(11,18,32,.60);
+      --line: rgba(11,18,32,.10);
+
+      --brand:#1E6BFF;
+      --brand2:#0A4BFF;
+
+      --card:#FFFFFF;
+      --shadow: 0 18px 40px rgba(2,6,23,.12);
+      --shadow2: 0 10px 25px rgba(2,6,23,.10);
+
+      --radius: 22px;
+      --radius2: 30px;
+
       --whats:#25D366;
+
+      --max: 1020px;
     }
 
     *{ box-sizing:border-box; }
-    html,body{ margin:0; padding:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background: radial-gradient(1200px 700px at 15% -10%, rgba(30,107,255,.28), transparent 60%), radial-gradient(900px 600px at 95% 15%, rgba(53,208,255,.18), transparent 55%), linear-gradient(180deg, var(--bg), var(--bg2)); color:var(--text); }
-    a{ color:inherit; text-decoration:none; }
-    img{ max-width:100%; display:block; }
-    .container{ width: min(var(--max), 92%); margin: 0 auto; }
+    html,body{
+      margin:0; padding:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--ink);
+      background:
+        radial-gradient(1100px 520px at 50% -120px, rgba(38, 204, 255, 0.767), transparent 60%),
+        linear-gradient(180deg, var(--bg), #FFFDF3 40%, var(--bg2));
+      overflow-x: hidden;
+    }
 
-    /* Header */
+    a{ color: inherit; text-decoration: none; }
+    img{ max-width: 100%; display:block; }
+
+    .wrap{
+      width: min(var(--max), 92%);
+      margin: 0 auto;
+    }
+
+    /* ===== Top bar (simples, estilo “clean”) ===== */
     header{
-      position: sticky; top:0; z-index:50;
-      background: rgba(7,11,20,.55);
+      position: sticky; top:0; z-index: 80;
+      background: rgba(255,255,255,.80);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid var(--line);
     }
-    nav{
+    .topbar{
       display:flex; align-items:center; justify-content:space-between;
-      padding: 14px 0;
-      gap: 16px;
+      padding: 12px 0;
+      gap: 10px;
     }
-    .logo{
-      font-weight: 800;
-      letter-spacing: .2px;
+    .brand{
+      display:flex; align-items:center; gap: 5px;
+      min-width: 0;
+    }
+    .brand img{
+      width: 50px; height: 50px; object-fit: contain;
+    }
+    .brand .name{
+      font-weight: 650;
+      letter-spacing: -.4px;
       font-size: 18px;
       white-space: nowrap;
-    }
-    .logo span{ color: var(--cyan); }
-    .nav-links{ list-style:none; display:flex; gap: 18px; padding:0; margin:0; align-items:center; }
-    .nav-links a{
-      color: var(--muted);
-      font-weight: 650;
-      font-size: 14px;
-      padding: 10px 10px;
-      border-radius: 12px;
-      transition: .2s ease;
-    }
-    .nav-links a:hover{ background: rgba(255,255,255,.06); color: var(--text); }
-
-    /* Buttons */
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap: 10px;
-      padding: 14px 18px;
-      border-radius: 16px;
-      font-weight: 800;
-      letter-spacing: .2px;
-      border: 1px solid rgba(255,255,255,.12);
-      transition: .18s ease;
-      cursor:pointer;
-      white-space: nowrap;
-    }
-    .btn-primary{
-      background: linear-gradient(135deg, var(--blue), var(--blue2));
-      box-shadow: 0 14px 35px rgba(30,107,255,.35);
-      border-color: rgba(255,255,255,.10);
-    }
-    .btn-primary:hover{ transform: translateY(-1px); filter: brightness(1.03); }
-    .btn-ghost{
-      background: rgba(255,255,255,.04);
-    }
-    .btn-ghost:hover{ background: rgba(255,255,255,.07); transform: translateY(-1px); }
-
-    /* WhatsApp icon (sem quadrado) */
-    .btn .wa-dot{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    height: auto;
-    border: none;
-    background: transparent;
-    border-radius: 0;
-    padding: 0;
-    }
-
-    .btn .wa-dot img{
-    width: 45px;
-    height: 45px;
-    display: block;
-    }
-
-.menu-toggle{
-  display:none;
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.06);
-  backdrop-filter: blur(10px);
-  cursor: pointer;
-  padding: 0;
-  position: relative;
-}
-
-.menu-toggle span{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 18px;
-  height: 2px;
-  background: rgba(234,241,255,.90);
-  border-radius: 10px;
-  transform-origin: center;
-  transition: .22s ease;
-}
-
-/* 3 linhas (hamburger) */
-.menu-toggle span:nth-child(1){ transform: translate(-50%, calc(-50% - 6px)); }
-.menu-toggle span:nth-child(2){ transform: translate(-50%, -50%); }
-.menu-toggle span:nth-child(3){ transform: translate(-50%, calc(-50% + 6px)); }
-
-/* vira X */
-.menu-toggle.active span:nth-child(1){ transform: translate(-50%, -50%) rotate(45deg); }
-.menu-toggle.active span:nth-child(2){ opacity: 0; }
-.menu-toggle.active span:nth-child(3){ transform: translate(-50%, -50%) rotate(-45deg); }
-
-
-    /* Hero */
-    .hero{
-      padding: 44px 0 18px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 26px;
-      align-items: stretch;
-    }
-    .hero-card{
-      border-radius: var(--radius2);
-      background: linear-gradient(180deg, rgba(14,26,51,.86), rgba(14,26,51,.62));
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow);
       overflow: hidden;
-      position: relative;
+      text-overflow: ellipsis;
     }
-    .hero-card::before{
-      content:"";
-      position:absolute; inset:-1px;
-      background: radial-gradient(700px 220px at 30% 0%, rgba(53,208,255,.18), transparent 60%),
-                  radial-gradient(680px 260px at 80% 10%, rgba(30,107,255,.22), transparent 65%);
-      pointer-events:none;
-    }
-    .hero-inner{
-      position: relative;
-      padding: 26px 26px 24px;
-    }
-    .kicker{
-      display:inline-flex; align-items:center; gap: 10px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-      color: var(--muted);
-      font-weight: 750;
-      font-size: 13px;
-      width: fit-content;
-    }
-    .kicker .pill{
-      display:inline-flex; align-items:center; gap: 8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(39,209,127,.12);
-      border: 1px solid rgba(39,209,127,.26);
-      color: rgba(234,241,255,.92);
-      font-weight: 850;
-      font-size: 12px;
-    }
-    h1{
-      margin: 14px 0 10px;
-      font-size: clamp(28px, 3.2vw, 44px);
-      line-height: 1.05;
-      letter-spacing: -.6px;
-    }
-    .sub{
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.55;
-      margin: 0 0 14px;
-      max-width: 70ch;
-    }
-    .sub strong{ color: rgba(234,241,255,.95); }
-    .hero-points{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .mini{
-      border-radius: 16px;
-      padding: 12px 12px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow2);
-      min-height: 76px;
-    }
-    .mini .t{ font-weight: 850; font-size: 13px; margin-bottom: 4px; }
-    .mini .d{ font-size: 12.5px; color: var(--muted2); line-height: 1.35; }
+    .brand .name b{ color: var(--brand);
+    font-weight: 650; }
 
-    .hero-actions{
-      display:flex; flex-wrap:wrap;
-      gap: 12px;
-      align-items:center;
-      margin-top: 16px;
+    .menu-btn{
+      width: 42px; height: 42px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(11,18,32,.03);
+      display:grid; place-items:center;
+      cursor:pointer;
+      flex: 0 0 auto;
     }
-    .trust-row{
-      display:flex; flex-wrap:wrap;
-      gap: 10px;
-      margin-top: 14px;
-      align-items:center;
-      color: var(--muted2);
-      font-size: 13px;
+    .menu-btn span{
+      width: 18px; height: 2px; background: rgba(11,18,32,.85);
+      border-radius: 10px; position: relative;
+      display:block;
     }
-    .trust-chip{
-      display:inline-flex; align-items:center; gap: 8px;
+    .menu-btn span::before,.menu-btn span::after{
+      content:""; position:absolute; left:0;
+      width: 18px; height: 2px; background: rgba(11,18,32,.85);
+      border-radius: 10px;
+    }
+    .menu-btn span::before{ top:-6px; }
+    .menu-btn span::after{ top:6px; }
+
+    .menu{
+      display:none;
+      border-top: 1px solid var(--line);
+      padding: 10px 0 14px;
+    }
+    .menu a{
+      display:block;
       padding: 10px 12px;
       border-radius: 14px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    .trust-chip .dot{
-      width: 9px; height: 9px; border-radius: 99px;
-      background: var(--ok);
-      box-shadow: 0 0 0 4px rgba(39,209,127,.14);
+      font-weight: 800;
+      color: rgba(11,18,32,.86);
+      background: rgba(11,18,32,.02);
+      border: 1px solid rgba(11,18,32,.06);
+      margin-top: 8px;
     }
 
-    /* Side card */
-    .side{
+    /* ===== Hero (tipografia grande, poucos containers) ===== */
+    .hero{
+      padding: 20px 0 10px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(11,18,32,.10);
+      font-weight: 900;
+      font-size: 12.5px;
+      box-shadow: 0 8px 20px rgba(2,6,23,.06);
+    }
+    .hero h1{
+      margin: 14px 0 10px;
+      font-size: clamp(34px, 7vw, 58px);
+      line-height: 0.98;
+      letter-spacing: -1.2px;
+    }
+    .hero h1 .soft{ font-weight: 400; }
+    .hero p{
+      margin: 0;
+      font-size: 16.5px;
+      line-height: 1.65;
+      color: var(--muted);
+      max-width: 55ch;
+    }
+    .hero strong{ color: rgba(11,18,32,.92); }
+
+    .hero-visual{
+      margin-top: 18px;
       border-radius: var(--radius2);
-      background: linear-gradient(180deg, rgba(14,26,51,.70), rgba(14,26,51,.52));
-      border: 1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(11,18,32,.08);
+      background: #fff;
+    }
+    .hero-visual img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: contrast(1.02) saturate(1.02);
+    }
+
+    /* CTA principal (estilo EasyGo: grande, simples, verde) */
+    .cta-area{
+      margin-top: 14px;
+      display:grid;
+      gap: 10px;
+    }
+    .cta-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px 16px;
+      border-radius: 999px;
+      background: var(--whats);
+      color: #fff;
+      border: none;
+      font-weight: 950;
+      font-size: 15.5px;
+      letter-spacing: .2px;
+      box-shadow: 0 18px 35px rgba(37,211,102,.20);
+      cursor:pointer;
+      user-select:none;
+    }
+    .cta-btn:active{ transform: translateY(1px); }
+    .cta-sub{
+      text-align:center;
+      color: var(--muted2);
+      font-size: 13.3px;
+      line-height: 1.45;
+    }
+
+    /* Setas (decor) */
+    .down{
+      display:grid;
+      place-items:center;
+      margin: 16px 0 4px;
+      opacity: .9;
+    }
+    .down svg{ width: 34px; height: 34px; }
+
+    /* ===== “Como podemos ajudar?” cards com botão ===== */
+    .section{
+      padding: 18px 0 10px;
+    }
+    .section h2{
+      margin: 0 0 10px;
+      font-size: clamp(28px, 5.6vw, 44px);
+      letter-spacing: -1px;
+      line-height: 1.03;
+    }
+    .section p{
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 15.8px;
+      max-width: 65ch;
+    }
+
+    .service-grid{
+      display:grid;
+      gap: 14px;
+    }
+    .service-card{
+      background: var(--card);
+      border: 1px solid rgba(11,18,32,.10);
+      border-radius: var(--radius2);
       box-shadow: var(--shadow2);
       overflow:hidden;
+      display:grid;
+      grid-template-columns: 110px 1fr;
+      align-items: stretch;
+    }
+    .service-media{
+      background: rgba(255,214,92,.85);
+      display:grid;
+      place-items:center;
+      padding: 10px;
       position: relative;
     }
-    .side::before{
-      content:"";
-      position:absolute; inset:-1px;
-      background: radial-gradient(600px 250px at 50% 0%, rgba(255,176,32,.12), transparent 62%);
-      pointer-events:none;
+    .service-media img{
+      width: 80px; height: 80px; object-fit: contain;
+      filter: drop-shadow(0 10px 16px rgba(2,6,23,.10));
     }
-    .side-inner{ position:relative; padding: 18px; }
-    .side h2{
-      margin: 4px 0 10px;
+    .service-body{
+      padding: 14px 14px 14px 12px;
+    }
+    .service-body h3{
+      margin: 0 0 4px;
       font-size: 18px;
-      letter-spacing: -.2px;
+      letter-spacing: -.4px;
     }
-    .side p{ margin: 0 0 12px; color: var(--muted); line-height: 1.45; font-size: 13.7px; }
-    .side .divider{ height:1px; background: rgba(255,255,255,.08); margin: 14px 0; }
-    .form{
-      display:grid; gap: 10px;
-    }
-    .field{
-      display:grid; gap: 6px;
-    }
-    .field label{
-      font-size: 12px;
-      color: var(--muted2);
-      font-weight: 750;
-    }
-    .input, .select, textarea{
-      width:100%;
-      padding: 12px 12px;
-      border-radius: 14px;
-      background: rgba(7,11,20,.45);
-      border: 1px solid rgba(255,255,255,.12);
-      color: var(--text);
-      outline: none;
+    .service-body p{
+      margin: 0 0 10px;
+      color: var(--muted);
       font-size: 14px;
+      line-height: 1.55;
     }
-    textarea{ min-height: 84px; resize: vertical; }
-    .help{
-      font-size: 12px;
-      color: var(--muted2);
-      line-height: 1.35;
-    }
-    .cta-box{
-      border-radius: 16px;
-      padding: 14px;
-      background: rgba(30,107,255,.12);
-      border: 1px solid rgba(30,107,255,.22);
-      display:grid;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    .cta-box .big{
-      font-weight: 900;
-      letter-spacing: -.2px;
-      font-size: 14px;
-    }
-    .cta-box .small{
-      color: rgba(234,241,255,.72);
-      font-size: 12.5px;
-      line-height: 1.35;
+    .mini-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: rgba(255,214,92,.95);
+      border: 1px solid rgba(11,18,32,.10);
+      font-weight: 950;
+      cursor:pointer;
     }
 
-    /* Sections */
-    section{
-      padding: 32px 0;
+    /* ===== Form “orçamento” (FormSubmit) ===== */
+    .form-box{
+      margin-top: 16px;
+      background: #fff;
+      border: 1px solid rgba(11,18,32,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
     }
-    .section-title{
-      font-size: 28px;
-      margin: 0 0 10px;
+    .form-head{
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid rgba(11,18,32,.08);
+    }
+    .form-head h3{
+      margin: 0 0 6px;
+      font-size: 20px;
       letter-spacing: -.5px;
     }
-    .section-sub{
-    margin: 0 auto 18px;  /* centraliza o bloco */
-    color: var(--muted);
-    line-height: 1.55;
-    max-width: 80ch;
-    text-align: center;   /* deixa o texto centralizado quando for usado assim */
-}
-    .grid-3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+    .form-head p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
     }
-    .card{
-      border-radius: var(--radius);
-      padding: 16px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
+
+    form.contact-form{
+      padding: 14px 16px 16px;
+      display:grid;
+      gap: 12px;
+    }
+    .form-group{
+      display:grid;
+      gap: 6px;
+    }
+    label{
+      font-weight: 900;
+      font-size: 12.5px;
+      color: rgba(11,18,32,.85);
+    }
+    input, select, textarea{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(11,18,32,.12);
+      background: rgba(11,18,32,.02);
+      outline: none;
+      font-size: 14.5px;
+      transition: .15s ease;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(30,107,255,.35);
+      box-shadow: 0 0 0 4px rgba(30,107,255,.10);
+      background: #fff;
+    }
+    textarea{ min-height: 88px; resize: vertical; }
+
+    .submit-button{
+      width: 100%;
+      padding: 16px 16px;
+      border-radius: 999px;
+      border: none;
+      background: #25D366;
+      color:#fff;
+      font-weight: 950;
+      font-size: 15px;
+      letter-spacing: .2px;
+      cursor:pointer;
+      box-shadow: #25D366;
+    }
+
+    .tiny-note{
+      margin-top: 10px;
+      color: var(--muted2);
+      font-size: 12.8px;
+      line-height: 1.5;
+      text-align:center;
+    }
+
+    /* ===== Prova social / números ===== */
+    .proof{
+      margin-top: 18px;
+      padding: 18px 16px;
+      background: rgba(255,214,92,.70);
+      border-radius: var(--radius2);
+      border: 1px solid rgba(11,18,32,.10);
+      box-shadow: 0 14px 30px rgba(2,6,23,.08);
+    }
+    .proof h3{
+      margin: 0 0 8px;
+      font-size: 22px;
+      letter-spacing: -.6px;
+      line-height: 1.05;
+    }
+    .proof p{
+      margin: 0;
+      color: rgba(11,18,32,.78);
+      line-height: 1.6;
+      font-size: 14.5px;
+    }
+
+    .stats{
+      margin-top: 14px;
+      background: #fff;
+      border: 1px solid rgba(11,18,32,.10);
+      border-radius: var(--radius2);
       box-shadow: var(--shadow2);
-      position: relative;
       overflow:hidden;
     }
-    .card::before{
-      content:"";
-      position:absolute; inset:-1px;
-      background: radial-gradient(420px 160px at 20% 0%, rgba(53,208,255,.08), transparent 55%);
-      pointer-events:none;
-    }
-    .card > *{ position: relative; }
-    .icon{
-      width: 40px; height: 40px;
-      border-radius: 16px;
-      display:grid; place-items:center;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      margin-bottom: 10px;
-      font-size: 18px;
-    }
-    .card h3{ margin: 0 0 6px; font-size: 16px; letter-spacing: -.2px; }
-    .card p{ margin: 0; color: var(--muted); font-size: 13.6px; line-height: 1.5; }
-    .badge{
-      display:inline-flex; align-items:center; gap: 8px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-      color: var(--muted2);
-      font-weight: 800;
-      font-size: 12px;
-      width: fit-content;
-    }
-
-    /* Timeline */
-    .timeline{
+    .stat-row{
       display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-top: 14px;
+      gap: 0;
     }
-    .step{
-      border-radius: var(--radius);
+    .stat{
       padding: 16px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow2);
+      border-top: 1px dashed rgba(11,18,32,.16);
+      display:grid;
+      gap: 6px;
+      text-align:center;
     }
-    .step .n{
-      display:inline-grid; place-items:center;
-      width: 34px; height: 34px;
-      border-radius: 14px;
-      background: rgba(30,107,255,.16);
-      border: 1px solid rgba(30,107,255,.26);
+    .stat:first-child{ border-top: none; }
+    .stat .tag{
+      display:inline-block;
+      margin: 0 auto;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,214,92,.95);
+      border: 1px solid rgba(11,18,32,.10);
       font-weight: 950;
-      margin-bottom: 10px;
+      font-size: 12.5px;
     }
-    .step .h{ font-weight: 900; margin: 0 0 6px; }
-    .step .p{ margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+    .stat .big{
+      font-size: 28px;
+      font-weight: 1000;
+      letter-spacing: -1px;
+    }
+    .stat .small{
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
 
-    /* FAQ */
+    /* ===== FAQ (bem direto) ===== */
     details{
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
+      background: #fff;
+      border: 1px solid rgba(11,18,32,.10);
+      border-radius: var(--radius2);
       box-shadow: var(--shadow2);
       padding: 12px 14px;
     }
     details + details{ margin-top: 10px; }
     summary{
       cursor:pointer;
-      font-weight: 850;
       list-style:none;
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 14px;
-    }
-    summary::-webkit-details-marker{ display:none; }
-    .faq-a{
-      margin-top: 10px;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 13.6px;
-    }
-    .chev{
-      width: 28px; height: 28px;
-      border-radius: 12px;
-      display:grid; place-items:center;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      transition: .2s ease;
-      flex: 0 0 auto;
-    }
-    details[open] .chev{ transform: rotate(180deg); }
-
-    /* CTA band */
-    .cta-band{
-      padding: 28px 0;
-    }
-    .cta-wrap{
-      border-radius: var(--radius2);
-      padding: 22px;
-      background: linear-gradient(135deg, rgba(30,107,255,.16), rgba(53,208,255,.10));
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: var(--shadow);
+      font-weight: 950;
       display:flex;
-      gap: 14px;
       align-items:center;
       justify-content:space-between;
-      flex-wrap: wrap;
+      gap: 10px;
     }
-    .cta-wrap .txt{
-      max-width: 70ch;
-    }
-    .cta-wrap .txt h2{
-      margin: 0 0 6px;
-      font-size: 22px;
-      letter-spacing: -.3px;
-    }
-    .cta-wrap .txt p{
-      margin: 0;
+    summary::-webkit-details-marker{ display:none; }
+    .ans{
+      margin-top: 8px;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.6;
       font-size: 14px;
     }
 
-    /* Legal */
+    /* ===== Consultor (pequeno, final) ===== */
+    .consultor{
+      margin-top: 18px;
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      padding: 14px 14px;
+      border-radius: var(--radius2);
+      background: #fff;
+      border: 1px solid rgba(11,18,32,.10);
+      box-shadow: var(--shadow2);
+    }
+    .avatar{
+      width: 62px; height: 62px;
+      border-radius: 18px;
+      overflow:hidden;
+      border: 1px solid rgba(11,18,32,.12);
+      flex: 0 0 auto;
+      background: rgba(11,18,32,.04);
+    }
+    .avatar img{
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .consultor .c-title{
+      font-weight: 1000;
+      letter-spacing: -.4px;
+      margin: 0;
+      font-size: 15px;
+    }
+    .consultor .c-sub{
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 13.3px;
+      line-height: 1.45;
+    }
+
+    /* ===== Legal / Footer ===== */
     .legal{
-      padding: 18px 0 30px;
-    }
-    .legal .note{
-      border-radius: var(--radius);
-      padding: 14px 16px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 12.8px;
-    }
-
-    /* Whats float (sem fundo verde) */
-.whatsapp-float{
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  width: 56px;
-  height: 56px;
-  border-radius: 18px;
-  display: grid;
-  place-items: center;
-
-  background: transparent;   /* remove fundo */
-  border: none;              /* remove borda */
-  box-shadow: none;          /* remove sombra do botão */
-  z-index: 60;
-  transition: .18s ease;
-}
-
-.whatsapp-float:hover{
-  transform: translateY(-2px);
-  filter: brightness(1.05);
-}
-    /* Footer */
-    footer{
-      border-top: 1px solid rgba(255,255,255,.06);
-      background: rgba(0,0,0,.25);
-      padding: 34px 0 20px;
-    }
-    .footer-grid{
-      display:grid;
-      grid-template-columns: 1.3fr 1fr 1fr 1fr;
-      gap: 16px;
-      align-items:start;
-    }
-    .footer h3{ margin:0 0 10px; font-size: 14px; letter-spacing: .1px; }
-    .footer p, .footer li, .footer a{
-      margin:0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-    .footer ul{ list-style:none; padding:0; margin:0; display:grid; gap: 7px; }
-    .footer a:hover{ color: var(--text); }
-    .footer-bottom{
       margin-top: 16px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(255,255,255,.06);
-      color: rgba(234,241,255,.55);
-      font-size: 12.5px;
+      padding: 14px 14px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(11,18,32,.10);
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+    footer{
+      padding: 22px 0 110px; /* espaço pro sticky no mobile */
+      color: rgba(11,18,32,.65);
+      font-size: 12.8px;
       text-align:center;
+      font-weight: 500;
     }
 
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .hero-points{ grid-template-columns: 1fr; }
-      .grid-3{ grid-template-columns: 1fr; }
-      .timeline{ grid-template-columns: 1fr; }
-      .menu-toggle{ display:flex; }
-      .nav-links{
-        position: absolute;
-        top: 64px;
-        right: 4%;
-        width: min(320px, 92vw);
-        background: rgba(7,11,20,.92);
-        border: 1px solid rgba(255,255,255,.10);
-        border-radius: 18px;
-        padding: 10px;
-        display:none;
-        flex-direction: column;
-        box-shadow: var(--shadow);
+    /* ===== Floating Whats + Sticky Bar ===== */
+    .whatsapp-float{
+      position: fixed;
+      right: 12px;
+      bottom: 84px;
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid rgba(11,18,32,.12);
+      box-shadow: var(--shadow2);
+      display:grid;
+      place-items:center;
+      z-index: 90;
+      transition: .18s ease;
+    }
+    .whatsapp-float:hover{ transform: translateY(-2px); }
+    .whatsapp-float img{ width: 34px; height: 34px; }
+
+    .sticky{
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 95;
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(11,18,32,.10);
+      box-shadow: 0 -14px 35px rgba(2,6,23,.10);
+    }
+    .sticky .inner{
+      width: min(var(--max), 92%);
+      margin: 0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .sticky .txt{
+      min-width:0;
+    }
+    .sticky .txt .t{
+      font-weight: 1000;
+      font-size: 13.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .sticky .txt .d{
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 2px;
+    }
+    .sticky .go{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: var(--whats);
+      color:#fff;
+      border:none;
+      font-weight: 1000;
+      cursor:pointer;
+      flex: 0 0 auto;
+      box-shadow: 0 18px 35px rgba(37,211,102,.18);
+    }
+    .sticky .go img{ width: 20px; height: 20px; }
+
+    /* Desktop: remove sticky, ajusta visual */
+    @media (min-width: 767px){
+      .menu{ display:none !important; }
+      .whatsapp-float{ bottom: 16px; }
+      .sticky{ display:none; }
+      footer{ padding-bottom: 36px; }
+      .hero-visual img{ width: 40vw;
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 1/1.3;
       }
-      .nav-links.active{ display:flex; }
-      .footer-grid{ grid-template-columns: 1fr; }
+      .hero-visual{
+    display: none;
+      margin-top: 18px;
+      align-items: center;
+      background: none;
+      }
+      .brand .name{
+        font-size: 30px;
+        text-align: center;
+      }
+      .brand img{
+        width: 70px; height: 70px; object-fit: contain;
+      }
+      .service-card{ grid-template-columns: 140px 1fr; }
+      .service-media img{ width: 92px; height: 92px; }
     }
-
-    /* Simple animation */
-    .fade-in{ opacity: 1; transform: translateY(0); }
-    .reveal{
-      opacity: 0;
-      transform: translateY(10px);
-      transition: .5s ease;
-    }
-    .reveal.fade-in{ opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 980px){
-  /* evita estourar no mobile */
-  .btn{
-    width: 100%;
-    justify-content: center;
-    white-space: normal;          /* deixa quebrar linha se precisar */
-  }
-
-  /* organiza melhor os CTAs no hero */
-  .hero-actions{
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  /* chips também não estouram */
-  .trust-row{
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  /* evita qualquer scroll horizontal por padding/efeitos */
-  body{ overflow-x: hidden; }
-}
-
-/*ADICIONEI A FOTO NO HEAD*/
-/* Hero com foto */
-.hero-top{
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 18px;
-  align-items: center;
-}
-
-.hero-photo{
-  border-radius: 22px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.04);
-  box-shadow: var(--shadow2);
-  position: relative;
-}
-
-.hero-photo img{
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  filter: contrast(1.03) saturate(1.02);
-}
-
-.hero-photo .hero-badge{
-  position: absolute;
-  align-items: center;
-  bottom: 14px;
-  padding: 10px 12px;
-  border-radius: 999px;
-  background: rgba(7,11,20,.70);
-  border: 1px solid rgba(255,255,255,.14);
-  backdrop-filter: blur(10px);
-  font-weight: 700;
-  font-size: 14px;
-  color: rgba(234,241,255,.92);
-}
-
-/* Mobile: foto abaixo do texto e menor */
-@media (max-width: 980px){
-  .hero-top{ grid-template-columns: 1fr; }
-  .hero-photo img{ height: 320px; }
-}
-
-
-/*RESPONSIVO*/
-/* ===== HERO responsivo no notebook (somente HERO) ===== */
-@media (max-width: 1366px){
-  .hero-top{
-    grid-template-columns: 1.45fr .55fr; /* mais espaço pro texto */
-    gap: 16px;
-    align-items: center;
-  }
-
-  .hero-inner{
-    padding: 22px 22px 20px;
-  }
-
-  .hero-photo{
-    max-width: 380px;   /* segura a largura da foto */
-    margin-left: auto;  /* empurra pra direita */
-  }
-
-  .hero-photo img{
-    height: 340px;      /* reduz altura no notebook */
-  }
-
-  h1{
-    font-size: clamp(26px, 2.9vw, 40px);
-    line-height: 1.04;
-  }
-
-  .sub{
-    font-size: 15.5px;
-    line-height: 1.5;
-  }
-}
-
-@media (max-width: 1200px){
-  .hero-top{ grid-template-columns: 1fr; }
-  .hero-photo{ max-width: 520px; margin: 10px auto 0; }
-  .hero-photo img{ height: 320px; }
-}
-
-@media (max-width: 980px){
-  .menu-toggle{ display:flex; }
-}
-
-@media (max-width: 600px){
-  .trust-row{display: none; }
-  .btn-ghost{display: none;}
-  .kicker{display: none;}
-}
   </style>
 </head>
 
 <body>
   <header>
-    <div class="container">
-      <nav>
-        <a href="/" class="logo">CNH em <span>Dia Soluções</span></a>
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <!-- LOGO: ajuste o nome do arquivo se o seu for diferente (ex.: logo-cnh.png) -->
+          <img src="/static/images/logo.png" alt="CNH em Dia Soluções - Logo">
+          <div class="name">CNH em <b>Dia Soluções</b></div>
+        </div>
 
-        <ul class="nav-links">
-          <li><a href="/">Início</a></li>
-          <li><a href="/servicos/">Serviços</a></li>
-          <li><a href="/sobre/">Sobre</a></li>
-          <li><a href="#contato">Contato</a></li>
-          <li>
-            <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Lei+Seca%29.&type=phone_number&app_absent=0" target="_blank">
-              <span style="color: white">Falar no WhatsApp</span>
-              <span class="wa-dot" aria-hidden="true">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-                        alt="WhatsApp" 
-                        width="30" 
-                        height="30" >
-              </span>
-            </a>
-          </li>
-        </ul>
-
-        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" type="button">
-        <span></span>
-        <span></span>
-        <span></span>
+        <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">
+          <span></span>
         </button>
-      </nav>
+      </div>
+
+      <div class="menu" id="menu">
+        <a href="#contato">Falar com especialista</a>
+        <a href="#ajuda">Como podemos ajudar?</a>
+        <a href="#perguntas">Perguntas frequentes</a>
+      </div>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
     <section class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-card reveal">
-            <div class="hero-inner">
+      <div class="wrap">
+        <div class="pill">Lei Seca • Bafômetro • Recusa</div>
 
-  <div class="hero-top">
-    <div>
-      <div class="kicker">
-        <span>Bafômetro Positivo • Recusa ao Bafômetro • Penalidades</span>
-      </div>
+        <h1>
+          <span class="soft">Pego No Bafômetro?</span><br>
+          O que fazer <br>agora.
+        </h1>
 
-      <h1>Caiu Na Blitz Do Bafômetro e Tomou a Multa?</h1>
+        <p>
+          Respira. <strong>Nem tudo está perdido.</strong><br>
+          O que mais derruba as pessoas é <strong>não correr atrás do seu direito</strong> por falta de orientação.
+          Aqui você fala com um especialista que analisa, explica <strong>em linguagem simples</strong> o que pode ser feito.
+        </p>
 
-      <p class="sub">
-        Nós Da <strong>CNH Em DIA Soluções</strong> Cuidamos De Tudo Para Você! Evite a <strong>suspensão de 12 meses e multa de R$2.934,70.</strong><br><strong>Clique no Botão Abaixo E Fale Com Especialista.</strong> 
-</p>
+        <!-- Imagem de referência (permitida) -->
+        <div class="hero-visual" aria-hidden="true">
+          <img src="/static/images/paginicial.png" alt="Ilustração">
+        </div>
 
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Lei+Seca%29.&type=phone_number&app_absent=0" id="ctaHero" target="_blank">
-          <span style="text-align:center;">Clique Aqui e Fale com Especialista</span>
-          <span class="wa-dot" aria-hidden="true">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="40" height="40">
-          </span>
-        </a>
-
-        <a class="btn btn-ghost" href="#como-funciona">Como funciona</a>
-      </div>
-
-      <div class="trust-row">
-        <span class="trust-chip"><span class="dot"></span> Atendimento humanizado</span>
-        <span class="trust-chip">🔒 Sigilo total</span>
-        <span class="trust-chip">⚡ Resposta rápida</span>
-      </div>
-    </div>
-
-    <!-- Foto -->
-    <div class="hero-photo">
-      <img src="/static/images/fotopessoal.jpg" alt="Especialista Igor Novais" loading="lazy">
-      <div class="hero-badge" style="text-align: center;">Consultor Igor - CNH em Dia Soluções</div>
-    </div>
-  </div>
-              <div class="hero-points">
-                <div class="mini reveal">
-                  <div class="t">Recusa ao bafômetro</div>
-                  <div class="d">Entenda o cenário e as possibilidades de defesa administrativa.</div>
-                </div>
-                <div class="mini reveal">
-                  <div class="t">Auto de infração</div>
-                  <div class="d">Análise: inconsistências, formalidades e prazos.</div>
-                </div>
-                <div class="mini reveal">
-                  <div class="t">Acompanhamento</div>
-                  <div class="d">Você não fica no escuro: atualizações e estratégia clara.</div>
-                </div>
-              </div>
-            </div>
+        <div class="cta-area" id="contato">
+          <button class="cta-btn" id="ctaTop">
+            <span>CLIQUE AQUI E ENVIE UM WHATSAPP</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="22" height="22">
+          </button>
+          <div class="cta-sub">
+            Você fala agora com a CNH em Dia Soluções • (11) 99418-7695 • CNPJ: 63.687.598/0001-59 • Guarulhos/SP 
           </div>
+        </div>
 
-          <!-- Side / Lead capture -->
-          <aside class="side reveal" id="contato">
-            <div class="side-inner">
-              <div class="badge">📌 Entre em contato agora conosco.</div>
-              <h2>Receba uma orientação imediata</h2>
+        <div class="down" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M7 10l5 5 5-5" stroke="rgba(11,18,32,.85)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ajuda">
+      <div class="wrap">
+        <h2>Conte com a nossa<br>expertise</h2>
+        <p>
+          A gente lida com isso todos os dias.
+          <strong>Como podemos te ajudar?</strong>
+        </p>
+
+        <div class="service-grid">
+          <div class="service-card">
+            <div class="service-media">
+              <img src="/static/images/bafometro-positivo.png" alt="CNH">
+            </div>
+            <div class="service-body">
+              <h3>Lei Seca (bafômetro positivo)</h3>
               <p>
-                Preencha 3 campos e clique no WhatsApp. A mensagem vai pronta, objetiva e com as informações que aceleram a análise.
+                Te pararam na blitz e deu positivo? A primeira coisa é organizar <strong>datas</strong> e <strong>documentos</strong>.
+                A orientação certa evita erro bobo.
               </p>
-
-              <div class="divider"></div>
-
-              <form class="form" id="leadForm">
-                <div class="field">
-                  <label for="nome">Seu nome</label>
-                  <input class="input" id="nome" name="nome" placeholder="Ex.: João" autocomplete="name" />
-                </div>
-
-                <div class="field">
-                  <label for="cidade">Cidade</label>
-                  <input class="input" id="cidade" name="cidade" placeholder="Ex.: São Paulo" autocomplete="address-level2" />
-                </div>
-
-                <div class="field">
-                  <label for="tipo">Seu caso é…</label>
-                  <select class="select" id="tipo" name="tipo">
-                    <option value="Lei seca (bafômetro positivo)">Lei seca (bafômetro positivo)</option>
-                    <option value="Recusa ao bafômetro">Recusa ao bafômetro</option>
-                    <option value="Notificação / processo administrativo">Notificação / processo administrativo</option>
-                    <option value="Dúvida geral (quero entender meu caso)">Dúvida geral (quero entender meu caso)</option>
-                  </select>
-                </div>
-
-                <div class="field">
-                  <label for="detalhes">Detalhes (opcional)</label>
-                  <textarea id="detalhes" placeholder="Ex.: data da abordagem, se assinou algo, se recebeu notificação..."></textarea>
-                  <div class="help">Dica: se souber, informe a data e se já recebeu notificação. Isso melhora a precisão da análise.</div>
-                </div>
-
-                <div class="cta-box">
-                  <div class="big" style="text-align:center;">✅ Análise gratuita + plano de ação</div>
-                  <div class="small" style="text-align:center;">A estratégia certa nasce de um diagnóstico claro. Vamos direto ao ponto — sem enrolação.</div>
-                </div>
-
-                <button type="button" class="btn btn-primary" id="btnWhats">
-                  <span style="color: white;">Enviar no WhatsApp</span>
-                  <span class="wa-dot" aria-hidden="true">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-                        alt="WhatsApp" 
-                        width="30" 
-                        height="30" >
-                  </span>
-                </button>
-
-                <div class="help">
-                  Ao clicar, você será redirecionado ao WhatsApp com uma mensagem pronta. Atendimento: (11) 99418-7695
-                </div>
-              </form>
+              <button class="mini-btn js-wa" data-topic="Lei Seca (bafômetro positivo)">Falar com especialista</button>
             </div>
-          </aside>
+          </div>
+
+          <div class="service-card">
+            <div class="service-media">
+              <img src="/static/images/recusabafometro.png" alt="Recusa">
+            </div>
+            <div class="service-body">
+              <h3>Recusa ao bafômetro</h3>
+              <p>
+                Recusou? Muita gente trava por medo. Aqui você entende o cenário e o que fazer
+                <strong>sem complicações</strong>.
+              </p>
+              <button class="mini-btn js-wa" data-topic="Recusa ao bafômetro">Falar com especialista</button>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-media">
+              <img src="/static/images/notificacao.png" alt="Notificação">
+            </div>
+            <div class="service-body">
+              <h3>Notificação / processo</h3>
+              <p>
+                Chegou carta, mensagem ou notificação? O mais importante é:
+                <strong>qual é o prazo</strong>. A gente te guia.
+              </p>
+              <button class="mini-btn js-wa" data-topic="Notificação / processo">Falar com especialista</button>
+            </div>
+          </div>
         </div>
+
+        <!-- FORM SUBMIT (captura + redireciona Whats) -->
+        <div class="form-box" aria-label="Formulário de contato">
+          <div class="form-head">
+            <h3>Receba uma orientação agora mesmo</h3>
+            <p>É rápido. Preencha e você já vai direto pro WhatsApp com a mensagem pronta.</p>
+          </div>
+
+          <form id="contactForm" method="POST" class="contact-form" autocomplete="off" spellcheck="false">
+            <div class="form-group">
+              <label for="nome">Nome *</label>
+              <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-mail *</label>
+              <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+            </div>
+
+            <div class="form-group">
+              <label for="telefone">Telefone (WhatsApp) *</label>
+              <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999">
+            </div>
+
+            <div class="form-group">
+              <label for="assunto">Assunto *</label>
+              <select id="assunto" name="assunto" required>
+                <option value="Lei Seca">Lei Seca (bafômetro positivo)</option>
+                <option value="Recusa ao Bafômetro">Recusa ao Bafômetro</option>
+                <option value="Notificação / Processo">Notificação / Processo</option>
+                <option value="Suspensão">Suspensão Da CNH</option>
+                <option value="Cassação">Cassação da CNH</option>
+                <option value="Outro">Outro Assunto</option>
+              </select>
+            </div>
+
+            <!-- CONFIG FORM SUBMIT -->
+            <input type="hidden" name="_subject" value="Nova solicitação - CNH em Dia Soluções">
+
+            <button type="submit" class="submit-button">ENVIAR E IR PRO WHATSAPP</button>
+          </form>
+        </div>
+
+        <div class="down" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M7 10l5 5 5-5" stroke="rgba(11,18,32,.85)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="proof">
+          <h3>Sem promessa falsa.<br>Com direção.</h3>
+          <p>
+            A verdade é simples: cada caso tem detalhes. O nosso trabalho é
+            <strong>te dizer com clareza</strong> o que faz sentido fazer e qual é o próximo passo.
+          </p>
+        </div>
+
+        <div class="stats" aria-label="Indicadores">
+          <div class="stat-row">
+            <div class="stat">
+              <div class="tag">Atendimento</div>
+              <div class="big">Humano</div>
+              <div class="small">Você fala com gente, não com robô. Explicação simples e direta.</div>
+            </div>
+            <div class="stat">
+              <div class="tag">Sigilo</div>
+              <div class="big">Total</div>
+              <div class="small">Seu caso é tratado com discrição e foco em solução.</div>
+            </div>
+            <div class="stat">
+              <div class="tag">Resposta</div>
+              <div class="big">Rápida</div>
+              <div class="small">A ideia é tirar sua dúvida e te orientar sem enrolação.</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- PROBLEMAS / DORES -->
-    <section>
-      <div class="container">
-        <h2 class="section-title reveal" style="text-align: center;">O que costuma acontecer depois da Lei Seca</h2>
-        <p class="section-sub reveal">
-          A penalidade vira uma tempestade silenciosa: <strong>prazos correndo</strong>, <strong>notificações chegando</strong> e a sensação de que “já era”.
-          Mas o administrativo não é loteria — é processo. E processo se vence com estratégia.
-        </p>
+    <section class="section" id="perguntas">
+      <div class="wrap">
+        <h2>Perguntas frequentes</h2>
+        <p>Objetivo. Claro. Do jeito que dá pra entender.</p>
 
-        <div class="grid-3">
-          <div class="card reveal">
-            <div class="icon">🧾</div>
-            <h3>Notificações e prazos</h3>
-            <p>Você não precisa adivinhar o que fazer. Nós organizamos o caminho e tratamos o que importa no tempo certo.</p>
-          </div>
-          <div class="card reveal">
-            <div class="icon">🧠</div>
-            <h3>Dúvidas sobre recusa</h3>
-            <p>Recusa ao bafômetro tem particularidades. A defesa depende do contexto, do auto e do rito.</p>
-          </div>
-          <div class="card reveal">
-            <div class="icon">🚗</div>
-            <h3>Medo de ficar sem dirigir</h3>
-            <p>Trabalho, família, rotina. A CNH é liberdade. A estratégia certa protege o seu dia a dia.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- O QUE VOCÊ RECEBE -->
-    <section>
-      <div class="container">
-        <h2 class="section-title reveal" style="text-align:center;">O que você recebe com a CNH em Dia Soluções</h2>
-        <p class="section-sub reveal">
-          Não é “promessa bonita”. É um playbook: diagnóstico, plano e execução. Um funil de solução, não de ansiedade.
-        </p>
-
-        <div class="grid-3">
-          <div class="card reveal">
-            <div class="icon">🔎</div>
-            <h3>Análise do auto</h3>
-            <p>Verificação de informações essenciais, formalidades e coerência documental do seu caso.</p>
-          </div>
-          <div class="card reveal">
-            <div class="icon">🧭</div>
-            <h3>Estratégia administrativa</h3>
-            <p>Direcionamento claro sobre etapas, documentos e melhores decisões para o seu cenário.</p>
-          </div>
-          <div class="card reveal">
-            <div class="icon">🤝</div>
-            <h3>Acompanhamento e suporte</h3>
-            <p>Você entende o que está acontecendo e o porquê. Comunicação direta e humanizada.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMO FUNCIONA -->
-    <section id="como-funciona">
-      <div class="container">
-        <h2 class="section-title reveal" style="text-align:center;">Como funciona:</h2>
-        <p class="section-sub reveal" style="text-align:center;">
-          Pensamos da seguinte forma, fazemos o diagnóstico, desenhamos a estratégia e executamos com cadência.
-        </p>
-
-        <div class="timeline">
-          <div class="step reveal">
-            <div class="n">1</div>
-            <p class="h">Contato e triagem</p>
-            <p class="p">Você chama no WhatsApp e já manda os detalhes essenciais. Sem burocracia.</p>
-          </div>
-          <div class="step reveal">
-            <div class="n">2</div>
-            <p class="h">Análise do caso</p>
-            <p class="p">Entendemos o que houve, o que você tem em mãos e quais prazos estão vivos.</p>
-          </div>
-          <div class="step reveal">
-            <div class="n">3</div>
-            <p class="h">Plano de ação</p>
-            <p class="p">Você recebe um direcionamento objetivo: etapas, documentos e decisões.</p>
-          </div>
-          <div class="step reveal">
-            <div class="n">4</div>
-            <p class="h">Execução e acompanhamento</p>
-            <p class="p">Você não caminha sozinho: atualizações e suporte durante o processo.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section>
-      <div class="container">
-        <h2 class="section-title reveal" style="text-align:center;">Perguntas frequentes (sem juridiquês)</h2>
-        <p class="section-sub reveal" >
-          Transparência vende. E aqui a gente joga limpo.
-        </p>
-
-        <details class="reveal">
-          <summary>
-            Recusar o bafômetro é “a mesma coisa” que estar alcoolizado?
-            <span class="chev">⌄</span>
-          </summary>
-          <div class="faq-a">
-            Não é “igual” em termos de situação, mas pode gerar penalidades administrativas relevantes.
-            Por isso, a análise do seu caso é essencial: contexto, documentação e rito fazem diferença.
+        <details>
+          <summary>Recusar o bafômetro “dá na mesma” que estar bêbado?</summary>
+          <div class="ans">
+            A situação é diferente, mas pode gerar penalidades administrativas relevantes.
+            O que muda tudo são os <strong>detalhes do caso</strong> e o que consta no auto/notificação, se há sinais de embriaguez e etc...
           </div>
         </details>
 
-        <details class="reveal">
-          <summary>
-            Se eu já recebi notificação, ainda dá tempo?
-            <span class="chev">⌄</span>
-          </summary>
-          <div class="faq-a">
-            Muitas vezes, sim — mas o relógio é o verdadeiro adversário. Quanto antes você organizar documentos e datas,
-            mais precisa fica a estratégia.
+        <details>
+          <summary>Já chegou notificação. Ainda dá tempo?</summary>
+          <div class="ans">
+            Muitas vezes, sim. Mas o inimigo é o relógio. Quanto antes você falar com a gente,
+            mais fácil é organizar o que está em jogo e o que fazer.
           </div>
         </details>
 
-        <details class="reveal">
-          <summary>
-            Vocês prometem “ganhar” o caso?
-            <span class="chev">⌄</span>
-          </summary>
-          <div class="faq-a">
-            Não vendemos fantasia. Vendemos método. A gente avalia elegibilidade, riscos e possibilidades com seriedade
-            e atua dentro do que é técnico e cabível.
+        <details>
+          <summary>Vocês garantem que “ganham”?</summary>
+          <div class="ans">
+            Não vendemos fantasia. Vendemos orientação e execução dentro do que é cabível.
+            A gente te mostra o cenário com clareza, e você decide com segurança.
           </div>
         </details>
 
-        <details class="reveal">
-          <summary>
-            O atendimento é sigiloso?
-            <span class="chev">⌄</span>
-          </summary>
-          <div class="faq-a">
-            Total. Seu caso é tratado com confidencialidade e foco em solução.
+        <details>
+          <summary>O atendimento é sigiloso?</summary>
+          <div class="ans">
+            Sim. Seu caso é tratado com confidencialidade e foco total em solução.
           </div>
         </details>
-      </div>
-    </section>
 
-    <!-- CTA BAND -->
-    <section class="cta-band">
-      <div class="container">
-        <div class="cta-wrap reveal">
-          <div class="txt">
-            <h2>Vamos transformar esse problema em plano.</h2>
-            <p>Você entra com a verdade do que aconteceu. Nós entramos com estratégia, cadência e execução.</p>
+        <!-- Consultor (pequeno, final) -->
+        <div class="consultor" aria-label="Consultor responsável">
+          <div class="avatar">
+            <img src="/static/images/fotopessoal.jpg" alt="Consultor Igor - CNH em Dia Soluções" loading="lazy">
           </div>
-          <a class="btn btn-primary" href="#contato" id="ctaBand">
-            <span style="text-align:center;">Falar com especialista agora</span>
-            <span class="wa-dot" aria-hidden="true">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-                        alt="WhatsApp" 
-                        width="30" 
-                        height="30">
-            </span>
-          </a>
+          <div>
+            <p class="c-title">Consultor Igor • CNH em Dia Soluções</p>
+            <p class="c-sub">Se preferir, me chama no WhatsApp ou me ligue e me diga: Qual o seu nome e qual o seu problema.</p>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- LEGAL -->
-    <section class="legal">
-      <div class="container">
-        <div class="note reveal">
+        <div class="legal">
           <strong>⚠️ Aviso Legal:</strong> A CNH em Dia Soluções atua como consultoria administrativa e suporte técnico,
           com parceria com advogados regularmente inscritos na OAB, responsáveis pela condução e representação judicial
           dos clientes quando necessário. Todos os serviços seguem as normas e regulamentações aplicáveis.
         </div>
+
+        <footer>
+          <div class="wrap">
+            <div>CNH em Dia Soluções • CNPJ: 63.687.598/0001-59 • Guarulhos/SP</div>
+            <div>WhatsApp: (11) 99418-7695 • E-mail: cnhemdiasolucoes@gmail.com</div>
+            <div style="margin-top:10px;">&copy; 2026 CNH em Dia Soluções. Todos os direitos reservados.</div>
+          </div>
+        </footer>
       </div>
     </section>
   </main>
 
   <!-- WhatsApp Float -->
-  <a class="whatsapp-float" id="waFloat" href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+an%C3%A1lise+do+meu+caso+%28Lei+Seca%29.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp" onclick="return gtag_report_conversion(this.href, this.target);">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-                        alt="WhatsApp" 
-                        width="50" 
-                        height="50" >
+  <a class="whatsapp-float" id="waFloat"
+     href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21+Vim+pelo+Google+e+quero+uma+orienta%C3%A7%C3%A3o+sobre+Lei+Seca%2Fbaf%C3%B4metro.&type=phone_number&app_absent=0"
+     target="_blank" rel="noopener noreferrer"
+     aria-label="Falar no WhatsApp"
+     onclick="return gtag_report_conversion(this.href, this.target);">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h3>CNH em Dia Soluções</h3>
-          <p>CPNJ: 63.687.598/0001-59</p>
-          <p>Soluções especializadas para lei seca, recusa ao bafômetro e regularização administrativa. Atendimento com foco em clareza, técnica e confidencialidade.</p>
-        </div>
-        <div>
-          <h3>Serviços</h3>
-          <ul>
-            <li><a href="/lei-seca/">Lei Seca</a></li>
-            <li><a href="/multas/">Multas de Trânsito</a></li>
-            <li><a href="/suspensao/">Suspensão da CNH</a></li>
-            <li><a href="/cassacao/">Cassação da CNH</a></li>
-            <li><a href="/provisoria/">Perda da Provisória</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Institucional</h3>
-          <ul>
-            <li><a href="/sobre/">Sobre Nós</a></li>
-            <li><a href="/servicos/">Nossos Serviços</a></li>
-            <li><a href="/contato/">Contato</a></li>
-            <li><a href="/curso-de-reciclagem/">Reciclagem</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Contato</h3>
-          <ul>
-            <li>📞 (11) 99418-7695</li>
-            <li>✉️ cnhemdiasolucoes@gmail.com</li>
-            <li>📍 Guarulhos - SP</li>
-          </ul>
-        </div>
+  <!-- Sticky (só mobile) -->
+  <div class="sticky" role="region" aria-label="Contato rápido no WhatsApp">
+    <div class="inner">
+      <div class="txt">
+        <div class="t">Precisa de ajuda agora?</div>
+        <div class="d">Clique e fale no WhatsApp (mensagem pronta)</div>
       </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 CNH em Dia Soluções. Todos os direitos reservados.</p>
-      </div>
+      <button class="go" id="stickyGo">
+        <span>WhatsApp</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+      </button>
     </div>
-  </footer>
+  </div>
 
   <script>
-    // ====== Config WhatsApp + Mensagem dinâmica ======
     const WHATS_NUMBER = "5511994187695";
 
-    function buildWhatsMessage(){
-  const nome = (document.getElementById("nome").value || "").trim();
-  const cidade = (document.getElementById("cidade").value || "").trim();
-  const tipo = (document.getElementById("tipo").value || "").trim();
-  const detalhes = (document.getElementById("detalhes").value || "").trim();
-
-  const parts = [];
-  parts.push("Olá! Vim pelo Google e quero uma análise do meu caso (Lei Seca).");
-  parts.push(""); // linha em branco (opcional)
-
-  if (nome) parts.push(`Nome: ${nome}`);
-  if (cidade) parts.push(`Cidade: ${cidade}`);
-  if (tipo) parts.push(`Tipo: ${tipo}`);
-  if (detalhes) parts.push(`Detalhes: ${detalhes}`);
-
-  parts.push(""); // linha em branco (opcional)
-  parts.push("Quero saber quais são os próximos passos e prazos.");
-
-  return parts.join("\n");
-}
-
-    function openWhats(){
-      const text = encodeURIComponent(buildWhatsMessage());
-      const url = `https://wa.me/${WHATS_NUMBER}?text=${text}`;
-      window.open(url, "_blank", "noopener,noreferrer");
+    function openWhats(text, targetBlank=true){
+      const url = `https://wa.me/${WHATS_NUMBER}?text=${encodeURIComponent(text)}`;
+      return gtag_report_conversion(url, targetBlank ? "_blank" : "_self");
     }
 
-    // ====== Menu mobile ======
-     const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuToggle.classList.toggle('active');
-
-    const opened = navLinks.classList.contains('active');
-    menuToggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
-  });
-
-  // Fecha o menu ao clicar em um link
-  document.querySelectorAll('.nav-links a').forEach(link=>{
-    link.addEventListener('click', ()=>{
-      navLinks.classList.remove('active');
-      menuToggle.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
+    // Menu
+    const menuBtn = document.getElementById("menuBtn");
+    const menu = document.getElementById("menu");
+    menuBtn?.addEventListener("click", ()=>{
+      const isOpen = menu.style.display === "block";
+      menu.style.display = isOpen ? "none" : "block";
+      menuBtn.setAttribute("aria-expanded", isOpen ? "false" : "true");
     });
-  });
 
-  document.addEventListener('click', (e)=>{
-  const clickedInside = navLinks.contains(e.target) || menuToggle.contains(e.target);
-  if(!clickedInside){
-    navLinks.classList.remove('active');
-    menuToggle.classList.remove('active');
-    menuToggle.setAttribute('aria-expanded', 'false');
-  }
-});
+    // CTA Top
+    document.getElementById("ctaTop")?.addEventListener("click", ()=>{
+      const msg = "Olá! Vim pelo Google. Preciso de orientação sobre Lei Seca/bafômetro. Pode me ajudar?";
+      openWhats(msg, true);
+    });
 
-    // ====== Scroll reveal ======
-    const observerOptions = { threshold: 0.12, rootMargin: '0px 0px -90px 0px' };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('fade-in'); });
-    }, observerOptions);
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // ====== Smooth anchor ======
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener("click", (e)=>{
-        const id = a.getAttribute("href");
-        const target = document.querySelector(id);
-        if(target){
-          e.preventDefault();
-          target.scrollIntoView({ behavior: "smooth", block:"start" });
-          navLinks.classList.remove('active');
-        }
+    // Botões “Falar com especialista”
+    document.querySelectorAll(".js-wa").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const topic = btn.getAttribute("data-topic") || "Lei Seca/bafômetro";
+        const msg = `Olá! Vim pelo site. Quero falar com um especialista sobre: ${topic}.`;
+        openWhats(msg, true);
       });
     });
 
-  document.getElementById("btnWhats")?.addEventListener("click", (e)=>{
-  e.preventDefault();
+    // Sticky
+    document.getElementById("stickyGo")?.addEventListener("click", ()=>{
+      const msg = "Olá! Vim pelo Google. Preciso de orientação sobre Lei Seca/bafômetro. Pode me ajudar?";
+      openWhats(msg, true);
+    });
 
-  const text = encodeURIComponent(buildWhatsMessage());
-  const url = `https://wa.me/${WHATS_NUMBER}?text=${text}`;
+    // FormSubmit + Redireciona pro WhatsApp (com mensagem personalizada)
+    const contactForm = document.getElementById('contactForm');
+    contactForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-  // Dispara conversão e abre o WhatsApp (em nova aba)
-  gtag_report_conversion(url, "_blank");
-});
+      const formData = new FormData(contactForm);
 
-    // ====== Micro tracking (opcional) ======
-    // Dispara eventos de clique (sem prometer conversão). Útil pra medir CTA.
+      try {
+        const response = await fetch("https://formsubmit.co/cnhemdiasolucoes@gmail.com", {
+          method: "POST",
+          body: formData
+        });
+
+        if (response.ok) {
+          const nome = document.getElementById('nome').value || "";
+          const assunto = document.getElementById('assunto').value || "Lei Seca";
+          const cidadeTel = document.getElementById('telefone').value || "";
+
+          const mensagem =
+`Olá! Me chamo ${nome}.
+Preenchi o formulário no site e quero resolver meu problema de: ${assunto}.
+Telefone/WhatsApp: ${cidadeTel}`;
+
+          // Redireciona para WhatsApp (com conversão)
+          openWhats(mensagem, true);
+
+          contactForm.reset();
+        } else {
+          alert('❌ Erro ao enviar o formulário. Tente novamente.');
+        }
+
+      } catch (error) {
+        alert('❌ Ocorreu um erro inesperado. Tente novamente.');
+        console.error(error);
+      }
+    });
+
+    // Micro tracking (opcional)
     function track(eventName){
-      try{
-        gtag('event', eventName, { 'event_category': 'lei_seca_lp' });
-      }catch(e){}
+      try { gtag('event', eventName, { 'event_category': 'lei_seca_lp_easy_style' }); } catch(e){}
     }
-    document.getElementById("ctaHero")?.addEventListener("click", ()=>track("cta_hero_click"));
-    document.getElementById("ctaBand")?.addEventListener("click", ()=>track("cta_band_click"));
-    document.getElementById("btnWhats")?.addEventListener("click", ()=>track("form_whatsapp_click"));
     document.getElementById("waFloat")?.addEventListener("click", ()=>track("whatsapp_float_click"));
+    document.getElementById("ctaTop")?.addEventListener("click", ()=>track("cta_top_click"));
+    document.getElementById("stickyGo")?.addEventListener("click", ()=>track("sticky_click"));
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
