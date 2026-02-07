@@ -164,7 +164,7 @@
       content:"";
       position:absolute;
       inset:0;
-      background-image: url("/static/images/fototopoinicio.png");
+      background-image: url("/static/images/fototopoinicio1.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -212,7 +212,7 @@
       margin: 0;
       font-size: 16.5px;
       line-height: 1.65;
-      color: rgba(255,255,255,.92);
+      color: #fff;
       text-shadow: 0 8px 24px rgba(0,0,0,.18);
       max-width: 55ch;
     }
@@ -231,9 +231,9 @@
       width: 100%;
       padding: 16px 16px;
       border-radius: 999px;
-      background: var(--whats);
-      color: #fff;
-      border: none;
+      background: #4fce5ed8;
+      color: #ffffff;
+      border: 2px solid white;
       font-weight: 950;
       font-size: 15.5px;
       letter-spacing: .2px;
@@ -542,7 +542,6 @@
       overflow: hidden;
       box-shadow: 0 1px 2px rgba(60,64,67,.15);
       position: relative;
-
       /* fundo real: foto cover + overlay p/ leitura */
       background-image:
         linear-gradient(
@@ -558,7 +557,7 @@
     }
 
     /* mantém o HTML igual, mas esconde a miniatura (pra não duplicar) */
-    .service-media{ display:none; }
+    
 
     /* “painel” do conteúdo */
     .service-body{
@@ -889,6 +888,12 @@
   z-index: 1;
 }
 
+@media (min-width: 425px){
+    .service-media{
+        display: none;
+    }
+}
+
   </style>
 </head>
 
@@ -926,10 +931,11 @@
 
         <p>
           A Recusa ao teste do bafômetro <strong>há como recorrer e se defender.</strong> Eu te digo o próximo passo agora no WhatsApp.<br>
-          <strong>Clique em qualquer botão para o WhatsApp e mande uma mensagem.</strong>
+          <strong>Clique no botão abaixo.</strong><br><br><br><br>
         </p>
 
-        <div class="cta-area" id="contato">
+
+          <div class="cta-area" id="contato">
           <a class="cta-btn"
              href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20Google.%20Preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20Lei%20Seca%2Fbaf%C3%B4metro.%20Pode%20me%20ajudar%3F"
              target="_self"
@@ -939,10 +945,7 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="40" height="40">
           </a>
 
-          <div class="cta-sub" style="color: black;">
-            CNH em Dia Soluções • (11) 99418-7695 • CNPJ: 63.687.598/0001-59 • Atendemos em todo o Brasil
-          </div>
-        </div>
+          
 
         <div class="down" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none">
@@ -1021,23 +1024,17 @@
         </div>
 
         <h2 style="text-align: center; margin-top: 20px;">Conte com a nossa<br>expertise</h2>
-        <p style="text-align: center;">
-          A gente lida com isso todos os dias.
-          <strong>Como podemos te ajudar?</strong>
-        </p>
-
         <!-- ✅ Cards com background real -->
         <div class="service-grid" style="margin-top: 25px">
 
-          <div class="service-card bgimg" style="--bg: url('/static/images/bafometro-positivo.png'); --pos: center 35%;">
+          <div class="service-card bgimg">
             <div class="service-media">
               <img src="/static/images/bafometro-positivo.png" alt="CNH" loading="lazy">
             </div>
             <div class="service-body">
               <h3>Lei Seca (bafômetro positivo)</h3>
               <p>
-                Te pararam na blitz e deu positivo? A primeira coisa é organizar <strong>datas</strong> e <strong>documentos</strong>.
-                A orientação certa evita erro bobo.
+                Te pararam na blitz e deu positivo, constou aquele alcool minimo que seja né? A primeira coisa é entender que, mesmo que constou, ainda há estratégia cabível para o seu problema.<strong> Chame-nos agora mesmo!</strong> 
               </p>
 
               <a class="mini-btn"
@@ -1048,8 +1045,8 @@
             </div>
           </div>
 
-         <div class="service-card bgimg" style="--bg: url('/static/images/recusabafometro.png'); --pos: center 35%;">
-            <div class="service-media">
+         <div class="service-card bgimg">
+            <div class="service-media" >
               <img src="/static/images/recusabafometro.png" alt="Recusa" loading="lazy">
             </div>
             <div class="service-body">
@@ -1067,7 +1064,7 @@
             </div>
           </div>
 
-          <div class="service-card bgimg" style="--bg: url('/static/images/notificacao.png'); --pos: center 50%;">
+          <div class="service-card bgimg">
             <div class="service-media">
               <img src="/static/images/notificacao.png" alt="Notificação" loading="lazy">
             </div>
@@ -1095,10 +1092,10 @@
         </div>
 
         <div class="proof">
-          <h3>Sem promessa falsa.<br>Com direção.</h3>
+          <h3>100% de Transparência<br>Honestidade Total</h3>
           <p>
-            A verdade é simples: cada caso tem detalhes. O nosso trabalho é
-            <strong>te dizer com clareza</strong> o que faz sentido fazer e qual é o próximo passo.
+           Moramos em um país complicado quando se trata de bons profissionais, que são
+            <strong>honestos, transparentes e estratégicos</strong>. Mas fique tranquilo, aqui o foco é na sua satisfação.
           </p>
         </div>
 
@@ -1106,18 +1103,18 @@
           <div class="stat-row">
             <div class="stat">
               <div class="tag">Atendimento</div>
-              <div class="big">Humano</div>
-              <div class="small">Você fala com gente, não com robô. Explicação simples e direta.</div>
+              <div class="big">100% Humano</div>
+              <div class="small">Nada de robôzinho respondendo, sabemos que o robô é chato, aqui quem falará com você é um humano.</div>
             </div>
             <div class="stat">
-              <div class="tag">Sigilo</div>
-              <div class="big">Total</div>
-              <div class="small">Seu caso é tratado com discrição e foco em solução.</div>
+              <div class="tag">Análise</div>
+              <div class="big">100% Gratuita</div>
+              <div class="small">Você não paga pela análise, só paga em caso de contratação.</div>
             </div>
             <div class="stat">
               <div class="tag">Resposta</div>
               <div class="big">Rápida</div>
-              <div class="small">A ideia é tirar sua dúvida e te orientar sem enrolação.</div>
+              <div class="small">A nossa prioridade é no seu atendimento, sabemos que você não tem tempo a perder. Te atendemos tão rapido quanto fazer um miojo.</div>
             </div>
           </div>
         </div>
