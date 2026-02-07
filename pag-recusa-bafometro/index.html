@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Google tag (gtag.js) - mantenha o mesmo ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17709604708"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17709604708');
+  </script>
+
+  <!-- Conversão WhatsApp (abre link e registra conversão) -->
+  <script>
+    function gtag_report_conversion(url, target) {
+      var go = function () {
+        if (typeof url !== 'undefined') {
+          if (target === '_blank') window.open(url, '_blank', "noopener,noreferrer");
+          else window.location = url;
+        }
+      };
+
+      try {
+        if (typeof gtag === 'function') {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-17709604708/3A1hCK-KneYbEOS-zPxB',
+            'event_callback': go
+          });
+          return false;
+        }
+      } catch (e) {}
+
+      go();
+      return false;
+    }
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pego No Bafômetro? Nós Temos a solução| CNH em Dia Soluções</title>
+  <meta name="description" content="Recusou ou assoprou o bafômetro e tomou a multa, entenda o que fazer agora. Fale com a CNH em Dia Soluções e receba orientação clara, sem complicação." />
+
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+
+  <style>
+    :root{
+      --bg: #FFF8D6;
+      --bg2:#FFFFFF;
+      --ink:#0B1220;
+      --muted: rgba(11,18,32,.78);
+      --muted2: rgba(11,18,32,.60);
+      --line: rgba(11,18,32,.10);
+
+      --brand:#1E6BFF;
+      --brand2:#0A4BFF;
+
+      --shadow: 0 18px 40px rgba(2,6,23,.12);
+      --shadow2: 0 10px 25px rgba(2,6,23,.10);
+
+      --radius: 22px;
+      --radius2: 30px;
+
+      --whats:#25D366;
+
+      --max: 1020px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{
+      margin:0; padding:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--ink);
+      background:
+        radial-gradient(1100px 520px at 50% -120px, rgba(38, 204, 255, 0.767), transparent 60%),
+        linear-gradient(180deg, var(--bg), #f3fdff 40%, var(--bg2));
+      overflow-x: hidden;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    img{ max-width: 100%; display:block; }
+
+    .wrap{
+      width: min(var(--max), 92%);
+      margin: 0 auto;
+    }
+
+    /* ===== Top bar ===== */
+    header{
+      position: sticky; top:0; z-index: 80;
+      background: rgba(255,255,255,.80);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 12px 0;
+      gap: 10px;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 8px;
+      min-width: 0;
+    }
+    .brand img{
+      width: 50px; height: 50px; object-fit: contain;
+    }
+    .brand .name{
+      font-weight: 650;
+      letter-spacing: -.4px;
+      font-size: 18px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .brand .name b{ color: var(--brand); font-weight: 650; }
+
+    .menu-btn{
+      width: 42px; height: 42px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(11,18,32,.03);
+      display:grid; place-items:center;
+      cursor:pointer;
+      flex: 0 0 auto;
+    }
+    .menu-btn span{
+      width: 18px; height: 2px; background: rgba(11,18,32,.85);
+      border-radius: 10px; position: relative;
+      display:block;
+    }
+    .menu-btn span::before,.menu-btn span::after{
+      content:""; position:absolute; left:0;
+      width: 18px; height: 2px; background: rgba(11,18,32,.85);
+      border-radius: 10px;
+    }
+    .menu-btn span::before{ top:-6px; }
+    .menu-btn span::after{ top:6px; }
+
+    .menu{
+      display:none;
+      border-top: 1px solid var(--line);
+      padding: 10px 0 14px;
+    }
+    .menu.is-open{ display:block; }
+    .menu a{
+      display:block;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 800;
+      color: rgba(11,18,32,.86);
+      background: rgba(11,18,32,.02);
+      border: 1px solid rgba(11,18,32,.06);
+      margin-top: 8px;
+    }
+
+    /* ===== HERO COM IMAGEM DE FUNDO ===== */
+    .hero{
+      position: relative;
+      padding: 26px 0 14px;
+      overflow: hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image: url("/static/images/fototopoinicio.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transform: scale(1.02);
+      filter: saturate(1.05) contrast(1.05);
+      z-index: 0;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(
+        180deg,
+        rgba(11,18,32,.72) 0%,
+        rgba(11,18,32,.38) 45%,
+        rgba(255,248,214,.92) 100%
+      );
+      z-index: 1;
+    }
+    .hero .wrap{ position: relative; z-index: 2; }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.90);
+      border: 1px solid rgba(255,255,255,.45);
+      font-weight: 900;
+      font-size: 12.5px;
+      box-shadow: 0 8px 20px rgba(2,6,23,.10);
+    }
+
+    .hero h1{
+      margin: 14px 0 10px;
+      font-size: clamp(34px, 7vw, 58px);
+      line-height: 0.98;
+      letter-spacing: -1.2px;
+      color: #fff;
+      text-shadow: 0 10px 30px rgba(0,0,0,.28);
+    }
+    .hero h1 .soft{ font-weight: 400; }
+    .hero p{
+      margin: 0;
+      font-size: 16.5px;
+      line-height: 1.65;
+      color: rgba(255,255,255,.92);
+      text-shadow: 0 8px 24px rgba(0,0,0,.18);
+      max-width: 55ch;
+    }
+    .hero strong{ color: rgba(255,255,255,.98); }
+
+    .cta-area{
+      margin-top: 14px;
+      display:grid;
+      gap: 10px;
+    }
+    .cta-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px 16px;
+      border-radius: 999px;
+      background: var(--whats);
+      color: #fff;
+      border: none;
+      font-weight: 950;
+      font-size: 15.5px;
+      letter-spacing: .2px;
+      box-shadow: 0 18px 35px rgba(37,211,102,.20);
+      cursor:pointer;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cta-btn:active{ transform: translateY(1px); }
+    .cta-sub{
+      text-align:center;
+      color: rgba(255,255,255,.86);
+      font-size: 13.3px;
+      line-height: 1.45;
+    }
+
+    .down{
+      display:grid;
+      place-items:center;
+      margin: 16px 0 4px;
+    }
+    .down svg{ width: 34px; height: 34px; }
+
+    @media (max-width: 480px){
+      .hero::before{ background-position: 50% 25%; }
+    }
+
+    /* ===== SECTION ===== */
+    .section{
+      padding: 18px 0 10px;
+    }
+    .section h2{
+      margin: 0 0 10px;
+      font-size: clamp(28px, 5.6vw, 44px);
+      letter-spacing: -1px;
+      line-height: 1.03;
+    }
+    .section p{
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 15.8px;
+      max-width: 65ch;
+    }
+
+    /* ===== REVIEWS (Google-like) ===== */
+    .reviews{
+      padding: 12px 0 8px;
+    }
+    .reviews .box{
+      background: #fff;
+      border: 1px solid #dadce0;
+      border-radius: 16px;
+      box-shadow: 0 1px 2px rgba(60,64,67,.15);
+      padding: 14px;
+    }
+
+    .reviews__head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .reviews__title{
+      margin:0;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      line-height: 1.2;
+      color: #202124;
+    }
+
+    .reviews__sub{
+      margin: 6px 0 0;
+      color: #5f6368;
+      font-size: 13px;
+      line-height: 1.45;
+      max-width: 52ch;
+    }
+
+    .reviews__link{
+      flex: 0 0 auto;
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid #dadce0;
+      background: #fff;
+      font-weight: 700;
+      font-size: 12.5px;
+      color: #1a73e8;
+    }
+    .reviews__link:hover{ background: rgba(26,115,232,.06); }
+
+    .reviews__track{
+      display:flex;
+      gap: 12px;
+      overflow:auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 8px 2px 10px;
+    }
+    .reviews__track::-webkit-scrollbar{ display:none; }
+
+    .review-card{
+      flex: 0 0 88%;
+      scroll-snap-align: start;
+      background: #fff;
+      border: 1px solid #dadce0;
+      border-radius: 14px;
+      box-shadow: 0 1px 2px rgba(60,64,67,.15);
+      padding: 12px;
+    }
+    .review-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .review-left{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .review-avatar{
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      display:grid;
+      place-items:center;
+      font-weight: 800;
+      font-size: 14px;
+      color: #1a73e8;
+      background: #e8f0fe;
+      border: 1px solid #dadce0;
+      flex: 0 0 auto;
+    }
+    .review-name{
+      margin:0;
+      font-weight: 700;
+      font-size: 13.5px;
+      color: #202124;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .review-meta{
+      margin-top: 2px;
+      color: #5f6368;
+      font-size: 12px;
+    }
+    .review-stars{
+      display:flex;
+      gap: 2px;
+      align-items:center;
+      padding-top: 2px;
+      white-space: nowrap;
+    }
+    .review-stars .star{
+      font-size: 14px;
+      line-height: 1;
+    }
+    .review-stars .star.is-full{ color: #fbbc04; }
+    .review-stars .star.is-empty{ color: #dadce0; }
+    .review-text{
+      margin: 10px 0 0;
+      color: #3c4043;
+      font-size: 13.5px;
+      line-height: 1.45;
+    }
+
+    .reviews__dots{
+      display:flex;
+      gap: 6px;
+      justify-content:center;
+      padding-top: 2px;
+    }
+    .reviews__dot{
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #dadce0;
+    }
+    .reviews__dot.is-active{ background: #5f6368; }
+
+    @media (min-width: 767px){
+      .review-card{ flex: 0 0 46%; }
+      .reviews__track{ overflow: visible; flex-wrap: wrap; }
+      .reviews__dots{ display:none; }
+    }
+
+    /* ===== FORM (Google-like) ===== */
+    .form-box{
+      margin-top: 16px;
+      background: #fff;
+      border: 1px solid #dadce0;
+      border-radius: 18px;
+      box-shadow: 0 1px 2px rgba(60,64,67,.15);
+      overflow: hidden;
+    }
+    .form-head{
+      padding: 18px 16px 14px;
+      border-bottom: 1px solid #eef0f2;
+      background: #fff;
+    }
+    .form-head h3{
+      margin: 0 0 6px;
+      font-size: 18.5px;
+      letter-spacing: -0.2px;
+      color: #202124;
+      font-weight: 900;
+    }
+    .form-head p{
+      margin: 0;
+      color: #5f6368;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    form.contact-form{
+      padding: 14px 16px 16px;
+      display:grid;
+      gap: 12px;
+    }
+    .form-group{ display:grid; gap: 6px; }
+
+    label{
+      font-weight: 800;
+      font-size: 12px;
+      color: #202124;
+      letter-spacing: .1px;
+    }
+    input, select, textarea{
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid #dadce0;
+      background: #fff;
+      padding: 12px 14px;
+      font-size: 14px;
+      color: #202124;
+      outline: none;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    input::placeholder, textarea::placeholder{ color: #9aa0a6; }
+
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(30,107,255,.75);
+      box-shadow: 0 0 0 4px rgba(30,107,255,.14);
+    }
+
+    select{
+      appearance: none;
+      -webkit-appearance: none;
+      background-image:
+        linear-gradient(45deg, transparent 50%, #5f6368 50%),
+        linear-gradient(135deg, #5f6368 50%, transparent 50%);
+      background-position:
+        calc(100% - 18px) 52%,
+        calc(100% - 12px) 52%;
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 38px;
+    }
+
+    .submit-button{
+      margin-top: 2px;
+      width: 100%;
+      padding: 16px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,.06);
+      background: linear-gradient(180deg, #2fe670, #1fcb5c);
+      color: #fff;
+      font-weight: 1000;
+      font-size: 15px;
+      letter-spacing: .2px;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(31,203,92,.25);
+      transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .submit-button:hover{
+      filter: brightness(1.02);
+      box-shadow: 0 14px 28px rgba(31,203,92,.28);
+    }
+    .submit-button:active{
+      transform: translateY(1px);
+      box-shadow: 0 8px 18px rgba(31,203,92,.22);
+    }
+
+    /* ===== SERVICE CARDS — FUNDO É A IMAGEM (COVER) ===== */
+    .service-grid{
+      display:grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .service-card{
+      --card-bg: none;
+      border: 1px solid #dadce0;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(60,64,67,.15);
+      position: relative;
+
+      /* fundo real: foto cover + overlay p/ leitura */
+      background-image:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.92) 0%,
+          rgba(255,255,255,.90) 55%,
+          rgba(255,255,255,.70) 100%
+        ),
+        var(--card-bg);
+      background-size: 100% 100%, cover;
+      background-position: 0 0, center;
+      background-repeat: no-repeat, no-repeat;
+    }
+
+    /* mantém o HTML igual, mas esconde a miniatura (pra não duplicar) */
+    .service-media{ display:none; }
+
+    /* “painel” do conteúdo */
+    .service-body{
+      padding: 16px;
+      background: rgba(255,255,255,.70);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .service-body h3{
+      margin: 0 0 6px;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+      font-weight: 900;
+      color: #202124;
+    }
+    .service-body p{
+      margin: 0 0 12px;
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: #3c4043;
+    }
+
+    .mini-btn{
+      display:inline-flex;
+      width: 100%;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: #25D366;
+      color: #fff;
+      border: 1px solid rgba(0,0,0,.06);
+      font-weight: 950;
+      font-size: 14px;
+      letter-spacing: .2px;
+      cursor:pointer;
+      box-shadow: 0 10px 22px rgba(37,211,102,.20);
+      transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mini-btn:hover{
+      filter: brightness(1.02);
+      box-shadow: 0 14px 28px rgba(37,211,102,.24);
+    }
+    .mini-btn:active{
+      transform: translateY(1px);
+      box-shadow: 0 8px 18px rgba(37,211,102,.18);
+    }
+
+    @media (max-width: 420px){
+      .service-card{
+        background-image:
+          linear-gradient(
+            180deg,
+            rgba(255,255,255,.88) 0%,
+            rgba(255,255,255,.86) 55%,
+            rgba(255,255,255,.62) 100%
+          ),
+          var(--card-bg);
+      }
+    }
+
+    /* ===== Prova social / números ===== */
+    .proof{
+      margin-top: 18px;
+      padding: 18px 16px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: var(--radius2);
+      border: 1px solid rgba(11,18,32,.10);
+      box-shadow: 0 14px 30px rgba(2,6,23,.08);
+    }
+    .proof h3{
+      margin: 0 0 8px;
+      font-size: 22px;
+      letter-spacing: -.6px;
+      line-height: 1.05;
+    }
+    .proof p{
+      margin: 0;
+      color: rgba(11,18,32,.78);
+      line-height: 1.6;
+      font-size: 14.5px;
+    }
+
+    .stats{
+      margin-top: 14px;
+      background: #fff;
+      border: 1px solid rgba(11,18,32,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+    .stat-row{ display:grid; gap: 0; }
+    .stat{
+      padding: 16px;
+      border-top: 1px dashed rgba(11,18,32,.16);
+      display:grid;
+      gap: 6px;
+      text-align:center;
+    }
+    .stat:first-child{ border-top: none; }
+    .stat .tag{
+      display:inline-block;
+      margin: 0 auto;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(0, 153, 255, 0.555);
+      border: 1px solid rgba(11,18,32,.10);
+      font-weight: 950;
+      font-size: 12.5px;
+    }
+    .stat .big{
+      font-size: 28px;
+      font-weight: 1000;
+      letter-spacing: -1px;
+    }
+    .stat .small{
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    /* ===== FAQ ===== */
+    details{
+      background: #fff;
+      border: 1px solid rgba(11,18,32,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+      padding: 12px 14px;
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight: 950;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .ans{
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* ===== Consultor ===== */
+    .consultor{
+      margin-top: 18px;
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      padding: 14px 14px;
+      border-radius: var(--radius2);
+      background: #fff;
+      border: 1px solid rgba(11,18,32,.10);
+      box-shadow: var(--shadow2);
+    }
+    .avatar{
+      width: 62px; height: 62px;
+      border-radius: 18px;
+      overflow:hidden;
+      border: 1px solid rgba(11,18,32,.12);
+      flex: 0 0 auto;
+      background: rgba(11,18,32,.04);
+    }
+    .avatar img{
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .consultor .c-title{
+      font-weight: 1000;
+      letter-spacing: -.4px;
+      margin: 0;
+      font-size: 15px;
+    }
+    .consultor .c-sub{
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 13.3px;
+      line-height: 1.45;
+    }
+
+    /* ===== Legal / Footer ===== */
+    .legal{
+      margin-top: 16px;
+      padding: 14px 14px;
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(11,18,32,.10);
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+    footer{
+      padding: 22px 0 110px;
+      color: rgba(11,18,32,.65);
+      font-size: 12.8px;
+      text-align:center;
+      font-weight: 500;
+    }
+
+    /* ===== Floating Whats + Sticky Bar ===== */
+    .whatsapp-float{
+      position: fixed;
+      right: 12px;
+      bottom: 75px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      box-shadow: var(--shadow2);
+      display:grid;
+      place-items:center;
+      z-index: 90;
+      transition: .18s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .whatsapp-float:hover{ transform: translateY(-2px); }
+    .whatsapp-float img{ width: 40px; height: 40px; }
+
+    .sticky{
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 95;
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(11,18,32,.10);
+      box-shadow: 0 -14px 35px rgba(2,6,23,.10);
+    }
+    .sticky .inner{
+      width: min(var(--max), 92%);
+      margin: 0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .sticky .txt{ min-width:0; }
+    .sticky .txt .t{
+      font-weight: 1000;
+      font-size: 13.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .sticky .txt .d{
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 2px;
+    }
+    .sticky .go{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: var(--whats);
+      color:#fff;
+      border:none;
+      font-weight: 1000;
+      cursor:pointer;
+      flex: 0 0 auto;
+      box-shadow: 0 18px 35px rgba(37,211,102,.18);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .sticky .go img{ width: 20px; height: 20px; }
+
+    @media (min-width: 767px){
+      .menu{ display:none !important; }
+      .whatsapp-float{ bottom: 16px; }
+      .sticky{ display:none; }
+      footer{ padding-bottom: 36px; }
+      .brand .name{
+        font-size: 30px;
+        text-align: center;
+      }
+      .brand img{
+        width: 70px; height: 70px; object-fit: contain;
+      }
+    }
+
+    /* ===============================
+   CARDS — FUNDO REAL COM IMAGEM
+   (cole no FINAL do <style>)
+   =============================== */
+
+.service-card.bgimg{
+  position: relative;
+  overflow: hidden;
+
+  /* a imagem vem da variável --bg */
+  background-image: var(--bg) !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: var(--pos, center 35%) !important;
+
+  border-radius: 16px;
+}
+
+/* overlay pra leitura (sem matar a imagem) */
+.service-card.bgimg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.92) 0%,
+    rgba(255,255,255,.86) 55%,
+    rgba(255,255,255,.80) 100%
+  );
+  z-index: 0;
+}
+
+/* garante que texto/botão ficam por cima */
+.service-card.bgimg > *{
+  position: relative;
+  z-index: 1;
+}
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <img src="/static/images/logo.png" alt="CNH em Dia Soluções - Logo">
+          <div class="name">CNH em <b>Dia Soluções</b></div>
+        </div>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">
+          <span></span>
+        </button>
+      </div>
+
+      <div class="menu" id="menu">
+        <a href="#contato">Falar com especialista</a>
+        <a href="#ajuda">Como podemos ajudar?</a>
+        <a href="#perguntas">Perguntas frequentes</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="pill">Atendimento imediato no WhatsApp</div>
+
+        <h1>
+          <span class="soft">Recusa ao</span><br>
+          Bafômetro
+        </h1>
+
+        <p>
+          A Recusa ao teste do bafômetro <strong>há como recorrer e se defender.</strong> Eu te digo o próximo passo agora no WhatsApp.<br>
+          <strong>Clique em qualquer botão para o WhatsApp e mande uma mensagem.</strong>
+        </p>
+
+        <div class="cta-area" id="contato">
+          <a class="cta-btn"
+             href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20Google.%20Preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20Lei%20Seca%2Fbaf%C3%B4metro.%20Pode%20me%20ajudar%3F"
+             target="_self"
+             rel="noopener noreferrer"
+             onclick="return gtag_report_conversion(this.href, this.target);">
+            <span style="text-align: center;">CLIQUE AQUI E ENVIE UM WHATSAPP</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="40" height="40">
+          </a>
+
+          <div class="cta-sub" style="color: black;">
+            CNH em Dia Soluções • (11) 99418-7695 • CNPJ: 63.687.598/0001-59 • Atendemos em todo o Brasil
+          </div>
+        </div>
+
+        <div class="down" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M7 10l5 5 5-5" stroke="rgba(255,255,255,.92)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="avaliacoes">
+      <div class="wrap">
+        <div class="box">
+          <div class="reviews__head">
+            <div>
+              <h2 class="reviews__title">Avaliações do Google ⭐</h2>
+              <p class="reviews__sub">Prova social real. Atendimento humano, explicação clara e foco em solução.</p>
+            </div>
+
+            <a class="reviews__link"
+               href="https://www.google.com/search?q=CNH+em+Dia+Solu%C3%A7%C3%B5es&sca_esv=0d3d387ace6599df&sxsrf=ANbL-n5WG8sMJdkckkWQVbD5wTrBwVnNmw%3A1770409250205&ei=Ik2GaaCcDLmq5OUPstL1sAQ&biw=1366&bih=599&ved=0ahUKEwigtdyz2MWSAxU5FbkGHTJpHUYQ4dUDCBE&uact=5&oq=CNH+em+Dia+Solu%C3%A7%C3%B5es&gs_lp=Egxnd3Mtd2l6LXNlcnAiFUNOSCBlbSBEaWEgU29sdcOnw7VlczIEECMYJzIEECMYJzICECYyCBAAGKIEGIkFMgUQABjvBTIFEAAY7wUyBRAAGO8FSLYGUPoEWPoEcAF4AJABAJgBnQGgAZ0BqgEDMC4xuAEDyAEA-AEBmAICoALGAcICCxAAGIAEGLADGKIEwgILEAAYsAMYogQYiQXCAggQABiwAxjvBZgDAIgGAZAGBZIHAzEuMaAHlgayBwMwLjG4B7YBwgcFMy0xLjHIByOACAA&sclient=gws-wiz-serp#mpd=~6989361025370410071/customers/reviews&lrd=0x94cef5093196a373:0xce31e6a313a2439b,1,,,,"
+               target="_blank"
+               rel="noopener">
+              Ver no Google ↗
+            </a>
+          </div>
+
+          <div class="reviews__track" id="reviewsTrack" aria-label="Carrossel de avaliações"></div>
+          <div class="reviews__dots" id="reviewsDots" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ajuda">
+      <div class="wrap">
+        <!-- FORM SUBMIT (não alterar) -->
+        <div class="form-box" aria-label="Formulário de contato" id="enviodecontato">
+          <div class="form-head">
+            <h3>Receba uma orientação agora mesmo</h3>
+            <p>É rápido. Preencha e você já vai direto pro WhatsApp com a mensagem pronta.</p>
+          </div>
+
+          <form id="contactForm" action="https://formsubmit.co/cnhemdiasolucoes@gmail.com" method="POST" class="contact-form" autocomplete="off" spellcheck="false">
+            <div class="form-group">
+              <label for="nome">Nome *</label>
+              <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-mail *</label>
+              <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+            </div>
+
+            <div class="form-group">
+              <label for="telefone">Telefone (WhatsApp) *</label>
+              <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999" maxlength="12">
+            </div>
+
+            <div class="form-group">
+              <label for="assunto">Assunto *</label>
+              <select id="assunto" name="assunto" required>
+                <option value="Lei Seca">Lei Seca (bafômetro positivo)</option>
+                <option value="Recusa ao Bafômetro">Recusa ao Bafômetro</option>
+                <option value="Notificação / Processo">Notificação / Processo</option>
+                <option value="Suspensão">Suspensão Da CNH</option>
+                <option value="Cassação">Cassação da CNH</option>
+                <option value="Outro">Outro Assunto</option>
+              </select>
+            </div>
+
+            <input type="hidden" name="_subject" value="Nova solicitação - CNH em Dia Soluções">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+
+            <button type="submit" class="submit-button">ENVIAR E IR PRO WHATSAPP</button>
+          </form>
+        </div>
+
+        <h2 style="text-align: center; margin-top: 20px;">Conte com a nossa<br>expertise</h2>
+        <p style="text-align: center;">
+          A gente lida com isso todos os dias.
+          <strong>Como podemos te ajudar?</strong>
+        </p>
+
+        <!-- ✅ Cards com background real -->
+        <div class="service-grid" style="margin-top: 25px">
+
+          <div class="service-card bgimg" style="--bg: url('/static/images/bafometro-positivo.png'); --pos: center 35%;">
+            <div class="service-media">
+              <img src="/static/images/bafometro-positivo.png" alt="CNH" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3>Lei Seca (bafômetro positivo)</h3>
+              <p>
+                Te pararam na blitz e deu positivo? A primeira coisa é organizar <strong>datas</strong> e <strong>documentos</strong>.
+                A orientação certa evita erro bobo.
+              </p>
+
+              <a class="mini-btn"
+                 href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Quero%20falar%20com%20um%20especialista%20sobre%3A%20Lei%20Seca%20%28baf%C3%B4metro%20positivo%29."
+                 target="_self"
+                 rel="noopener noreferrer"
+                 onclick="return gtag_report_conversion(this.href, this.target);">Falar com especialista</a>
+            </div>
+          </div>
+
+         <div class="service-card bgimg" style="--bg: url('/static/images/recusabafometro.png'); --pos: center 35%;">
+            <div class="service-media">
+              <img src="/static/images/recusabafometro.png" alt="Recusa" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3>Recusa ao bafômetro</h3>
+              <p>
+                Recusou? Muita gente trava por medo. Aqui você entende o cenário e o que fazer
+                <strong>sem complicações</strong>.
+              </p>
+
+              <a class="mini-btn"
+                 href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Quero%20falar%20com%20um%20especialista%20sobre%3A%20Recusa%20ao%20baf%C3%B4metro."
+                 target="_self"
+                 rel="noopener noreferrer"
+                 onclick="return gtag_report_conversion(this.href, this.target);">Falar com especialista</a>
+            </div>
+          </div>
+
+          <div class="service-card bgimg" style="--bg: url('/static/images/notificacao.png'); --pos: center 50%;">
+            <div class="service-media">
+              <img src="/static/images/notificacao.png" alt="Notificação" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3>Notificação / processo</h3>
+              <p>
+                Chegou carta, mensagem ou notificação? O mais importante é:
+                <strong>qual é o prazo</strong>. A gente te guia.
+              </p>
+
+              <a class="mini-btn"
+                 href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Quero%20falar%20com%20um%20especialista%20sobre%3A%20Notifica%C3%A7%C3%A3o%20%2F%20processo."
+                 target="_self"
+                 rel="noopener noreferrer"
+                 onclick="return gtag_report_conversion(this.href, this.target);">Falar com especialista</a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="down" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M7 10l5 5 5-5" stroke="rgba(11,18,32,.85)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="proof">
+          <h3>Sem promessa falsa.<br>Com direção.</h3>
+          <p>
+            A verdade é simples: cada caso tem detalhes. O nosso trabalho é
+            <strong>te dizer com clareza</strong> o que faz sentido fazer e qual é o próximo passo.
+          </p>
+        </div>
+
+        <div class="stats" aria-label="Indicadores">
+          <div class="stat-row">
+            <div class="stat">
+              <div class="tag">Atendimento</div>
+              <div class="big">Humano</div>
+              <div class="small">Você fala com gente, não com robô. Explicação simples e direta.</div>
+            </div>
+            <div class="stat">
+              <div class="tag">Sigilo</div>
+              <div class="big">Total</div>
+              <div class="small">Seu caso é tratado com discrição e foco em solução.</div>
+            </div>
+            <div class="stat">
+              <div class="tag">Resposta</div>
+              <div class="big">Rápida</div>
+              <div class="small">A ideia é tirar sua dúvida e te orientar sem enrolação.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="perguntas">
+      <div class="wrap">
+        <h2>Perguntas frequentes</h2>
+        <p>Objetivo. Claro. Do jeito que dá pra entender.</p>
+
+        <details>
+          <summary>Recusar o bafômetro “dá na mesma” que estar bêbado?</summary>
+          <div class="ans">
+            A situação é diferente, mas pode gerar penalidades administrativas relevantes.
+            O que muda tudo são os <strong>detalhes do caso</strong> e o que consta no auto/notificação, se há sinais de embriaguez e etc...
+          </div>
+        </details>
+
+        <details>
+          <summary>Já chegou notificação. Ainda dá tempo?</summary>
+          <div class="ans">
+            Muitas vezes, sim. Mas o inimigo é o relógio. Quanto antes você falar com a gente,
+            mais fácil é organizar o que está em jogo e o que fazer.
+          </div>
+        </details>
+
+        <details>
+          <summary>Vocês garantem que “ganham”?</summary>
+          <div class="ans">
+            Não vendemos fantasia. Vendemos orientação e execução dentro do que é cabível.
+            A gente te mostra o cenário com clareza, e você decide com segurança.
+          </div>
+        </details>
+
+        <details>
+          <summary>O atendimento é sigiloso?</summary>
+          <div class="ans">
+            Sim. Seu caso é tratado com confidencialidade e foco total em solução.
+          </div>
+        </details>
+
+        <div class="consultor" aria-label="Consultor responsável">
+          <div class="avatar">
+            <img src="/static/images/fotopessoal.jpg" alt="Consultor Igor - CNH em Dia Soluções" loading="lazy">
+          </div>
+          <div>
+            <p class="c-title">Consultor Igor • CNH em Dia Soluções</p>
+            <p class="c-sub">Se preferir, me chama no WhatsApp ou me ligue e me diga: Qual o seu nome e qual o seu problema.</p>
+          </div>
+        </div>
+
+        <div class="legal">
+          <strong>⚠️ Aviso Legal:</strong> A CNH em Dia Soluções atua como consultoria administrativa e suporte técnico,
+          com parceria com advogados regularmente inscritos na OAB, responsáveis pela condução e representação judicial
+          dos clientes quando necessário. Todos os serviços seguem as normas e regulamentações aplicáveis.
+        </div>
+
+        <footer>
+          <div class="wrap">
+            <div>CNH em Dia Soluções • CNPJ: 63.687.598/0001-59 • Guarulhos/SP</div>
+            <div>WhatsApp: (11) 99418-7695 • E-mail: cnhemdiasolucoes@gmail.com</div>
+            <div style="margin-top:10px;">&copy; 2026 CNH em Dia Soluções. Todos os direitos reservados.</div>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <a class="whatsapp-float"
+     id="waFloat"
+     href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20Google.%20Preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20Lei%20Seca%2Fbaf%C3%B4metro.%20Pode%20me%20ajudar%3F"
+     target="_self"
+     rel="noopener noreferrer"
+     aria-label="Falar no WhatsApp"
+     onclick="return gtag_report_conversion(this.href, this.target);">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <div class="sticky" role="region" aria-label="Contato rápido no WhatsApp">
+    <div class="inner">
+      <div class="txt">
+        <div class="t">Precisa de ajuda agora?</div>
+        <div class="d">Clique e fale no WhatsApp (mensagem pronta)</div>
+      </div>
+
+      <a class="go"
+         id="stickyGo"
+         href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20Google.%20Preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20Lei%20Seca%2Fbaf%C3%B4metro.%20Pode%20me%20ajudar%3F"
+         target="_self"
+         rel="noopener noreferrer"
+         onclick="return gtag_report_conversion(this.href, this.target);">
+        <span>WhatsApp</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Menu toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const menu = document.getElementById("menu");
+    if(menuBtn && menu){
+      menuBtn.addEventListener("click", () => {
+        const open = menu.classList.toggle("is-open");
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    }
+
+    const WHATS_NUMBER = "5511994187695";
+
+    function isIOS(){
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    function safeTrackConversion(){
+      try{
+        if (typeof gtag === "function") {
+          gtag("event", "conversion", {
+            send_to: "AW-17709604708/3A1hCK-KneYbEOS-zPxB",
+            transport_type: "beacon",
+            event_timeout: 1200
+          });
+        }
+      }catch(e){}
+    }
+
+    function openWhats(text){
+      const msg = encodeURIComponent(text);
+      const urlIOS = `https://api.whatsapp.com/send/?phone=${WHATS_NUMBER}&text=${msg}`;
+      const urlDefault = `https://wa.me/${WHATS_NUMBER}?text=${msg}`;
+      const url = isIOS() ? urlIOS : urlDefault;
+
+      safeTrackConversion();
+
+      if (isIOS()) window.location.href = url;
+      else window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function buildMsgFromForm(){
+      const nome = document.getElementById("nome")?.value?.trim() || "";
+      const assunto = document.getElementById("assunto")?.value || "Lei Seca";
+      const telefone = document.getElementById("telefone")?.value?.trim() || "";
+      const email = document.getElementById("email")?.value?.trim() || "";
+
+      return `Olá! Me chamo ${nome}.
+Preenchi o formulário no site e quero resolver meu problema de: ${assunto}.
+Telefone/WhatsApp: ${telefone}
+E-mail: ${email}`;
+    }
+
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+      contactForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const mensagem = buildMsgFromForm();
+        const formData = new FormData(contactForm);
+
+        if (!formData.get("_subject")) formData.append("_subject", "Nova solicitação - CNH em Dia Soluções");
+        if (!formData.get("_captcha")) formData.append("_captcha", "false");
+        if (!formData.get("_template")) formData.append("_template", "table");
+
+        const endpoint = contactForm.getAttribute("action") || "https://formsubmit.co/cnhemdiasolucoes@gmail.com";
+
+        try {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            body: formData,
+            headers: { "Accept": "application/json" }
+          });
+
+          if (response.ok) {
+            contactForm.reset();
+            openWhats(mensagem);
+            return;
+          }
+
+          alert("⚠️ Não consegui confirmar o envio do formulário aqui. Me chama no WhatsApp que eu resolvo agora.");
+          openWhats(mensagem);
+
+        } catch (err) {
+          alert("⚠️ Seu navegador bloqueou o envio do formulário. Me chama no WhatsApp que eu resolvo agora.");
+          openWhats(mensagem);
+        }
+      }, { passive: false });
+    }
+
+    /* ===== Reviews ===== */
+    const GOOGLE_REVIEWS = [
+      {
+        name: "Emerson Paulo",
+        stars: 5,
+        date: "2 meses atrás",
+        text: "Igor muito obrigada pela sua competência e pela ajuda no serviço da minha CNH Seu atendimento foi impecável , além de ter entregado tudo no prazo ! Profissional como você faz toda a diferença. Gratidão!"
+      },
+      {
+        name: "Natália Santos",
+        stars: 5,
+        date: "2 meses atrás",
+        text: "Tive uma experiência excelente com a CNH em Dia Soluções. A equipe foi atenciosa, prestativa e esclareceu todas as minhas dúvidas. O serviço foi eficiente e passou muita confiança. Estou muito satisfeita e recomendo para Todos!"
+      },
+      {
+        name: "Viviane Dela coleta",
+        stars: 5,
+        date: "3 semanas atrás",
+        text: "Excelente consultoria em CNH, atendimento profissional, rápido e muito esclarecedor. Recomendo!"
+      },
+      {
+        name: "Grazy Maria",
+        stars: 5,
+        date: "3 semanas atrás",
+        text: "Super profissional!! Sucesso!!"
+      }
+    ];
+
+    function getInitial(name){
+      const s = (name || "").trim();
+      if (!s) return "•";
+      return s[0].toUpperCase();
+    }
+
+    function renderStars(n){
+      n = Math.max(0, Math.min(5, n));
+      let html = "";
+      for (let i = 0; i < 5; i++){
+        html += `<span class="star ${i < n ? "is-full" : "is-empty"}">★</span>`;
+      }
+      return html;
+    }
+
+    (function initReviews(){
+      const track = document.getElementById("reviewsTrack");
+      const dots = document.getElementById("reviewsDots");
+      if (!track || !dots) return;
+
+      track.innerHTML = GOOGLE_REVIEWS.map((r) => `
+        <article class="review-card">
+          <div class="review-top">
+            <div class="review-left">
+              <div class="review-avatar" aria-hidden="true">${getInitial(r.name)}</div>
+              <div class="review-id">
+                <p class="review-name">${r.name}</p>
+                <div class="review-meta">${r.date || ""}</div>
+              </div>
+            </div>
+
+            <div class="review-stars" aria-label="${r.stars} de 5 estrelas">
+              ${renderStars(r.stars)}
+            </div>
+          </div>
+
+          <p class="review-text">${r.text}</p>
+        </article>
+      `).join("");
+
+      dots.innerHTML = GOOGLE_REVIEWS.map((_, i) => `
+        <span class="reviews__dot ${i === 0 ? "is-active" : ""}"></span>
+      `).join("");
+
+      function setActiveDot(){
+        const cards = Array.from(track.children);
+        const trackRect = track.getBoundingClientRect();
+        let best = 0;
+        let bestDist = Infinity;
+
+        cards.forEach((card, i) => {
+          const r = card.getBoundingClientRect();
+          const dist = Math.abs(r.left - trackRect.left);
+          if (dist < bestDist) { bestDist = dist; best = i; }
+        });
+
+        Array.from(dots.children).forEach((d, i) => d.classList.toggle("is-active", i === best));
+      }
+
+      track.addEventListener("scroll", () => window.requestAnimationFrame(setActiveDot), { passive: true });
+    })();
+  </script>
+</body>
+</html>
