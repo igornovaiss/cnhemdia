@@ -12,28 +12,29 @@
 
   <!-- Conversão WhatsApp (abre link e registra conversão) -->
   <script>
-    function gtag_report_conversion(url, target) {
-      var go = function () {
-        if (typeof url !== 'undefined') {
-          if (target === '_blank') window.open(url, '_blank', "noopener,noreferrer");
-          else window.location = url;
-        }
-      };
+  function gtag_report_conversion(url, target, label) {
+    const go = function () {
+      if (!url) return;
+      if (target === '_blank') window.open(url, '_blank', "noopener,noreferrer");
+      else window.location.href = url;
+    };
 
-      try {
-        if (typeof gtag === 'function') {
-          gtag('event', 'conversion', {
-            'send_to': 'AW-17709604708/3A1hCK-KneYbEOS-zPxB',
-            'event_callback': go
-          });
-          return false;
-        }
-      } catch (e) {}
-
-      go();
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17709604708/3A1hCK-KneYbEOS-zPxB',
+        'event_callback': go,
+        'transport_type': 'beacon',
+        'event_timeout': 1200,
+        'event_label': label || ''
+      });
       return false;
     }
-  </script>
+
+    go();
+    return false;
+  }
+</script>
+
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -556,9 +557,6 @@
       background-repeat: no-repeat, no-repeat;
     }
 
-    /* mantém o HTML igual, mas esconde a miniatura (pra não duplicar) */
-    
-
     /* “painel” do conteúdo */
     .service-body{
       padding: 16px;
@@ -938,9 +936,9 @@
           <div class="cta-area" id="contato">
           <a class="cta-btn"
              href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20Google.%20Preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20Lei%20Seca%2Fbaf%C3%B4metro.%20Pode%20me%20ajudar%3F"
-             target="_self"
+             target="_blank"
              rel="noopener noreferrer"
-             onclick="return gtag_report_conversion(this.href, this.target);">
+             onclick="return gtag_report_conversion(this.href, this.target, 'hero');">
             <span style="text-align: center;">CLIQUE AQUI E ENVIE UM WHATSAPP</span>
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="40" height="40">
           </a>
@@ -976,9 +974,9 @@
 
               <a class="mini-btn"
                  href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Quero%20falar%20com%20um%20especialista%20sobre%3A%20Lei%20Seca%20%28baf%C3%B4metro%20positivo%29."
-                 target="_self"
+                 target="_blank"
                  rel="noopener noreferrer"
-                 onclick="return gtag_report_conversion(this.href, this.target);">Falar com especialista</a>
+                 onclick="return gtag_report_conversion(this.href, this.target, 'card_bafometro_positivo');">Falar com especialista</a>
             </div>
           </div>
 
@@ -995,9 +993,9 @@
 
               <a class="mini-btn"
                  href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Quero%20falar%20com%20um%20especialista%20sobre%3A%20Recusa%20ao%20baf%C3%B4metro."
-                 target="_self"
+                 target="_blank"
                  rel="noopener noreferrer"
-                 onclick="return gtag_report_conversion(this.href, this.target);">Falar com especialista</a>
+                 onclick="return gtag_report_conversion(this.href, this.target, 'card_recusa');">Falar com especialista</a>
             </div>
           </div>
 
@@ -1014,9 +1012,9 @@
 
               <a class="mini-btn"
                  href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Quero%20falar%20com%20um%20especialista%20sobre%3A%20Notifica%C3%A7%C3%A3o%20%2F%20processo."
-                 target="_self"
+                 target="_blank"
                  rel="noopener noreferrer"
-                 onclick="return gtag_report_conversion(this.href, this.target);">Falar com especialista</a>
+                 onclick="return gtag_report_conversion(this.href, this.target, 'card_notificacao');">Falar com especialista</a>
             </div>
           </div>
 
@@ -1182,10 +1180,10 @@
   <a class="whatsapp-float"
      id="waFloat"
      href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20Google.%20Preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20Lei%20Seca%2Fbaf%C3%B4metro.%20Pode%20me%20ajudar%3F"
-     target="_self"
+     target="_blank"
      rel="noopener noreferrer"
      aria-label="Falar no WhatsApp"
-     onclick="return gtag_report_conversion(this.href, this.target);">
+     onclick="return gtag_report_conversion(this.href, this.target, 'float');">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
 
@@ -1199,14 +1197,47 @@
       <a class="go"
          id="stickyGo"
          href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20Google.%20Preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20Lei%20Seca%2Fbaf%C3%B4metro.%20Pode%20me%20ajudar%3F"
-         target="_self"
+         target="_blank"
          rel="noopener noreferrer"
-         onclick="return gtag_report_conversion(this.href, this.target);">
+         onclick="return gtag_report_conversion(this.href, this.target, 'sticky');">
         <span>WhatsApp</span>
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
       </a>
     </div>
   </div>
+
+
+<script>
+(function attachUtmToWhatsApp(){
+  const p = new URLSearchParams(location.search);
+  const term = p.get('utm_term') || '';
+  const camp = p.get('utm_campaign') || '';
+  const cont = p.get('utm_content') || '';
+  const device = p.get('utm_device') || '';
+  const match = p.get('utm_matchtype') || '';
+  const net = p.get('utm_network') || '';
+
+  if (!term && !camp && !cont && !device && !match && !net) return;
+
+  const extra = `\n\nOrigem: Google Ads\nTermo: ${term}\nCampanha: ${camp}\nConteúdo: ${cont}\nDevice: ${device}\nMatch: ${match}\nRede: ${net}`;
+
+  const links = document.querySelectorAll(
+    'a[href*="wa.me"], a[href*="api.whatsapp.com/send"], a[href*="web.whatsapp.com/send"]'
+  );
+
+  links.forEach(a => {
+    try{
+      const u = new URL(a.href);
+      const t = u.searchParams.get('text') || '';
+      let base = t;
+      try { base = decodeURIComponent(t); } catch(e) {}
+      u.searchParams.set('text', (base + extra));
+      a.href = u.toString();
+    }catch(e){}
+  });
+})();
+</script>
+
 
   <script>
     // Menu toggle
