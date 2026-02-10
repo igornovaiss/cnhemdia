@@ -10,36 +10,10 @@
     gtag('config', 'AW-17709604708');
   </script>
 
-  <!-- Conversão WhatsApp (abre link e registra conversão) -->
-  <script>
-  function gtag_report_conversion(url, target, label) {
-    const go = function () {
-      if (!url) return;
-      if (target === '_blank') window.open(url, '_blank', "noopener,noreferrer");
-      else window.location.href = url;
-    };
-
-    if (typeof gtag === 'function') {
-      gtag('event', 'conversion', {
-        'send_to': 'AW-17709604708/3A1hCK-KneYbEOS-zPxB',
-        'event_callback': go,
-        'transport_type': 'beacon',
-        'event_timeout': 1200,
-        'event_label': label || ''
-      });
-      return false;
-    }
-
-    go();
-    return false;
-  }
-</script>
-
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Recusou ao Bafômetro? Nós Temos a solução| CNH em Dia Soluções</title>
-  <meta name="description" content="Recusou o bafômetro e tomou a multa, entenda o que fazer agora. Fale com a CNH em Dia Soluções e receba a solução certa, sem complicação." />
+  <title>Recusa Ao Bafômetro: Recurso e Defesa | CNH em Dia Soluções</title>
+  <meta name="description" content="Recebeu multa de recusa ao teste do bafômetro? está com medo de perder a CNH, nós temos a estratégia certa para o seu problema. Envie seus dados e fale no WhatsApp." />
 
   <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
   <link rel="shortcut icon" href="/favicon.png">
@@ -65,7 +39,7 @@
 
       --whats:#25D366;
 
-      --max: 1020px;
+      --max: 1040px;
     }
 
     *{ box-sizing:border-box; }
@@ -74,13 +48,14 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--ink);
       background:
-        radial-gradient(1100px 520px at 50% -120px, rgba(38, 204, 255, 0.767), transparent 60%),
+        radial-gradient(1100px 520px at 50% -120px, rgba(38, 204, 255, 0.70), transparent 60%),
         linear-gradient(180deg, var(--bg), #f3fdff 40%, var(--bg2));
       overflow-x: hidden;
     }
 
     a{ color: inherit; text-decoration: none; }
     img{ max-width: 100%; display:block; }
+    button{ font-family: inherit; }
 
     .wrap{
       width: min(var(--max), 92%);
@@ -90,7 +65,7 @@
     /* ===== Top bar ===== */
     header{
       position: sticky; top:0; z-index: 80;
-      background: rgba(255,255,255,.80);
+      background: rgba(255,255,255,.82);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
     }
@@ -107,14 +82,14 @@
       width: 50px; height: 50px; object-fit: contain;
     }
     .brand .name{
-      font-weight: 650;
+      font-weight: 800;
       letter-spacing: -.4px;
       font-size: 18px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .brand .name b{ color: var(--brand); font-weight: 650; }
+    .brand .name b{ color: var(--brand); font-weight: 900; }
 
     .menu-btn{
       width: 42px; height: 42px;
@@ -148,23 +123,24 @@
       display:block;
       padding: 10px 12px;
       border-radius: 14px;
-      font-weight: 800;
+      font-weight: 900;
       color: rgba(11,18,32,.86);
       background: rgba(11,18,32,.02);
       border: 1px solid rgba(11,18,32,.06);
       margin-top: 8px;
     }
 
-    /* ===== HERO COM IMAGEM DE FUNDO ===== */
+    /* ===== HERO ===== */
     .hero{
       position: relative;
-      padding: 26px 0 14px;
+      padding: 28px 0 18px;
       overflow: hidden;
     }
     .hero::before{
       content:"";
       position:absolute;
       inset:0;
+      /* troque quando quiser */
       background-image: url("/static/images/fototopoinicio1.png");
       background-size: cover;
       background-position: center;
@@ -179,8 +155,8 @@
       inset:0;
       background: linear-gradient(
         180deg,
-        rgba(11,18,32,.72) 0%,
-        rgba(11,18,32,.38) 45%,
+        rgba(11,18,32,.74) 0%,
+        rgba(11,18,32,.42) 45%,
         rgba(0, 0, 0, 0.92) 100%
       );
       z-index: 1;
@@ -193,7 +169,7 @@
       gap: 10px;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,.90);
+      background: rgba(255,255,255,.92);
       border: 1px solid rgba(255,255,255,.45);
       font-weight: 900;
       font-size: 12.5px;
@@ -208,14 +184,14 @@
       color: #fff;
       text-shadow: 0 10px 30px rgba(0,0,0,.28);
     }
-    .hero h1 .soft{ font-weight: 400; }
+    .hero h1 .soft{ font-weight: 450; opacity: .96; }
     .hero p{
       margin: 0;
       font-size: 16.5px;
       line-height: 1.65;
       color: #fff;
       text-shadow: 0 8px 24px rgba(0,0,0,.18);
-      max-width: 55ch;
+      max-width: 60ch;
     }
     .hero strong{ color: rgba(255,255,255,.98); }
 
@@ -235,7 +211,7 @@
       background: #4fce5ed8;
       color: #ffffff;
       border: 2px solid white;
-      font-weight: 950;
+      font-weight: 1000;
       font-size: 15.5px;
       letter-spacing: .2px;
       box-shadow: 0 18px 35px rgba(37,211,102,.20);
@@ -255,6 +231,7 @@
       display:grid;
       place-items:center;
       margin: 16px 0 4px;
+      opacity: .95;
     }
     .down svg{ width: 34px; height: 34px; }
 
@@ -262,7 +239,7 @@
       .hero::before{ background-position: 50% 25%; }
     }
 
-    /* ===== SECTION ===== */
+    /* ===== Section ===== */
     .section{
       padding: 18px 0 10px;
     }
@@ -277,308 +254,68 @@
       color: var(--muted);
       line-height: 1.65;
       font-size: 15.8px;
-      max-width: 65ch;
+      max-width: 70ch;
     }
 
-    /* ===== REVIEWS (Google-like) ===== */
-    .reviews{
-      padding: 12px 0 8px;
+    /* ===== Feature cards ===== */
+    .grid{
+      display:grid;
+      gap: 12px;
+      margin-top: 14px;
     }
-    .reviews .box{
+    .card{
       background: #fff;
-      border: 1px solid #dadce0;
-      border-radius: 16px;
-      box-shadow: 0 1px 2px rgba(60,64,67,.15);
+      border: 1px solid rgba(11,18,32,.10);
+      border-radius: 18px;
+      box-shadow: var(--shadow2);
       padding: 14px;
     }
 
-    .reviews__head{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 12px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
+    /* =========================================================
+       ✅ ALTERAÇÃO ÚNICA: IMAGEM NO TOPO DO CARD (1300x1000)
+       ========================================================= */
+    .card-media{
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(11,18,32,.10);
+      background: rgba(11,18,32,.03);
+      aspect-ratio: 13 / 10;     /* 1300 x 1000 */
+      width: 100%;
+      margin-bottom: 12px;
     }
+    .card-media img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;         /* mantém bonito sem distorcer */
+      object-position: center;
+      display: block;
+    }
+    /* ========================================================= */
 
-    .reviews__title{
-      margin:0;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -0.2px;
-      line-height: 1.2;
+    .card .t{
+      display:flex; align-items:center; gap: 10px;
+      font-weight: 1000;
+      letter-spacing: -.2px;
       color: #202124;
+      margin: 0 0 8px;
     }
-
-    .reviews__sub{
-      margin: 6px 0 0;
-      color: #5f6368;
-      font-size: 13px;
-      line-height: 1.45;
-      max-width: 52ch;
-    }
-
-    .reviews__link{
-      flex: 0 0 auto;
+    .badge{
       display:inline-flex;
       align-items:center;
-      gap: 8px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid #dadce0;
-      background: #fff;
-      font-weight: 700;
-      font-size: 12.5px;
-      color: #1a73e8;
-    }
-    .reviews__link:hover{ background: rgba(26,115,232,.06); }
-
-    .reviews__track{
-      display:flex;
-      gap: 12px;
-      overflow:auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding: 8px 2px 10px;
-    }
-    .reviews__track::-webkit-scrollbar{ display:none; }
-
-    .review-card{
-      flex: 0 0 88%;
-      scroll-snap-align: start;
-      background: #fff;
-      border: 1px solid #dadce0;
-      border-radius: 14px;
-      box-shadow: 0 1px 2px rgba(60,64,67,.15);
-      padding: 12px;
-    }
-    .review-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 10px;
-    }
-    .review-left{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      min-width: 0;
-    }
-    .review-avatar{
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      display:grid;
-      place-items:center;
-      font-weight: 800;
-      font-size: 14px;
-      color: #1a73e8;
-      background: #e8f0fe;
-      border: 1px solid #dadce0;
-      flex: 0 0 auto;
-    }
-    .review-name{
-      margin:0;
-      font-weight: 700;
-      font-size: 13.5px;
-      color: #202124;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .review-meta{
-      margin-top: 2px;
-      color: #5f6368;
-      font-size: 12px;
-    }
-    .review-stars{
-      display:flex;
-      gap: 2px;
-      align-items:center;
-      padding-top: 2px;
-      white-space: nowrap;
-    }
-    .review-stars .star{
-      font-size: 14px;
-      line-height: 1;
-    }
-    .review-stars .star.is-full{ color: #fbbc04; }
-    .review-stars .star.is-empty{ color: #dadce0; }
-    .review-text{
-      margin: 10px 0 0;
-      color: #3c4043;
-      font-size: 13.5px;
-      line-height: 1.45;
-    }
-
-    .reviews__dots{
-      display:flex;
-      gap: 6px;
       justify-content:center;
-      padding-top: 2px;
-    }
-    .reviews__dot{
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #dadce0;
-    }
-    .reviews__dot.is-active{ background: #5f6368; }
-
-    @media (min-width: 767px){
-      .review-card{ flex: 0 0 46%; }
-      .reviews__track{ overflow: visible; flex-wrap: wrap; }
-      .reviews__dots{ display:none; }
-    }
-
-    /* ===== FORM (Google-like) ===== */
-    .form-box{
-      margin-top: 16px;
-      background: #fff;
-      border: 1px solid #dadce0;
-      border-radius: 18px;
-      box-shadow: 0 1px 2px rgba(60,64,67,.15);
-      overflow: hidden;
-    }
-    .form-head{
-      padding: 18px 16px 14px;
-      border-bottom: 1px solid #eef0f2;
-      background: #fff;
-    }
-    .form-head h3{
-      margin: 0 0 6px;
-      font-size: 18.5px;
-      letter-spacing: -0.2px;
-      color: #202124;
-      font-weight: 900;
-    }
-    .form-head p{
-      margin: 0;
-      color: #5f6368;
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    form.contact-form{
-      padding: 14px 16px 16px;
-      display:grid;
-      gap: 12px;
-    }
-    .form-group{ display:grid; gap: 6px; }
-
-    label{
-      font-weight: 800;
-      font-size: 12px;
-      color: #202124;
-      letter-spacing: .1px;
-    }
-    input, select, textarea{
-      width: 100%;
-      border-radius: 14px;
-      border: 1px solid #dadce0;
-      background: #fff;
-      padding: 12px 14px;
-      font-size: 14px;
-      color: #202124;
-      outline: none;
-      transition: border-color .15s ease, box-shadow .15s ease;
-    }
-    input::placeholder, textarea::placeholder{ color: #9aa0a6; }
-
-    input:focus, select:focus, textarea:focus{
-      border-color: rgba(30,107,255,.75);
-      box-shadow: 0 0 0 4px rgba(30,107,255,.14);
-    }
-
-    select{
-      appearance: none;
-      -webkit-appearance: none;
-      background-image:
-        linear-gradient(45deg, transparent 50%, #5f6368 50%),
-        linear-gradient(135deg, #5f6368 50%, transparent 50%);
-      background-position:
-        calc(100% - 18px) 52%,
-        calc(100% - 12px) 52%;
-      background-size: 6px 6px, 6px 6px;
-      background-repeat: no-repeat;
-      padding-right: 38px;
-    }
-
-    .submit-button{
-      margin-top: 2px;
-      width: 100%;
-      padding: 16px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,.06);
-      background: linear-gradient(180deg, #2fe670, #1fcb5c);
-      color: #fff;
+      width: 34px; height: 34px;
+      border-radius: 12px;
+      background: rgba(30,107,255,.12);
+      border: 1px solid rgba(30,107,255,.22);
+      color: var(--brand2);
       font-weight: 1000;
-      font-size: 15px;
-      letter-spacing: .2px;
-      cursor: pointer;
-      box-shadow: 0 10px 22px rgba(31,203,92,.25);
-      transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
-      -webkit-tap-highlight-color: transparent;
     }
-    .submit-button:hover{
-      filter: brightness(1.02);
-      box-shadow: 0 14px 28px rgba(31,203,92,.28);
-    }
-    .submit-button:active{
-      transform: translateY(1px);
-      box-shadow: 0 8px 18px rgba(31,203,92,.22);
-    }
-
-    /* ===== SERVICE CARDS — FUNDO É A IMAGEM (COVER) ===== */
-    .service-grid{
-      display:grid;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .service-card{
-      --card-bg: none;
-      border: 1px solid #dadce0;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 1px 2px rgba(60,64,67,.15);
-      position: relative;
-      /* fundo real: foto cover + overlay p/ leitura */
-      background-image:
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,.92) 0%,
-          rgba(255,255,255,.90) 55%,
-          rgba(255,255,255,.70) 100%
-        ),
-        var(--card-bg);
-      background-size: 100% 100%, cover;
-      background-position: 0 0, center;
-      background-repeat: no-repeat, no-repeat;
-    }
-
-    /* “painel” do conteúdo */
-    .service-body{
-      padding: 16px;
-      background: rgba(255,255,255,.70);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .service-body h3{
-      margin: 0 0 6px;
-      font-size: 16px;
-      letter-spacing: -0.2px;
-      font-weight: 900;
-      color: #202124;
-    }
-    .service-body p{
+    .card p{
       margin: 0 0 12px;
-      font-size: 13.5px;
-      line-height: 1.45;
       color: #3c4043;
+      font-size: 14.2px;
+      line-height: 1.55;
     }
-
     .mini-btn{
       display:inline-flex;
       width: 100%;
@@ -589,7 +326,7 @@
       background: #25D366;
       color: #fff;
       border: 1px solid rgba(0,0,0,.06);
-      font-weight: 950;
+      font-weight: 1000;
       font-size: 14px;
       letter-spacing: .2px;
       cursor:pointer;
@@ -606,41 +343,47 @@
       box-shadow: 0 8px 18px rgba(37,211,102,.18);
     }
 
-    @media (max-width: 420px){
-      .service-card{
-        background-image:
-          linear-gradient(
-            180deg,
-            rgba(255,255,255,.88) 0%,
-            rgba(255,255,255,.86) 55%,
-            rgba(255,255,255,.62) 100%
-          ),
-          var(--card-bg);
-      }
+    /* ===== Como funciona ===== */
+    .steps{
+      margin-top: 14px;
+      display:grid;
+      gap: 12px;
     }
-
-    /* ===== Prova social / números ===== */
-    .proof{
-      margin-top: 18px;
-      padding: 18px 16px;
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: var(--radius2);
+    .step{
+      background: rgba(255,255,255,.72);
       border: 1px solid rgba(11,18,32,.10);
-      box-shadow: 0 14px 30px rgba(2,6,23,.08);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+      padding: 14px;
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
     }
-    .proof h3{
-      margin: 0 0 8px;
-      font-size: 22px;
-      letter-spacing: -.6px;
-      line-height: 1.05;
+    .step .n{
+      width: 40px; height: 40px;
+      border-radius: 14px;
+      background: var(--brand);
+      color:#fff;
+      display:grid; place-items:center;
+      font-weight: 1000;
+      flex: 0 0 auto;
+      box-shadow: 0 12px 22px rgba(30,107,255,.22);
     }
-    .proof p{
+    .step h3{
+      margin: 0 0 4px;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+      color: #202124;
+      font-weight: 1000;
+    }
+    .step p{
       margin: 0;
       color: rgba(11,18,32,.78);
-      line-height: 1.6;
-      font-size: 14.5px;
+      line-height: 1.55;
+      font-size: 14px;
     }
 
+    /* ===== Prova social ===== */
     .stats{
       margin-top: 14px;
       background: #fff;
@@ -663,20 +406,168 @@
       margin: 0 auto;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(0, 153, 255, 0.555);
-      border: 1px solid rgba(11,18,32,.10);
-      font-weight: 950;
+      background: rgba(0, 153, 255, 0.18);
+      border: 1px solid rgba(30,107,255,.22);
+      color: #0b2f99;
+      font-weight: 1000;
       font-size: 12.5px;
     }
     .stat .big{
       font-size: 28px;
-      font-weight: 1000;
+      font-weight: 1100;
       letter-spacing: -1px;
     }
     .stat .small{
       color: var(--muted);
       font-size: 13.5px;
       line-height: 1.5;
+    }
+
+    /* ===== Reviews (IMAGENS) ===== */
+    .reviews{
+      padding: 12px 0 8px;
+    }
+    .reviews .box{
+      background: #fff;
+      border: 1px solid #dadce0;
+      border-radius: 16px;
+      box-shadow: 0 1px 2px rgba(60,64,67,.15);
+      padding: 14px;
+    }
+    .reviews__head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .reviews__title{
+      margin:0;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.2px;
+      line-height: 1.2;
+      color: #202124;
+    }
+    .reviews__sub{
+      margin: 6px 0 0;
+      color: #5f6368;
+      font-size: 13px;
+      line-height: 1.45;
+      max-width: 58ch;
+    }
+    .reviews__link{
+      flex: 0 0 auto;
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid #dadce0;
+      background: #fff;
+      font-weight: 800;
+      font-size: 12.5px;
+      color: #1a73e8;
+    }
+    .reviews__link:hover{ background: rgba(26,115,232,.06); }
+
+    .rstage{
+      position: relative;
+      border: 1px solid #dadce0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(60,64,67,.15);
+      background: #fff;
+    }
+    .rimg{
+      width: 100%;
+      aspect-ratio: 1 / 1; /* 1000x1000 */
+      object-fit: cover;
+      display:block;
+      transition: opacity .35s ease;
+      opacity: 1;
+    }
+    .rimg.is-fading{ opacity: 0; }
+
+    .rdots{
+      display:flex;
+      gap: 7px;
+      justify-content:center;
+      padding: 10px 0 2px;
+    }
+    .rdot{
+      width: 7px; height: 7px;
+      border-radius: 999px;
+      background: #dadce0;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+    .rdot.is-active{ background: #5f6368; }
+
+    .rmeta{
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      align-items:center;
+      padding: 10px 6px 2px;
+      color: #5f6368;
+      font-size: 12.5px;
+    }
+    .rmeta b{ color: #202124; }
+
+    /* ===== Consultor ===== */
+    .consultor{
+      margin-top: 14px;
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      padding: 14px 14px;
+      border-radius: var(--radius2);
+      background: #fff;
+      border: 1px solid rgba(11,18,32,.10);
+      box-shadow: var(--shadow2);
+    }
+    .avatar{
+      width: 68px; height: 68px;
+      border-radius: 20px;
+      overflow:hidden;
+      border: 1px solid rgba(11,18,32,.12);
+      flex: 0 0 auto;
+      background: rgba(11,18,32,.04);
+    }
+    .avatar img{
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .c-title{
+      font-weight: 1100;
+      letter-spacing: -.4px;
+      margin: 0;
+      font-size: 15.5px;
+    }
+    .c-sub{
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 13.3px;
+      line-height: 1.45;
+    }
+    .bullets{
+      margin-top: 10px;
+      display:grid;
+      gap: 8px;
+    }
+    .bullet{
+      background: rgba(30,107,255,.08);
+      border: 1px solid rgba(30,107,255,.18);
+      border-radius: 16px;
+      padding: 10px 12px;
+      color: rgba(11,18,32,.82);
+      font-size: 13.8px;
+      line-height: 1.45;
+      font-weight: 650;
     }
 
     /* ===== FAQ ===== */
@@ -691,7 +582,7 @@
     summary{
       cursor:pointer;
       list-style:none;
-      font-weight: 950;
+      font-weight: 1000;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -703,44 +594,6 @@
       color: var(--muted);
       line-height: 1.6;
       font-size: 14px;
-    }
-
-    /* ===== Consultor ===== */
-    .consultor{
-      margin-top: 18px;
-      display:flex;
-      gap: 12px;
-      align-items:center;
-      padding: 14px 14px;
-      border-radius: var(--radius2);
-      background: #fff;
-      border: 1px solid rgba(11,18,32,.10);
-      box-shadow: var(--shadow2);
-    }
-    .avatar{
-      width: 62px; height: 62px;
-      border-radius: 18px;
-      overflow:hidden;
-      border: 1px solid rgba(11,18,32,.12);
-      flex: 0 0 auto;
-      background: rgba(11,18,32,.04);
-    }
-    .avatar img{
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-    .consultor .c-title{
-      font-weight: 1000;
-      letter-spacing: -.4px;
-      margin: 0;
-      font-size: 15px;
-    }
-    .consultor .c-sub{
-      margin: 2px 0 0;
-      color: var(--muted);
-      font-size: 13.3px;
-      line-height: 1.45;
     }
 
     /* ===== Legal / Footer ===== */
@@ -763,11 +616,11 @@
       font-weight: 500;
     }
 
-    /* ===== Floating Whats + Sticky Bar ===== */
+    /* ===== Floating + Sticky ===== */
     .whatsapp-float{
       position: fixed;
       right: 12px;
-      bottom: 75px;
+      bottom: 30px;
       width: 58px;
       height: 58px;
       border-radius: 50%;
@@ -778,6 +631,8 @@
       z-index: 90;
       transition: .18s ease;
       -webkit-tap-highlight-color: transparent;
+      border: none;
+      cursor: pointer;
     }
     .whatsapp-float:hover{ transform: translateY(-2px); }
     .whatsapp-float img{ width: 40px; height: 40px; }
@@ -801,14 +656,14 @@
       gap: 10px;
     }
     .sticky .txt{ min-width:0; }
-    .sticky .txt .t{
-      font-weight: 1000;
+    .sticky .t{
+      font-weight: 1100;
       font-size: 13.5px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .sticky .txt .d{
+    .sticky .d{
       color: var(--muted);
       font-size: 12px;
       white-space: nowrap;
@@ -826,7 +681,7 @@
       background: var(--whats);
       color:#fff;
       border:none;
-      font-weight: 1000;
+      font-weight: 1100;
       cursor:pointer;
       flex: 0 0 auto;
       box-shadow: 0 18px 35px rgba(37,211,102,.18);
@@ -839,57 +694,148 @@
       .whatsapp-float{ bottom: 16px; }
       .sticky{ display:none; }
       footer{ padding-bottom: 36px; }
-      .brand .name{
-        font-size: 30px;
-        text-align: center;
-      }
-      .brand img{
-        width: 70px; height: 70px; object-fit: contain;
-      }
+      .brand .name{ font-size: 30px; }
+      .brand img{ width: 70px; height: 70px; }
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+      .steps{ grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* ===============================
-   CARDS — FUNDO REAL COM IMAGEM
-   (cole no FINAL do <style>)
-   =============================== */
-
-.service-card.bgimg{
-  position: relative;
-  overflow: hidden;
-
-  /* a imagem vem da variável --bg */
-  background-image: var(--bg) !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  background-position: var(--pos, center 35%) !important;
-
-  border-radius: 16px;
-}
-
-/* overlay pra leitura (sem matar a imagem) */
-.service-card.bgimg::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,.92) 0%,
-    rgba(255,255,255,.86) 55%,
-    rgba(255,255,255,.80) 100%
-  );
-  z-index: 0;
-}
-
-/* garante que texto/botão ficam por cima */
-.service-card.bgimg > *{
-  position: relative;
-  z-index: 1;
-}
-
-@media (min-width: 425px){
-    .service-media{
-        display: none;
+    /* ===== Modal (Form obrigatório antes do Whats) ===== */
+    .modal{
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(6px);
     }
+    .modal.is-open{ display:flex; }
+    .modal-card{
+      width: min(520px, 100%);
+      background: #fff;
+      border-radius: 22px;
+      border: 1px solid rgba(11,18,32,.10);
+      box-shadow: 0 24px 60px rgba(0,0,0,.22);
+      overflow:hidden;
+    }
+    .modal-head{
+      padding: 16px 16px 10px;
+      border-bottom: 1px solid #eef0f2;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .modal-head h3{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+      color: #202124;
+      font-weight: 1100;
+    }
+    .modal-head p{
+      margin: 6px 0 0;
+      color: #5f6368;
+      font-size: 13px;
+      line-height: 1.45;
+      max-width: 46ch;
+    }
+    .xbtn{
+      width: 40px; height: 40px;
+      border-radius: 14px;
+      border: 1px solid rgba(11,18,32,.10);
+      background: rgba(11,18,32,.02);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      flex: 0 0 auto;
+    }
+    .modal-body{
+      padding: 12px 16px 16px;
+    }
+
+    form.lead-form{
+      display:grid;
+      gap: 12px;
+    }
+    .form-group{ display:grid; gap: 6px; }
+    label{
+      font-weight: 900;
+      font-size: 12px;
+      color: #202124;
+      letter-spacing: .1px;
+    }
+    input, select, textarea{
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid #dadce0;
+      background: #fff;
+      padding: 12px 14px;
+      font-size: 14px;
+      color: #202124;
+      outline: none;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    input::placeholder, textarea::placeholder{ color: #9aa0a6; }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(30,107,255,.75);
+      box-shadow: 0 0 0 4px rgba(30,107,255,.14);
+    }
+    select{
+      appearance: none;
+      -webkit-appearance: none;
+      background-image:
+        linear-gradient(45deg, transparent 50%, #5f6368 50%),
+        linear-gradient(135deg, #5f6368 50%, transparent 50%);
+      background-position:
+        calc(100% - 18px) 52%,
+        calc(100% - 12px) 52%;
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 38px;
+    }
+    .submit{
+      width: 100%;
+      padding: 16px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,.06);
+      background: linear-gradient(180deg, #2fe670, #1fcb5c);
+      color: #fff;
+      font-weight: 1100;
+      font-size: 15px;
+      letter-spacing: .2px;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(31,203,92,.25);
+      transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .submit:hover{
+      filter: brightness(1.02);
+      box-shadow: 0 14px 28px rgba(31,203,92,.28);
+    }
+    .submit:active{
+      transform: translateY(1px);
+      box-shadow: 0 8px 18px rgba(31,203,92,.22);
+    }
+
+    .tiny{
+      margin-top: 10px;
+      font-size: 12.2px;
+      color: rgba(11,18,32,.62);
+      line-height: 1.45;
+    }
+    .tiny b{ color: rgba(11,18,32,.82); }
+
+
+    /* ✅ Desktop: limita o tamanho das avaliações */
+@media (min-width: 767px){
+  .reviews .box{
+    max-width: 560px;   /* ajuste aqui: 520 / 560 / 600 */
+    margin: 0 auto;     /* centraliza */
+  }
 }
 
   </style>
@@ -901,7 +847,7 @@
       <div class="topbar">
         <div class="brand">
           <img src="/static/images/logo.png" alt="CNH em Dia Soluções - Logo">
-          <div class="name">CNH em <b>Dia Soluções</b></div>
+          <div class="name"> <a href="/">CNH em <b>Dia Soluções</b></a></div>
         </div>
 
         <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">
@@ -910,40 +856,42 @@
       </div>
 
       <div class="menu" id="menu">
-        <a href="#contato">Falar com especialista</a>
-        <a href="#ajuda">Como podemos ajudar?</a>
-        <a href="#perguntas">Perguntas frequentes</a>
+        <a href="/">Inicio</a>
+        <a href="#como">Como funciona</a>
+        <a href="#ajuda">Como podemos ajudar</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#faq">Perguntas frequentes</a>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" id="topo">
       <div class="wrap">
-        <div class="pill">Atendimento imediato no WhatsApp</div>
+        <div class="pill">✅ Análise gratuita • Atendimento imediato</div>
 
         <h1>
-          <span class="soft">Recusa ao</span><br>
-          Bafômetro
+          <span class="soft">Recusa ao Bafômetro</span><br>
+          Recurso e Defesa
         </h1>
 
         <p>
-          A Recusa ao teste do bafômetro <strong>tem solução.</strong> A maioria das multas são aplicadas indevidamente. <br><strong>A sua pode ter sido aplicada indevidamente também</strong>.<br>
-          Você clicou no anúncio, chegou até aqui, você sabe o que falta para saber a solução para o seu problema? O que falta é nos mandar uma mensagem. <br><br><br><br>
+          Recebeu uma multa de recusa ao bafômetro e ficou na dúvida se foi justa?  
+          Aqui você tem <strong>atendimento rápido</strong>, análise do seu caso e o caminho certo
+          para agir <strong>sem perder prazo</strong>.
+          <br><br>
+          💬 Clique no botão, preencha seus dados e você já vai direto pro WhatsApp.
         </p>
 
-
-          <div class="cta-area" id="contato">
-          <a class="cta-btn"
-             href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20Google.%20Preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20Lei%20Seca%2Fbaf%C3%B4metro.%20Pode%20me%20ajudar%3F"
-             target="_blank"
-             rel="noopener noreferrer"
-             onclick="return gtag_report_conversion(this.href, this.target, 'hero');">
-            <span style="text-align: center;">CLIQUE AQUI E ENVIE UM WHATSAPP</span>
+        <div class="cta-area" style="margin-top:14px;">
+          <button class="cta-btn js-open-lead"
+            data-label="hero"
+            data-problem="Recusa">
+            <span style="text-align:center;">CLIQUE AQUI E FALE NO WHATSAPP</span>
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="40" height="40">
-          </a>
-
-          
+          </button>
+          <div class="cta-sub">Resposta rápida • Sigilo • Você só paga se contratar</div>
+        </div>
 
         <div class="down" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none">
@@ -953,118 +901,122 @@
       </div>
     </section>
 
-    
     <section class="section" id="ajuda">
       <div class="wrap">
-        
-        <!-- FORM SUBMIT (não alterar) -->
-        <h2 style="text-align: center; margin-top: 20px;">Conte com a nossa<br>expertise</h2>
-        <!-- ✅ Cards com background real -->
-        <div class="service-grid" style="margin-top: 25px">
+        <h2 style="text-align:center;">Como podemos ajudar você com a sua multa</h2>
+        <p style="text-align:center; max-width: 70ch; margin: 0 auto 14px;">
+          Você não precisa agir sozinho, o motivo é que sozinho bem provável que você não faça do jeito certo. 
+        </p>
 
-          <div class="service-card bgimg">
-            <div class="service-media">
-              <img src="/static/images/bafometro-positivo.png" alt="CNH" loading="lazy">
+        <div class="grid">
+          <div class="card">
+            <!-- ✅ Imagem 1300x1000 -->
+            <div class="card-media">
+              <img src="/static/images2/cards/card1.png"
+                   alt="Multa indevida: análise de inconsistências"
+                   loading="lazy"
+                   width="1300"
+                   height="1000">
             </div>
-            <div class="service-body">
-              <h3>Lei Seca (bafômetro positivo)</h3>
-              <p>
-                Te pararam na blitz e deu positivo, constou aquele alcool minimo que seja né? A primeira coisa é entender que, mesmo que constou, ainda há estratégia cabível para o seu problema.<strong> Chame-nos agora mesmo!</strong> 
-              </p>
 
-              <a class="mini-btn"
-                 href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Quero%20falar%20com%20um%20especialista%20sobre%3A%20Lei%20Seca%20%28baf%C3%B4metro%20positivo%29."
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 onclick="return gtag_report_conversion(this.href, this.target, 'card_bafometro_positivo');">Falar com especialista</a>
-            </div>
+            <div class="t"><span class="badge">1</span> Multa indevida / inconsistências</div>
+            <p>Verificamos notificação, auto de infração e detalhes do caso pra identificar falhas e caminhos possíveis.</p>
+            <button class="mini-btn js-open-lead" data-label="card_multa_indevida" data-problem="Multa indevida / inconsistências">
+              Quero analisar minha multa
+            </button>
           </div>
 
-         <div class="service-card bgimg">
-            <div class="service-media" >
-              <img src="/static/images/recusabafometro.png" alt="Recusa" loading="lazy">
+          <div class="card">
+            <!-- ✅ Imagem 1300x1000 -->
+            <div class="card-media">
+              <img src="/static/images2/cards/card2.png"
+                   alt="Defesa prévia e recurso administrativo"
+                   loading="lazy"
+                   width="1300"
+                   height="1000">
             </div>
-            <div class="service-body">
-              <h3>Recusa ao bafômetro</h3>
-              <p>
-                Recusou? Muita gente trava por medo. Aqui você entende o cenário e o que fazer
-                <strong>sem complicações</strong>.
-              </p>
 
-              <a class="mini-btn"
-                 href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Quero%20falar%20com%20um%20especialista%20sobre%3A%20Recusa%20ao%20baf%C3%B4metro."
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 onclick="return gtag_report_conversion(this.href, this.target, 'card_recusa');">Falar com especialista</a>
-            </div>
+            <div class="t"><span class="badge">2</span> Defesa prévia e recurso</div>
+            <p>Organizamos prazos, documentação e estratégia administrativa. Sem enrolação. Objetivo e direto ao ponto.</p>
+            <button class="mini-btn js-open-lead" data-label="card_recurso" data-problem="Recurso / Defesa administrativa">
+              Quero recorrer da multa
+            </button>
           </div>
 
-          <div class="service-card bgimg">
-            <div class="service-media">
-              <img src="/static/images/notificacao.png" alt="Notificação" loading="lazy">
+          <div class="card">
+            <!-- ✅ Imagem 1300x1000 -->
+            <div class="card-media">
+              <img src="/static/images2/cards/card3.png"
+                   alt="Notificação de multa e prazos"
+                   loading="lazy"
+                   width="1300"
+                   height="1000">
             </div>
-            <div class="service-body">
-              <h3>Notificação / processo</h3>
-              <p>
-                Chegou carta, mensagem ou notificação? O mais importante é:
-                <strong>qual é o prazo</strong>. A gente te guia.
-              </p>
 
-              <a class="mini-btn"
-                 href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20site.%20Quero%20falar%20com%20um%20especialista%20sobre%3A%20Notifica%C3%A7%C3%A3o%20%2F%20processo."
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 onclick="return gtag_report_conversion(this.href, this.target, 'card_notificacao');">Falar com especialista</a>
-            </div>
+            <div class="t"><span class="badge">3</span> Notificação e prazos</div>
+            <p>O inimigo é o relógio. Se já chegou notificação, o passo 1 é entender o prazo e o que fazer agora.</p>
+            <button class="mini-btn js-open-lead" data-label="card_prazos" data-problem="Notificação / prazos">
+              Chegou notificação
+            </button>
           </div>
 
-          <div class="form-box" aria-label="Formulário de contato" id="enviodecontato">
-          <div class="form-head">
-            <h3>Receba uma orientação agora mesmo</h3>
-            <p>É rápido. Preencha e você já vai direto pro WhatsApp com a mensagem pronta.</p>
+          <div class="card">
+            <!-- ✅ Imagem 1300x1000 -->
+            <div class="card-media">
+              <img src="/static/images2/cards/card4.png"
+                   alt="Pontos e consequências da multa"
+                   loading="lazy"
+                   width="1300"
+                   height="1000">
+            </div>
+
+            <div class="t"><span class="badge">4</span> Pontos e consequências</div>
+            <p>Você entende o que pode acontecer e como proceder; como evitar decisões ruins e quais próximos passos fazem sentido no seu caso.</p>
+            <button class="mini-btn js-open-lead" data-label="card_pontos" data-problem="Pontos / consequências da multa">
+              Entender meu cenário
+            </button>
           </div>
-
-          <form id="contactForm" action="https://formsubmit.co/cnhemdiasolucoes@gmail.com" method="POST" class="contact-form" autocomplete="off" spellcheck="false">
-            <div class="form-group">
-              <label for="nome">Nome *</label>
-              <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
-            </div>
-
-            <div class="form-group">
-              <label for="email">E-mail *</label>
-              <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
-            </div>
-
-            <div class="form-group">
-              <label for="telefone">Telefone (WhatsApp) *</label>
-              <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999" maxlength="12">
-            </div>
-
-            <div class="form-group">
-              <label for="assunto">Assunto *</label>
-              <select id="assunto" name="assunto" required>
-                <option value="Lei Seca">Lei Seca (bafômetro positivo)</option>
-                <option value="Recusa ao Bafômetro">Recusa ao Bafômetro</option>
-                <option value="Notificação / Processo">Notificação / Processo</option>
-                <option value="Suspensão">Suspensão Da CNH</option>
-                <option value="Cassação">Cassação da CNH</option>
-                <option value="Outro">Outro Assunto</option>
-              </select>
-            </div>
-
-            <input type="hidden" name="_subject" value="Nova solicitação - CNH em Dia Soluções">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-
-            <button type="submit" class="submit-button">ENVIAR E IR PRO WHATSAPP</button>
-          </form>
         </div>
-        </div>
+      </div>
+    </section>
 
-        <div class="down" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M7 10l5 5 5-5" stroke="rgba(11,18,32,.85)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+    <section class="section" id="como">
+      <div class="wrap">
+        <h2>Como funciona</h2>
+        <p>Simples e rápido. Em poucos passos você tem tudo o que precisa saber para resolução do seu problema.</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="n">1</div>
+            <div>
+              <h3>Você entra em contato conosco</h3>
+              <p>Para fazer isso, você precisa clicar no botão do whatsApp, preencher os campos solicitados e após isso você já é direcionado ao nosso WhatsApp. No WhatsApp você nos informa sobre o seu problema.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="n">2</div>
+            <div>
+              <h3>A gente analisa o seu problema</h3>
+              <p>Analisamos o seu problema, verificamos as possibilidades e te passamos a solução para o seu problema e como prosseguir com a contratação.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="n">3</div>
+            <div>
+              <h3>Você decide com segurança</h3>
+              <p>Se fizer sentido para você, seguimos. Você só paga se contratar.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="n">4</div>
+            <div>
+              <h3>Atendimento imediato</h3>
+              <p>WhatsApp com resposta em até 2min das 08h as 21h. Quanto antes você nos chamar, melhor.</p>
+            </div>
+          </div>
         </div>
 
         <div class="stats" aria-label="Indicadores">
@@ -1072,21 +1024,30 @@
             <div class="stat">
               <div class="tag">Atendimento</div>
               <div class="big">100% Humano</div>
-              <div class="small">Nada de robôzinho respondendo, sabemos que o robô é chato, aqui quem falará com você é um humano.</div>
+              <div class="small">Nada de robô. Você fala com um humano e o seu caso é tratado de uma forma única.</div>
             </div>
             <div class="stat">
               <div class="tag">Análise</div>
-              <div class="big">100% Gratuita</div>
-              <div class="small">Você não paga pela análise, só paga em caso de contratação.</div>
+              <div class="big">Gratuita</div>
+              <div class="small">Você entende o cenário e as possibilidades antes de decidir.</div>
             </div>
             <div class="stat">
-              <div class="tag">Resposta</div>
+              <div class="tag">Velocidade</div>
               <div class="big">Rápida</div>
-              <div class="small">A nossa prioridade é no seu atendimento, sabemos que você não tem tempo a perder. Te atendemos tão rapido quanto fazer um miojo.</div>
+              <div class="small">Orientação objetiva — sem enrolação.</div>
             </div>
           </div>
         </div>
 
+        <div style="margin-top:14px;">
+          <button class="cta-btn js-open-lead" data-label="mid_cta" data-problem="Recusa">
+            <span style="text-align:center;">QUERO ORIENTAÇÃO AGORA</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="40" height="40">
+          </button>
+          <div class="cta-sub" style="color: rgba(11,18,32,.72); margin-top:8px;">
+            Clique, preencha e vá pro WhatsApp ✅
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1095,70 +1056,87 @@
         <div class="box">
           <div class="reviews__head">
             <div>
-              <h2 class="reviews__title">Avaliações do Google ⭐</h2>
-              <p class="reviews__sub">Prova social real. Atendimento humano, explicação clara e foco em solução.</p>
+              <h2 class="reviews__title">Avaliações de nossos clientes ⭐</h2>
+              <p class="reviews__sub">Saiba o que nossos clientes dizem após ter uma experiência conosco.</p>
             </div>
 
             <a class="reviews__link"
-               href="https://www.google.com/search?q=CNH+em+Dia+Solu%C3%A7%C3%B5es&sca_esv=0d3d387ace6599df&sxsrf=ANbL-n5WG8sMJdkckkWQVbD5wTrBwVnNmw%3A1770409250205&ei=Ik2GaaCcDLmq5OUPstL1sAQ&biw=1366&bih=599&ved=0ahUKEwigtdyz2MWSAxU5FbkGHTJpHUYQ4dUDCBE&uact=5&oq=CNH+em+Dia+Solu%C3%A7%C3%B5es&gs_lp=Egxnd3Mtd2l6LXNlcnAiFUNOSCBlbSBEaWEgU29sdcOnw7VlczIEECMYJzIEECMYJzICECYyCBAAGKIEGIkFMgUQABjvBTIFEAAY7wUyBRAAGO8FSLYGUPoEWPoEcAF4AJABAJgBnQGgAZ0BqgEDMC4xuAEDyAEA-AEBmAICoALGAcICCxAAGIAEGLADGKIEwgILEAAYsAMYogQYiQXCAggQABiwAxjvBZgDAIgGAZAGBZIHAzEuMaAHlgayBwMwLjG4B7YBwgcFMy0xLjHIByOACAA&sclient=gws-wiz-serp#mpd=~6989361025370410071/customers/reviews&lrd=0x94cef5093196a373:0xce31e6a313a2439b,1,,,,"
+               href="https://www.google.com/search?q=CNH+em+Dia+Solu%C3%A7%C3%B5es"
                target="_blank"
                rel="noopener">
               Ver no Google ↗
             </a>
           </div>
 
-          <div class="reviews__track" id="reviewsTrack" aria-label="Carrossel de avaliações"></div>
-          <div class="reviews__dots" id="reviewsDots" aria-hidden="true"></div>
+          <div class="rstage" aria-label="Carrossel de avaliações por imagem">
+            <img class="rimg" id="reviewImg" src="/static/images/avaliacoes/avaliacao1.png" alt="Avaliação 1">
+          </div>
+
+          <div class="rmeta">
+            <span><b id="reviewCount">1</b> / <span id="reviewTotal">4</span></span>
+          </div>
+
+          <div class="rdots" id="reviewDots" aria-label="Navegação do carrossel"></div>
+
+          <div style="margin-top:14px;">
+            <button class="mini-btn js-open-lead" data-label="reviews_cta" data-problem="Recusa">
+              Quero falar com um especialista
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
+    <section class="section" id="consultor">
+        <div class="wrap">
+        <div class="bullets">
+          <div class="bullet">✅ Atendimento humano e sigiloso — você fala com gente de verdade.</div>
+          <div class="bullet">✅ Análise gratuita — primeiro você entende, depois decide.</div>
+          <div class="bullet">✅ Estratégia caso a caso — cada caso é tratado de forma única e com toda atenção possivel.</div>
+        </div>
 
-    <section class="section" id="perguntas">
+        <div style="margin-top:14px;">
+          <button class="cta-btn js-open-lead" data-label="consultor_cta" data-problem="Recusa">
+            <span style="text-align:center;">FALAR COM UM ESPECIALISTA AGORA</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="40" height="40">
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
       <div class="wrap">
         <h2>Perguntas frequentes</h2>
-        <p>Objetivo. Claro. Do jeito que dá pra entender.</p>
+        <p>As respostas das dúvidas que a maioria das pessoas tem.</p>
 
         <details>
-          <summary>Recusar o bafômetro “dá na mesma” que estar bêbado?</summary>
+          <summary>Vale a pena recorrer de multa?</summary>
           <div class="ans">
-            A situação é diferente, mas pode gerar penalidades administrativas relevantes.
-            O que muda tudo são os <strong>detalhes do caso</strong> e o que consta no auto/notificação, se há sinais de embriaguez e etc...
+            Em 92% dos casos sim. Porém o que decide é o que consta no auto/notificação, prazos e detalhes da abordagem.
+            A gente analisa e te mostra o caminho certo.
           </div>
         </details>
 
         <details>
-          <summary>Já chegou notificação. Ainda dá tempo?</summary>
+          <summary>Se eu já recebi a notificação, ainda dá tempo?</summary>
           <div class="ans">
-            Muitas vezes, sim. Mas o inimigo é o relógio. Quanto antes você falar com a gente,
-            mais fácil é organizar o que está em jogo e o que fazer.
+            Provavelmente sim. Se você acabou de receber, ou recebeu a notificação e está vendo ela somente agora, nos mande uma mensagem junto a notificação que analisaremos.
           </div>
         </details>
 
         <details>
-          <summary>Vocês garantem que “ganham”?</summary>
+          <summary>Qual a chance de ganho do meu caso?</summary>
           <div class="ans">
-            Não vendemos fantasia. Vendemos orientação e execução dentro do que é cabível.
-            A gente te mostra o cenário com clareza, e você decide com segurança.
+            Não oferecemos mentiras. Atuamos 100% dentro da lei. Para que possamos te passar as possibilidades de ganho, primeiro: precisamos saber melhor sobre o seu problema, caso não haja chance de ganho, te passaremos o que você deve fazer e o que não deve fazer. <br><strong>Só seguimos contratação em casos que há chance de ganho</strong>. 
           </div>
         </details>
 
         <details>
           <summary>O atendimento é sigiloso?</summary>
           <div class="ans">
-            Sim. Seu caso é tratado com confidencialidade e foco total em solução.
+            Sim. Seu caso é tratado com confidencialidade e foco em solução.
           </div>
         </details>
-
-        <div class="consultor" aria-label="Consultor responsável">
-          <div class="avatar">
-            <img src="/static/images/fotopessoal.jpg" alt="Consultor Igor - CNH em Dia Soluções" loading="lazy">
-          </div>
-          <div>
-            <p class="c-title">Consultor Igor • CNH em Dia Soluções</p>
-            <p class="c-sub">Se preferir, me chama no WhatsApp ou me ligue e me diga: Qual o seu nome e qual o seu problema.</p>
-          </div>
-        </div>
 
         <div class="legal">
           <strong>⚠️ Aviso Legal:</strong> A CNH em Dia Soluções atua como consultoria administrativa e suporte técnico,
@@ -1169,7 +1147,6 @@
         <footer>
           <div class="wrap">
             <div>CNH em Dia Soluções • CNPJ: 63.687.598/0001-59 • Guarulhos/SP</div>
-            <div>WhatsApp: (11) 99418-7695 • E-mail: cnhemdiasolucoes@gmail.com</div>
             <div style="margin-top:10px;">&copy; 2026 CNH em Dia Soluções. Todos os direitos reservados.</div>
           </div>
         </footer>
@@ -1177,70 +1154,78 @@
     </section>
   </main>
 
-  <a class="whatsapp-float"
-     id="waFloat"
-     href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20Google.%20Preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20Lei%20Seca%2Fbaf%C3%B4metro.%20Pode%20me%20ajudar%3F"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="Falar no WhatsApp"
-     onclick="return gtag_report_conversion(this.href, this.target, 'float');">
+  <!-- Floating Whats (agora abre modal) -->
+  <button class="whatsapp-float js-open-lead" data-label="float" data-problem="Recusa" aria-label="Falar no WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
+  </button>
 
-  <div class="sticky" role="region" aria-label="Contato rápido no WhatsApp">
-    <div class="inner">
-      <div class="txt">
-        <div class="t">Precisa de ajuda agora?</div>
-        <div class="d">Clique e fale no WhatsApp (mensagem pronta)</div>
+  <!-- Modal obrigatório -->
+  <div class="modal" id="leadModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Formulário para ir ao WhatsApp">
+      <div class="modal-head">
+        <div>
+          <h3>Antes de ir pro WhatsApp ✅</h3>
+          <p>Preencha rapidinho. Isso agiliza seu atendimento e evita perder tempo.</p>
+        </div>
+        <button class="xbtn" id="modalClose" aria-label="Fechar">✕</button>
       </div>
 
-      <a class="go"
-         id="stickyGo"
-         href="https://api.whatsapp.com/send/?phone=5511994187695&text=Ol%C3%A1%21%20Vim%20pelo%20Google.%20Preciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20Lei%20Seca%2Fbaf%C3%B4metro.%20Pode%20me%20ajudar%3F"
-         target="_blank"
-         rel="noopener noreferrer"
-         onclick="return gtag_report_conversion(this.href, this.target, 'sticky');">
-        <span>WhatsApp</span>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-      </a>
+      <div class="modal-body">
+        <form id="leadForm" class="lead-form" action="https://formsubmit.co/cnhemdiasolucoes@gmail.com" method="POST" autocomplete="off" spellcheck="false">
+          <div class="form-group">
+            <label for="nome">Nome *</label>
+            <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+          </div>
+
+          <div class="form-group">
+            <label for="telefone">Telefone (WhatsApp) *</label>
+            <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999">
+          </div>
+
+          <div class="form-group">
+            <label for="problema">Qual o seu problema? *</label>
+            <select id="problema" name="problema" required>
+              <option value="Recusa" selected>Recusa ao Bafômetro</option>
+              <option value="Suspensão da CNH">Suspensão da CNH</option>
+              <option value="Cassação Da CNH">Cassação Da CNH</option>
+              <option value="Multas">Multas</option>
+              <option value="Pontuação Alta">Pontuação Alta</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+
+          <!-- FormSubmit (mantém o padrão) -->
+          <input type="hidden" name="_subject" value="Nova solicitação de contato - Recusa ao Bafômetro | CNH em Dia Soluções">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="box">
+
+          <!-- Tracking (preenchido via JS) -->
+          <input type="hidden" name="cta_label" id="cta_label" value="">
+          <input type="hidden" name="page" value="Landing - Recusa">
+
+          <input type="hidden" name="utm_term" id="utm_term" value="">
+          <input type="hidden" name="utm_campaign" id="utm_campaign" value="">
+          <input type="hidden" name="utm_content" id="utm_content" value="">
+          <input type="hidden" name="utm_source" id="utm_source" value="">
+          <input type="hidden" name="utm_medium" id="utm_medium" value="">
+          <input type="hidden" name="utm_device" id="utm_device" value="">
+          <input type="hidden" name="utm_matchtype" id="utm_matchtype" value="">
+          <input type="hidden" name="utm_network" id="utm_network" value="">
+          <input type="hidden" name="gclid" id="gclid" value="">
+
+          <!-- ✅ Atualização: telefone limpo (só dígitos) -->
+          <input type="hidden" name="telefone_limpo" id="telefone_limpo" value="">
+
+          <button type="submit" class="submit" id="leadSubmitBtn">ENVIAR E IR PRO WHATSAPP</button>
+        </form>
+      </div>
     </div>
   </div>
 
-
-<script>
-(function attachUtmToWhatsApp(){
-  const p = new URLSearchParams(location.search);
-  const term = p.get('utm_term') || '';
-  const camp = p.get('utm_campaign') || '';
-  const cont = p.get('utm_content') || '';
-  const device = p.get('utm_device') || '';
-  const match = p.get('utm_matchtype') || '';
-  const net = p.get('utm_network') || '';
-
-  if (!term && !camp && !cont && !device && !match && !net) return;
-
-  const extra = `\n\nOrigem: Google Ads\nTermo: ${term}\nCampanha: ${camp}\nConteúdo: ${cont}\nDevice: ${device}\nMatch: ${match}\nRede: ${net}`;
-
-  const links = document.querySelectorAll(
-    'a[href*="wa.me"], a[href*="api.whatsapp.com/send"], a[href*="web.whatsapp.com/send"]'
-  );
-
-  links.forEach(a => {
-    try{
-      const u = new URL(a.href);
-      const t = u.searchParams.get('text') || '';
-      let base = t;
-      try { base = decodeURIComponent(t); } catch(e) {}
-      u.searchParams.set('text', (base + extra));
-      a.href = u.toString();
-    }catch(e){}
-  });
-})();
-</script>
-
-
   <script>
-    // Menu toggle
+    /* ============================
+      MENU (mobile)
+    ============================ */
     const menuBtn = document.getElementById("menuBtn");
     const menu = document.getElementById("menu");
     if(menuBtn && menu){
@@ -1250,173 +1235,352 @@
       });
     }
 
+    /* ============================
+      CONFIG
+    ============================ */
     const WHATS_NUMBER = "5511994187695";
+    const CONVERSION_SEND_TO = "AW-17709604708/3A1hCK-KneYbEOS-zPxB";
 
     function isIOS(){
       return /iPhone|iPad|iPod/i.test(navigator.userAgent);
     }
 
-    function safeTrackConversion(){
+    function getParams(){
+      const p = new URLSearchParams(location.search);
+      return {
+        utm_term: p.get("utm_term") || "",
+        utm_campaign: p.get("utm_campaign") || "",
+        utm_content: p.get("utm_content") || "",
+        utm_source: p.get("utm_source") || "",
+        utm_medium: p.get("utm_medium") || "",
+        utm_device: p.get("utm_device") || "",
+        utm_matchtype: p.get("utm_matchtype") || "",
+        utm_network: p.get("utm_network") || "",
+        gclid: p.get("gclid") || ""
+      };
+    }
+
+    function fillTrackingFields(){
+      const t = getParams();
+      const map = [
+        ["utm_term","utm_term"],["utm_campaign","utm_campaign"],["utm_content","utm_content"],
+        ["utm_source","utm_source"],["utm_medium","utm_medium"],["utm_device","utm_device"],
+        ["utm_matchtype","utm_matchtype"],["utm_network","utm_network"],["gclid","gclid"]
+      ];
+      map.forEach(([id,key]) => {
+        const el = document.getElementById(id);
+        if (el) el.value = t[key] || "";
+      });
+    }
+    fillTrackingFields();
+
+    function trackConversion(label, callback){
+      const cb = typeof callback === "function" ? callback : function(){};
       try{
         if (typeof gtag === "function") {
           gtag("event", "conversion", {
-            send_to: "AW-17709604708/3A1hCK-KneYbEOS-zPxB",
+            send_to: CONVERSION_SEND_TO,
+            event_callback: cb,
             transport_type: "beacon",
-            event_timeout: 1200
+            event_timeout: 1200,
+            event_label: label || ""
           });
+          return;
         }
       }catch(e){}
+      cb();
     }
 
-    function openWhats(text){
-      const msg = encodeURIComponent(text);
-      const urlIOS = `https://api.whatsapp.com/send/?phone=${WHATS_NUMBER}&text=${msg}`;
-      const urlDefault = `https://wa.me/${WHATS_NUMBER}?text=${msg}`;
-      const url = isIOS() ? urlIOS : urlDefault;
+    /* ============================
+      ✅ Atualização: TELEFONE com máscara (11 dígitos)
+    ============================ */
+    function digitsOnly(s){
+      return (s || "").replace(/\D/g, "");
+    }
 
-      safeTrackConversion();
+    function formatPhoneBR(value){
+      const d = digitsOnly(value).slice(0, 11); // DDD + 9
+      if (!d) return "";
+      const ddd = d.slice(0,2);
+      const rest = d.slice(2);
+
+      if (d.length <= 2) return `(${ddd}`;
+      if (rest.length === 0) return `(${ddd})`;
+
+      // 8 (fixo): 4-4 | 9 (cel): 5-4
+      if (rest.length <= 8){
+        return `(${ddd}) ${rest.slice(0,4)}-${rest.slice(4)}`;
+      }
+      return `(${ddd}) ${rest.slice(0,5)}-${rest.slice(5)}`;
+    }
+
+    function cleanPhone(s){
+      return digitsOnly(s).slice(0, 11);
+    }
+
+    // aplica máscara enquanto digita
+    const telInput = document.getElementById("telefone");
+    if (telInput){
+      telInput.setAttribute("inputmode", "numeric");
+      telInput.setAttribute("autocomplete", "tel");
+      telInput.setAttribute("maxlength", "15"); // (11) 99418-7695
+
+      telInput.addEventListener("input", (e) => {
+        e.target.value = formatPhoneBR(e.target.value);
+      }, { passive: true });
+    }
+
+    /* ============================
+      ✅ Atualização: Whats com quebras e tracking só se existir
+    ============================ */
+    function encodeWhatsText(text){
+      return encodeURIComponent(text).replace(/%0A/g, "%0D%0A");
+    }
+
+    function openWhats(message){
+      const msg = encodeWhatsText(message);
+      const url = `https://api.whatsapp.com/send/?phone=${WHATS_NUMBER}&text=${msg}`;
 
       if (isIOS()) window.location.href = url;
       else window.open(url, "_blank", "noopener,noreferrer");
     }
 
-    function buildMsgFromForm(){
-      const nome = document.getElementById("nome")?.value?.trim() || "";
-      const assunto = document.getElementById("assunto")?.value || "Lei Seca";
-      const telefone = document.getElementById("telefone")?.value?.trim() || "";
-      const email = document.getElementById("email")?.value?.trim() || "";
+    function buildWhatsMessage(data){
+      const t = getParams();
 
-      return `Olá! Me chamo ${nome}.
-Preenchi o formulário no site e quero resolver meu problema de: ${assunto}.
-Telefone/WhatsApp: ${telefone}
-E-mail: ${email}`;
+      const telPretty = formatPhoneBR(data.telefone) || data.telefone;
+
+      const linhas = [
+        `Olá! Me chamo ${data.nome}.`,
+        `Quero resolver meu problema de: ${data.problema}.`,
+        `Telefone/WhatsApp: ${telPretty}.`
+      ];
+
+      const trackingPairs = [
+        ["Campanha", t.utm_campaign],
+        ["Termo", t.utm_term],
+        ["Conteúdo", t.utm_content],
+        ["Device", t.utm_device],
+        ["Match", t.utm_matchtype],
+        ["Rede", t.utm_network],
+        ["GCLID", t.gclid]
+      ].filter(([_, v]) => (v || "").trim() !== "");
+
+      if (trackingPairs.length){
+        linhas.push("");
+        linhas.push("📌 Origem: Google Ads");
+        trackingPairs.forEach(([k, v]) => linhas.push(`${k}: ${v}`));
+      }
+
+      return linhas.join("\n");
     }
 
-    const contactForm = document.getElementById("contactForm");
-    if (contactForm) {
-      contactForm.addEventListener("submit", async (e) => {
+    /* ============================
+      MODAL + CTA (todo botão abre o form)
+    ============================ */
+    const leadModal = document.getElementById("leadModal");
+    const modalClose = document.getElementById("modalClose");
+    const leadForm = document.getElementById("leadForm");
+    const ctaLabelInput = document.getElementById("cta_label");
+    const problemaSelect = document.getElementById("problema");
+    const submitBtn = document.getElementById("leadSubmitBtn");
+
+    let currentLabel = "unknown";
+
+    function openLeadModal(label, problem){
+      currentLabel = label || "unknown";
+      if (ctaLabelInput) ctaLabelInput.value = currentLabel;
+
+      // pré-seleciona problema se o botão informar
+      if (problem && problemaSelect){
+        const opts = Array.from(problemaSelect.options).map(o => o.value);
+        if (opts.includes(problem)) problemaSelect.value = problem;
+        else problemaSelect.value = "Recusa";
+      } else if (problemaSelect){
+        problemaSelect.value = "Recusa";
+      }
+
+      if (leadModal){
+        leadModal.classList.add("is-open");
+        leadModal.setAttribute("aria-hidden","false");
+        setTimeout(() => document.getElementById("nome")?.focus(), 60);
+      }
+    }
+
+    function closeLeadModal(){
+      if (!leadModal) return;
+      leadModal.classList.remove("is-open");
+      leadModal.setAttribute("aria-hidden","true");
+    }
+
+    document.querySelectorAll(".js-open-lead").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const label = btn.getAttribute("data-label") || "cta";
+        const problem = btn.getAttribute("data-problem") || "Recusa";
+        openLeadModal(label, problem);
+      }, { passive: true });
+    });
+
+    if (modalClose) modalClose.addEventListener("click", closeLeadModal, { passive: true });
+    if (leadModal) {
+      leadModal.addEventListener("click", (e) => {
+        if (e.target === leadModal) closeLeadModal();
+      });
+    }
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLeadModal();
+    });
+
+    /* ============================
+      SUBMIT: envia FormSubmit e depois Whats
+    ============================ */
+    async function postFormSubmit(endpoint, formData){
+      const res = await fetch(endpoint, {
+        method: "POST",
+        body: formData,
+        headers: { "Accept": "application/json" }
+      });
+      return res.ok;
+    }
+
+    if (leadForm) {
+      leadForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const mensagem = buildMsgFromForm();
-        const formData = new FormData(contactForm);
+        const nome = (document.getElementById("nome")?.value || "").trim();
+        const telefoneInput = (document.getElementById("telefone")?.value || "").trim();
+        const telefone = cleanPhone(telefoneInput); // só dígitos (até 11)
+        const problema = (document.getElementById("problema")?.value || "Recusa").trim();
 
-        if (!formData.get("_subject")) formData.append("_subject", "Nova solicitação - CNH em Dia Soluções");
-        if (!formData.get("_captcha")) formData.append("_captcha", "false");
-        if (!formData.get("_template")) formData.append("_template", "table");
+        // valida mínimo: DDD + 8/9 dígitos
+        if (!nome || telefone.length < 10 || !problema){
+          alert("⚠️ Preencha Nome e um Telefone válido (com DDD) para continuar.");
+          return;
+        }
 
-        const endpoint = contactForm.getAttribute("action") || "https://formsubmit.co/cnhemdiasolucoes@gmail.com";
+        // mantém campo visível formatado
+        const telEl = document.getElementById("telefone");
+        if (telEl) telEl.value = formatPhoneBR(telefone);
 
-        try {
-          const response = await fetch(endpoint, {
-            method: "POST",
-            body: formData,
-            headers: { "Accept": "application/json" }
+        // salva telefone limpo no hidden
+        const telLimpo = document.getElementById("telefone_limpo");
+        if (telLimpo) telLimpo.value = telefone;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "ENVIANDO...";
+
+        const endpoint = leadForm.getAttribute("action") || "https://formsubmit.co/cnhemdiasolucoes@gmail.com";
+        const formData = new FormData(leadForm);
+
+        fillTrackingFields();
+
+        const whatsMsg = buildWhatsMessage({ nome, telefone, problema });
+
+        try{
+          const ok = await postFormSubmit(endpoint, formData);
+
+          closeLeadModal();
+
+          trackConversion(currentLabel, () => {
+            openWhats(whatsMsg);
           });
 
-          if (response.ok) {
-            contactForm.reset();
-            openWhats(mensagem);
-            return;
+          leadForm.reset();
+          if (problemaSelect) problemaSelect.value = "Recusa ao Bafômetro";
+
+          if (!ok){
+            console.warn("FormSubmit não confirmou OK (prosseguindo pro Whats).");
           }
 
-          alert("⚠️ Não consegui confirmar o envio do formulário aqui. Me chama no WhatsApp que eu resolvo agora.");
-          openWhats(mensagem);
-
-        } catch (err) {
-          alert("⚠️ Seu navegador bloqueou o envio do formulário. Me chama no WhatsApp que eu resolvo agora.");
-          openWhats(mensagem);
+        }catch(err){
+          console.warn("Falha no envio via fetch. Prosseguindo pro Whats.", err);
+          closeLeadModal();
+          trackConversion(currentLabel, () => openWhats(whatsMsg));
+        }finally{
+          submitBtn.disabled = false;
+          submitBtn.textContent = "ENVIAR E IR PRO WHATSAPP";
         }
       }, { passive: false });
     }
 
-    /* ===== Reviews ===== */
-    const GOOGLE_REVIEWS = [
-      {
-        name: "Emerson Paulo",
-        stars: 5,
-        date: "2 meses atrás",
-        text: "Igor muito obrigada pela sua competência e pela ajuda no serviço da minha CNH Seu atendimento foi impecável , além de ter entregado tudo no prazo ! Profissional como você faz toda a diferença. Gratidão!"
-      },
-      {
-        name: "Natália Santos",
-        stars: 5,
-        date: "2 meses atrás",
-        text: "Tive uma experiência excelente com a CNH em Dia Soluções. A equipe foi atenciosa, prestativa e esclareceu todas as minhas dúvidas. O serviço foi eficiente e passou muita confiança. Estou muito satisfeita e recomendo para Todos!"
-      },
-      {
-        name: "Viviane Dela coleta",
-        stars: 5,
-        date: "3 semanas atrás",
-        text: "Excelente consultoria em CNH, atendimento profissional, rápido e muito esclarecedor. Recomendo!"
-      },
-      {
-        name: "Grazy Maria",
-        stars: 5,
-        date: "3 semanas atrás",
-        text: "Super profissional!! Sucesso!!"
-      }
+    /* ============================
+      REVIEWS CAROUSEL (IMAGENS) - 3s
+    ============================ */
+    const REVIEW_IMAGES = [
+      "/static/images/avaliacoes/avaliacao1.png",
+      "/static/images/avaliacoes/avaliacao2.png",
+      "/static/images/avaliacoes/avaliacao3.png",
+      "/static/images/avaliacoes/avaliacao4.png"
     ];
 
-    function getInitial(name){
-      const s = (name || "").trim();
-      if (!s) return "•";
-      return s[0].toUpperCase();
+    const reviewImg = document.getElementById("reviewImg");
+    const reviewDots = document.getElementById("reviewDots");
+    const reviewCount = document.getElementById("reviewCount");
+    const reviewTotal = document.getElementById("reviewTotal");
+
+    let rIndex = 0;
+    let rTimer = null;
+
+    function renderDots(){
+      if (!reviewDots) return;
+      reviewDots.innerHTML = REVIEW_IMAGES.map((_, i) => {
+        return `<button class="rdot ${i===0 ? "is-active" : ""}" aria-label="Ver avaliação ${i+1}" data-i="${i}"></button>`;
+      }).join("");
+      reviewDots.querySelectorAll(".rdot").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const i = parseInt(btn.getAttribute("data-i"), 10);
+          goToReview(i, true);
+        }, { passive: true });
+      });
     }
 
-    function renderStars(n){
-      n = Math.max(0, Math.min(5, n));
-      let html = "";
-      for (let i = 0; i < 5; i++){
-        html += `<span class="star ${i < n ? "is-full" : "is-empty"}">★</span>`;
-      }
-      return html;
+    function setActiveDot(){
+      if (!reviewDots) return;
+      Array.from(reviewDots.children).forEach((d, i) => {
+        d.classList.toggle("is-active", i === rIndex);
+      });
+      if (reviewCount) reviewCount.textContent = String(rIndex + 1);
+    }
+
+    function goToReview(i, userAction){
+      if (!reviewImg) return;
+      const next = (i + REVIEW_IMAGES.length) % REVIEW_IMAGES.length;
+      if (next === rIndex) return;
+
+      reviewImg.classList.add("is-fading");
+      setTimeout(() => {
+        rIndex = next;
+        reviewImg.src = REVIEW_IMAGES[rIndex];
+        reviewImg.alt = `Avaliação ${rIndex + 1}`;
+        setActiveDot();
+        reviewImg.classList.remove("is-fading");
+      }, 220);
+
+      if (userAction) restartAuto();
+    }
+
+    function startAuto(){
+      stopAuto();
+      rTimer = setInterval(() => goToReview(rIndex + 1, false), 3000);
+    }
+    function stopAuto(){
+      if (rTimer) clearInterval(rTimer);
+      rTimer = null;
+    }
+    function restartAuto(){
+      startAuto();
     }
 
     (function initReviews(){
-      const track = document.getElementById("reviewsTrack");
-      const dots = document.getElementById("reviewsDots");
-      if (!track || !dots) return;
+      if (reviewTotal) reviewTotal.textContent = String(REVIEW_IMAGES.length);
+      renderDots();
+      setActiveDot();
+      startAuto();
 
-      track.innerHTML = GOOGLE_REVIEWS.map((r) => `
-        <article class="review-card">
-          <div class="review-top">
-            <div class="review-left">
-              <div class="review-avatar" aria-hidden="true">${getInitial(r.name)}</div>
-              <div class="review-id">
-                <p class="review-name">${r.name}</p>
-                <div class="review-meta">${r.date || ""}</div>
-              </div>
-            </div>
-
-            <div class="review-stars" aria-label="${r.stars} de 5 estrelas">
-              ${renderStars(r.stars)}
-            </div>
-          </div>
-
-          <p class="review-text">${r.text}</p>
-        </article>
-      `).join("");
-
-      dots.innerHTML = GOOGLE_REVIEWS.map((_, i) => `
-        <span class="reviews__dot ${i === 0 ? "is-active" : ""}"></span>
-      `).join("");
-
-      function setActiveDot(){
-        const cards = Array.from(track.children);
-        const trackRect = track.getBoundingClientRect();
-        let best = 0;
-        let bestDist = Infinity;
-
-        cards.forEach((card, i) => {
-          const r = card.getBoundingClientRect();
-          const dist = Math.abs(r.left - trackRect.left);
-          if (dist < bestDist) { bestDist = dist; best = i; }
-        });
-
-        Array.from(dots.children).forEach((d, i) => d.classList.toggle("is-active", i === best));
+      if (reviewImg){
+        reviewImg.addEventListener("touchstart", stopAuto, { passive: true });
+        reviewImg.addEventListener("touchend", restartAuto, { passive: true });
       }
-
-      track.addEventListener("scroll", () => window.requestAnimationFrame(setActiveDot), { passive: true });
     })();
   </script>
 </body>
