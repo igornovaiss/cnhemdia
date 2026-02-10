@@ -270,6 +270,28 @@
       box-shadow: var(--shadow2);
       padding: 14px;
     }
+
+    /* =========================================================
+       ✅ ALTERAÇÃO ÚNICA: IMAGEM NO TOPO DO CARD (1300x1000)
+       ========================================================= */
+    .card-media{
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(11,18,32,.10);
+      background: rgba(11,18,32,.03);
+      aspect-ratio: 13 / 10;     /* 1300 x 1000 */
+      width: 100%;
+      margin-bottom: 12px;
+    }
+    .card-media img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;         /* mantém bonito sem distorcer */
+      object-position: center;
+      display: block;
+    }
+    /* ========================================================= */
+
     .card .t{
       display:flex; align-items:center; gap: 10px;
       font-weight: 1000;
@@ -879,6 +901,15 @@
 
         <div class="grid">
           <div class="card">
+            <!-- ✅ Imagem 1300x1000 -->
+            <div class="card-media">
+              <img src="/static/images2/cards/card1.png"
+                   alt="Multa indevida: análise de inconsistências"
+                   loading="lazy"
+                   width="1300"
+                   height="1000">
+            </div>
+
             <div class="t"><span class="badge">1</span> Multa indevida / inconsistências</div>
             <p>Verificamos notificação, auto de infração e detalhes do caso pra identificar falhas e caminhos possíveis.</p>
             <button class="mini-btn js-open-lead" data-label="card_multa_indevida" data-problem="Multa indevida / inconsistências">
@@ -887,6 +918,15 @@
           </div>
 
           <div class="card">
+            <!-- ✅ Imagem 1300x1000 -->
+            <div class="card-media">
+              <img src="/static/images2/cards/card2.png"
+                   alt="Defesa prévia e recurso administrativo"
+                   loading="lazy"
+                   width="1300"
+                   height="1000">
+            </div>
+
             <div class="t"><span class="badge">2</span> Defesa prévia e recurso</div>
             <p>Organizamos prazos, documentação e estratégia administrativa. Sem enrolação. Objetivo e direto ao ponto.</p>
             <button class="mini-btn js-open-lead" data-label="card_recurso" data-problem="Recurso / Defesa administrativa">
@@ -895,6 +935,15 @@
           </div>
 
           <div class="card">
+            <!-- ✅ Imagem 1300x1000 -->
+            <div class="card-media">
+              <img src="/static/images2/cards/card3.png"
+                   alt="Notificação de multa e prazos"
+                   loading="lazy"
+                   width="1300"
+                   height="1000">
+            </div>
+
             <div class="t"><span class="badge">3</span> Notificação e prazos</div>
             <p>O inimigo é o relógio. Se já chegou notificação, o passo 1 é entender o prazo e o que fazer agora.</p>
             <button class="mini-btn js-open-lead" data-label="card_prazos" data-problem="Notificação / prazos">
@@ -903,6 +952,15 @@
           </div>
 
           <div class="card">
+            <!-- ✅ Imagem 1300x1000 -->
+            <div class="card-media">
+              <img src="/static/images2/cards/card4.png"
+                   alt="Pontos e consequências da multa"
+                   loading="lazy"
+                   width="1300"
+                   height="1000">
+            </div>
+
             <div class="t"><span class="badge">4</span> Pontos e consequências</div>
             <p>Você entende o que pode acontecer e como proceder; como evitar decisões ruins e quais próximos passos fazem sentido no seu caso.</p>
             <button class="mini-btn js-open-lead" data-label="card_pontos" data-problem="Pontos / consequências da multa">
