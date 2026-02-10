@@ -1204,6 +1204,9 @@
           <input type="hidden" name="utm_network" id="utm_network" value="">
           <input type="hidden" name="gclid" id="gclid" value="">
 
+          <!-- ✅ Atualização: telefone limpo (só dígitos) -->
+          <input type="hidden" name="telefone_limpo" id="telefone_limpo" value="">
+
           <button type="submit" class="submit" id="leadSubmitBtn">ENVIAR E IR PRO WHATSAPP</button>
         </form>
       </div>
@@ -1279,11 +1282,55 @@
       cb();
     }
 
+    /* ============================
+      ✅ Atualização: TELEFONE com máscara (11 dígitos)
+    ============================ */
+    function digitsOnly(s){
+      return (s || "").replace(/\D/g, "");
+    }
+
+    function formatPhoneBR(value){
+      const d = digitsOnly(value).slice(0, 11); // DDD + 9
+      if (!d) return "";
+      const ddd = d.slice(0,2);
+      const rest = d.slice(2);
+
+      if (d.length <= 2) return `(${ddd}`;
+      if (rest.length === 0) return `(${ddd})`;
+
+      // 8 (fixo): 4-4 | 9 (cel): 5-4
+      if (rest.length <= 8){
+        return `(${ddd}) ${rest.slice(0,4)}-${rest.slice(4)}`;
+      }
+      return `(${ddd}) ${rest.slice(0,5)}-${rest.slice(5)}`;
+    }
+
+    function cleanPhone(s){
+      return digitsOnly(s).slice(0, 11);
+    }
+
+    // aplica máscara enquanto digita
+    const telInput = document.getElementById("telefone");
+    if (telInput){
+      telInput.setAttribute("inputmode", "numeric");
+      telInput.setAttribute("autocomplete", "tel");
+      telInput.setAttribute("maxlength", "15"); // (11) 99418-7695
+
+      telInput.addEventListener("input", (e) => {
+        e.target.value = formatPhoneBR(e.target.value);
+      }, { passive: true });
+    }
+
+    /* ============================
+      ✅ Atualização: Whats com quebras e tracking só se existir
+    ============================ */
+    function encodeWhatsText(text){
+      return encodeURIComponent(text).replace(/%0A/g, "%0D%0A");
+    }
+
     function openWhats(message){
-      const msg = encodeURIComponent(message);
-      const urlIOS = `https://api.whatsapp.com/send/?phone=${WHATS_NUMBER}&text=${msg}`;
-      const urlDefault = `https://wa.me/${WHATS_NUMBER}?text=${msg}`;
-      const url = isIOS() ? urlIOS : urlDefault;
+      const msg = encodeWhatsText(message);
+      const url = `https://api.whatsapp.com/send/?phone=${WHATS_NUMBER}&text=${msg}`;
 
       if (isIOS()) window.location.href = url;
       else window.open(url, "_blank", "noopener,noreferrer");
@@ -1291,25 +1338,32 @@
 
     function buildWhatsMessage(data){
       const t = getParams();
+
+      const telPretty = formatPhoneBR(data.telefone) || data.telefone;
+
       const linhas = [
         `Olá! Me chamo ${data.nome}.`,
         `Quero resolver meu problema de: ${data.problema}.`,
-        `Telefone/WhatsApp: ${data.telefone}.`
+        `Telefone/WhatsApp: ${telPretty}.`
       ];
 
-      // Tracking no Whats (ajuda MUITO na operação)
-      const tracking = [
-        `Origem: Google Ads`,
-        `Campanha: ${t.utm_campaign || "-"}`,
-        `Termo: ${t.utm_term || "-"}`,
-        `Conteúdo: ${t.utm_content || "-"}`,
-        `Device: ${t.utm_device || "-"}`,
-        `Match: ${t.utm_matchtype || "-"}`,
-        `Rede: ${t.utm_network || "-"}`,
-        `GCLID: ${t.gclid || "-"}`
-      ];
+      const trackingPairs = [
+        ["Campanha", t.utm_campaign],
+        ["Termo", t.utm_term],
+        ["Conteúdo", t.utm_content],
+        ["Device", t.utm_device],
+        ["Match", t.utm_matchtype],
+        ["Rede", t.utm_network],
+        ["GCLID", t.gclid]
+      ].filter(([_, v]) => (v || "").trim() !== "");
 
-      return linhas.join("\n") + "\n\n" + tracking.join("\n");
+      if (trackingPairs.length){
+        linhas.push("");
+        linhas.push("📌 Origem: Google Ads");
+        trackingPairs.forEach(([k, v]) => linhas.push(`${k}: ${v}`));
+      }
+
+      return linhas.join("\n");
     }
 
     /* ============================
@@ -1340,7 +1394,6 @@
       if (leadModal){
         leadModal.classList.add("is-open");
         leadModal.setAttribute("aria-hidden","false");
-        // foca no nome
         setTimeout(() => document.getElementById("nome")?.focus(), 60);
       }
     }
@@ -1372,12 +1425,7 @@
     /* ============================
       SUBMIT: envia FormSubmit e depois Whats
     ============================ */
-    function cleanPhone(s){
-      return (s || "").replace(/[^\d+]/g,"").slice(0, 16);
-    }
-
     async function postFormSubmit(endpoint, formData){
-      // FormSubmit aceita POST normal; aqui usamos fetch pra não sair da página
       const res = await fetch(endpoint, {
         method: "POST",
         body: formData,
@@ -1391,17 +1439,23 @@
         e.preventDefault();
 
         const nome = (document.getElementById("nome")?.value || "").trim();
-        const telefone = cleanPhone((document.getElementById("telefone")?.value || "").trim());
+        const telefoneInput = (document.getElementById("telefone")?.value || "").trim();
+        const telefone = cleanPhone(telefoneInput); // só dígitos (até 11)
         const problema = (document.getElementById("problema")?.value || "Multas").trim();
 
-        if (!nome || !telefone || !problema){
-          alert("⚠️ Preencha Nome, Telefone e o Problema para continuar.");
+        // valida mínimo: DDD + 8/9 dígitos
+        if (!nome || telefone.length < 10 || !problema){
+          alert("⚠️ Preencha Nome e um Telefone válido (com DDD) para continuar.");
           return;
         }
 
-        // Atualiza campo telefone limpo
+        // mantém campo visível formatado
         const telEl = document.getElementById("telefone");
-        if (telEl) telEl.value = telefone;
+        if (telEl) telEl.value = formatPhoneBR(telefone);
+
+        // salva telefone limpo no hidden
+        const telLimpo = document.getElementById("telefone_limpo");
+        if (telLimpo) telLimpo.value = telefone;
 
         submitBtn.disabled = true;
         submitBtn.textContent = "ENVIANDO...";
@@ -1409,27 +1463,23 @@
         const endpoint = leadForm.getAttribute("action") || "https://formsubmit.co/cnhemdiasolucoes@gmail.com";
         const formData = new FormData(leadForm);
 
-        // garante tracking sempre preenchido
         fillTrackingFields();
 
-        const whatsMsg = buildWhatsMessage({ nome, telefone, problema, });
+        const whatsMsg = buildWhatsMessage({ nome, telefone, problema });
 
         try{
           const ok = await postFormSubmit(endpoint, formData);
 
-          // mesmo se falhar, a gente não trava o lead:
           closeLeadModal();
 
           trackConversion(currentLabel, () => {
             openWhats(whatsMsg);
           });
 
-          // reset leve
           leadForm.reset();
           if (problemaSelect) problemaSelect.value = "Multas";
 
           if (!ok){
-            // sem assustar o lead, mas você fica sabendo:
             console.warn("FormSubmit não confirmou OK (prosseguindo pro Whats).");
           }
 
@@ -1518,7 +1568,6 @@
       setActiveDot();
       startAuto();
 
-      // pausa quando o usuário interage (mobile friendly)
       if (reviewImg){
         reviewImg.addEventListener("touchstart", stopAuto, { passive: true });
         reviewImg.addEventListener("touchend", restartAuto, { passive: true });
