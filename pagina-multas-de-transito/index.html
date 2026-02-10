@@ -828,6 +828,14 @@
       line-height: 1.45;
     }
     .tiny b{ color: rgba(11,18,32,.82); }
+
+    /* ✅ Desktop: limita o tamanho das avaliações */
+@media (min-width: 767px){
+  .reviews .box{
+    max-width: 560px;   /* ajuste aqui: 520 / 560 / 600 */
+    margin: 0 auto;     /* centraliza */
+  }
+}
   </style>
 </head>
 
@@ -1576,3 +1584,4 @@
   </script>
 </body>
 </html>
+
