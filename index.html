@@ -37,6 +37,25 @@ function gtag_report_conversion(url, target) {
 }
 </script>
 
+    <!-- Event snippet for TESTE (clique) -->
+<script>
+function gtag_report_conversion_teste(url) {
+  var callback = function () {
+    if (url) window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  gtag('event', 'conversion', {
+    'send_to': 'AW-17709604708/QwdoCMSHu_obEOS-zPxB',
+    'value': 1.0,
+    'currency': 'BRL',
+    'event_callback': callback
+  });
+
+  return false;
+}
+</script>
+
+
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,9 +97,9 @@ function gtag_report_conversion(url, target) {
                     <strong>✓ Análise Gratuita</strong> - Avalie seu caso agora mesmo!
                 </div>
                 <a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." 
-                   target="_blank" 
+                   target="_blank" rel="noopener noreferrer" 
                    class="cta-button"
-                    onclick="return gtag_report_conversion(this.href, this.target);">
+                    onclick="return gtag_report_conversion_teste('https://wa.me/5511994187695');">
                    Falar Com Especialista
                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
                         alt="WhatsApp" 
@@ -136,9 +155,9 @@ function gtag_report_conversion(url, target) {
 
      <section style="background: rgba(0, 0, 0, 0.822); padding: 40px 5%;" class="cta-final-section">
         <a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." 
-           target="_blank" 
+           target="_blank" rel="noopener noreferrer"
            class="cta-button"
-            onclick="return gtag_report_conversion(this.href, this.target);">
+            onclick="return gtag_report_conversion_teste('https://wa.me/5511994187695');">
            Falar Com Especialista
            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
                 alt="WhatsApp" 
@@ -237,9 +256,9 @@ function gtag_report_conversion(url, target) {
         <h2>Precisa de Ajuda com sua CNH?</h2>
         <p class="section-subtitle">Entre em contato agora e receba uma análise gratuita da sua situação administrativa</p>
         <a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." 
-           target="_blank" 
+           target="_blank" rel="noopener noreferrer"
            class="cta-button"
-            onclick="return gtag_report_conversion(this.href, this.target);">
+            onclick="return gtag_report_conversion_teste('https://wa.me/5511994187695');">
            Falar Com Especialista
            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
                 alt="WhatsApp" 
@@ -257,7 +276,9 @@ function gtag_report_conversion(url, target) {
     </main>
 
     <!-- BOTÃO WHATSAPP -->
-    <a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." class="whatsapp-float" target="_blank" rel="noopener noreferrer" onclick="return gtag_report_conversion(this.href, this.target);">
+    <a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." class="whatsapp-float" target="_blank" rel="noopener noreferrer" onclick="return gtag_report_conversion(this.href, this.target);"
+        target="_blank" rel="noopener noreferrer"
+       onclick="return gtag_report_conversion_teste('https://wa.me/5511994187695');">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
     </a>
 
