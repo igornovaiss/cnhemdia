@@ -2204,7 +2204,10 @@
       CONFIG
     ============================ */
     const WHATS_NUMBER = "5511994187695";
-    const CONVERSION_SEND_TO = "AW-17709604708/3A1hCK-KneYbEOS-zPxB";
+    const CONVERSIONS = [
+  "AW-17709604708/3A1hCK-KneYbEOS-zPxB", // antiga
+  "AW-17233810162/duBcCNW2oY8cEPKI3JIA" // nova
+];
 
     function isIOS(){
       return /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -2240,21 +2243,27 @@
     fillTrackingFields();
 
     function trackConversion(label, callback){
-      const cb = typeof callback === "function" ? callback : function(){};
-      try{
-        if (typeof gtag === "function") {
-          gtag("event", "conversion", {
-            send_to: CONVERSION_SEND_TO,
-            event_callback: cb,
-            transport_type: "beacon",
-            event_timeout: 1200,
-            event_label: label || ""
-          });
-          return;
-        }
-      }catch(e){}
-      cb();
+  const cb = typeof callback === "function" ? callback : function(){};
+
+  try{
+    if (typeof gtag === "function") {
+
+      CONVERSIONS.forEach((sendTo, index) => {
+        gtag("event", "conversion", {
+          send_to: sendTo,
+          event_callback: index === CONVERSIONS.length - 1 ? cb : undefined,
+          transport_type: "beacon",
+          event_timeout: 1200,
+          event_label: label || ""
+        });
+      });
+
+      return;
     }
+  }catch(e){}
+
+  cb();
+}
 
     /* ============================
       TELEFONE com máscara
