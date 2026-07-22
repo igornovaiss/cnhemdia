@@ -1157,348 +1157,103 @@
   </button>
 
   <!-- Modal obrigatório -->
-  <div class="modal" id="leadModal" aria-hidden="true">
-    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Formulário para ir ao WhatsApp">
+  <!-- ====== MODAL DE CAPTURA ====== -->
+  <div class="modal" id="leadModal">
+    <div class="modal-card">
       <div class="modal-head">
         <div>
-          <h3>Antes de ir pro WhatsApp ✅</h3>
-          <p>Preencha rapidinho. Isso agiliza seu atendimento e evita perder tempo.</p>
+          <h3>Fale com um Especialista</h3>
+          <p>Preencha os dados abaixo para ser direcionado ao nosso WhatsApp.</p>
         </div>
-        <button class="xbtn" id="modalClose" aria-label="Fechar">✕</button>
+        <button class="xbtn" id="closeModal">✕</button>
       </div>
-
+      
       <div class="modal-body">
-        <form id="leadForm" class="lead-form" action="https://formsubmit.co/cnhemdiasolucoes@gmail.com" method="POST" autocomplete="off" spellcheck="false">
+        <form class="lead-form" id="leadForm">
           <div class="form-group">
-            <label for="nome">Nome *</label>
-            <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+            <label for="nome">Seu Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required>
           </div>
-
+          
           <div class="form-group">
-            <label for="telefone">Telefone (WhatsApp) *</label>
-            <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999">
+            <label for="telefone">WhatsApp</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required>
           </div>
-
+          
           <div class="form-group">
-            <label for="problema">Qual o seu problema? *</label>
-            <select id="problema" name="problema" required>
-              <option value="Recusa" selected>Recusa ao Bafômetro</option>
-              <option value="Suspensão da CNH">Suspensão da CNH</option>
-              <option value="Cassação Da CNH">Cassação Da CNH</option>
-              <option value="Multas">Multas</option>
-              <option value="Pontuação Alta">Pontuação Alta</option>
-              <option value="Outro">Outro</option>
-            </select>
+            <label for="email">Seu Melhor E-mail</label>
+            <input type="email" id="email" name="email" placeholder="joao@email.com" required>
           </div>
-
-          <!-- FormSubmit (mantém o padrão) -->
-          <input type="hidden" name="_subject" value="Nova solicitação de contato - Recusa ao Bafômetro | CNH em Dia Soluções">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="box">
-
-          <!-- Tracking (preenchido via JS) -->
-          <input type="hidden" name="cta_label" id="cta_label" value="">
-          <input type="hidden" name="page" value="Landing - Recusa">
-
-          <input type="hidden" name="utm_term" id="utm_term" value="">
-          <input type="hidden" name="utm_campaign" id="utm_campaign" value="">
-          <input type="hidden" name="utm_content" id="utm_content" value="">
-          <input type="hidden" name="utm_source" id="utm_source" value="">
-          <input type="hidden" name="utm_medium" id="utm_medium" value="">
-          <input type="hidden" name="utm_device" id="utm_device" value="">
-          <input type="hidden" name="utm_matchtype" id="utm_matchtype" value="">
-          <input type="hidden" name="utm_network" id="utm_network" value="">
-          <input type="hidden" name="gclid" id="gclid" value="">
-
-          <!-- ✅ Atualização: telefone limpo (só dígitos) -->
-          <input type="hidden" name="telefone_limpo" id="telefone_limpo" value="">
-
-          <button type="submit" class="submit" id="leadSubmitBtn">ENVIAR E IR PRO WHATSAPP</button>
+          
+          <button type="submit" class="submit" id="btnSubmit">FALAR NO WHATSAPP AGORA</button>
+          <div class="tiny" style="text-align: center;">Seus dados estão seguros conosco.</div>
         </form>
       </div>
     </div>
   </div>
 
+  <!-- ====== SCRIPT DE INTEGRAÇÃO COM GOOGLE SHEETS E WHATSAPP ====== -->
   <script>
-    /* ============================
-      MENU (mobile)
-    ============================ */
-    const menuBtn = document.getElementById("menuBtn");
-    const menu = document.getElementById("menu");
-    if(menuBtn && menu){
-      menuBtn.addEventListener("click", () => {
-        const open = menu.classList.toggle("is-open");
-        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    // 1. Lógica para abrir e fechar o Modal
+    const modal = document.getElementById('leadModal');
+    const btnClose = document.getElementById('closeModal');
+    const openBtns = document.querySelectorAll('.js-open-lead');
+
+    openBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        modal.classList.add('is-open');
       });
-    }
-
-    /* ============================
-      CONFIG
-    ============================ */
-    const WHATS_NUMBER = "5511994187695";
-    const CONVERSION_SEND_TO = "AW-17709604708/3A1hCK-KneYbEOS-zPxB";
-
-    function isIOS(){
-      return /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    }
-
-    function getParams(){
-      const p = new URLSearchParams(location.search);
-      return {
-        utm_term: p.get("utm_term") || "",
-        utm_campaign: p.get("utm_campaign") || "",
-        utm_content: p.get("utm_content") || "",
-        utm_source: p.get("utm_source") || "",
-        utm_medium: p.get("utm_medium") || "",
-        utm_device: p.get("utm_device") || "",
-        utm_matchtype: p.get("utm_matchtype") || "",
-        utm_network: p.get("utm_network") || "",
-        gclid: p.get("gclid") || ""
-      };
-    }
-
-    function fillTrackingFields(){
-      const t = getParams();
-      const map = [
-        ["utm_term","utm_term"],["utm_campaign","utm_campaign"],["utm_content","utm_content"],
-        ["utm_source","utm_source"],["utm_medium","utm_medium"],["utm_device","utm_device"],
-        ["utm_matchtype","utm_matchtype"],["utm_network","utm_network"],["gclid","gclid"]
-      ];
-      map.forEach(([id,key]) => {
-        const el = document.getElementById(id);
-        if (el) el.value = t[key] || "";
-      });
-    }
-    fillTrackingFields();
-
-    function trackConversion(label, callback){
-      const cb = typeof callback === "function" ? callback : function(){};
-      try{
-        if (typeof gtag === "function") {
-          gtag("event", "conversion", {
-            send_to: CONVERSION_SEND_TO,
-            event_callback: cb,
-            transport_type: "beacon",
-            event_timeout: 1200,
-            event_label: label || ""
-          });
-          return;
-        }
-      }catch(e){}
-      cb();
-    }
-
-    /* ============================
-      ✅ Atualização: TELEFONE com máscara (11 dígitos)
-    ============================ */
-    function digitsOnly(s){
-      return (s || "").replace(/\D/g, "");
-    }
-
-    function formatPhoneBR(value){
-      const d = digitsOnly(value).slice(0, 11); // DDD + 9
-      if (!d) return "";
-      const ddd = d.slice(0,2);
-      const rest = d.slice(2);
-
-      if (d.length <= 2) return `(${ddd}`;
-      if (rest.length === 0) return `(${ddd})`;
-
-      // 8 (fixo): 4-4 | 9 (cel): 5-4
-      if (rest.length <= 8){
-        return `(${ddd}) ${rest.slice(0,4)}-${rest.slice(4)}`;
-      }
-      return `(${ddd}) ${rest.slice(0,5)}-${rest.slice(5)}`;
-    }
-
-    function cleanPhone(s){
-      return digitsOnly(s).slice(0, 11);
-    }
-
-    // aplica máscara enquanto digita
-    const telInput = document.getElementById("telefone");
-    if (telInput){
-      telInput.setAttribute("inputmode", "numeric");
-      telInput.setAttribute("autocomplete", "tel");
-      telInput.setAttribute("maxlength", "15"); // (11) 99418-7695
-
-      telInput.addEventListener("input", (e) => {
-        e.target.value = formatPhoneBR(e.target.value);
-      }, { passive: true });
-    }
-
-    /* ============================
-      ✅ Atualização: Whats com quebras e tracking só se existir
-    ============================ */
-    function encodeWhatsText(text){
-      return encodeURIComponent(text).replace(/%0A/g, "%0D%0A");
-    }
-
-    function openWhats(message){
-      const msg = encodeWhatsText(message);
-      const url = `https://api.whatsapp.com/send/?phone=${WHATS_NUMBER}&text=${msg}`;
-
-      if (isIOS()) window.location.href = url;
-      else window.open(url, "_blank", "noopener,noreferrer");
-    }
-
-    function buildWhatsMessage(data){
-      const t = getParams();
-
-      const telPretty = formatPhoneBR(data.telefone) || data.telefone;
-
-      const linhas = [
-        `Olá! Me chamo ${data.nome}.`,
-        `Quero resolver meu problema de: ${data.problema}.`,
-        `Telefone/WhatsApp: ${telPretty}.`
-      ];
-
-      const trackingPairs = [
-        ["Campanha", t.utm_campaign],
-        ["Termo", t.utm_term],
-        ["Conteúdo", t.utm_content],
-        ["Device", t.utm_device],
-        ["Match", t.utm_matchtype],
-        ["Rede", t.utm_network],
-        ["GCLID", t.gclid]
-      ].filter(([_, v]) => (v || "").trim() !== "");
-
-      if (trackingPairs.length){
-        linhas.push("");
-        linhas.push("📌 Origem: Google Ads");
-        trackingPairs.forEach(([k, v]) => linhas.push(`${k}: ${v}`));
-      }
-
-      return linhas.join("\n");
-    }
-
-    /* ============================
-      MODAL + CTA (todo botão abre o form)
-    ============================ */
-    const leadModal = document.getElementById("leadModal");
-    const modalClose = document.getElementById("modalClose");
-    const leadForm = document.getElementById("leadForm");
-    const ctaLabelInput = document.getElementById("cta_label");
-    const problemaSelect = document.getElementById("problema");
-    const submitBtn = document.getElementById("leadSubmitBtn");
-
-    let currentLabel = "unknown";
-
-    function openLeadModal(label, problem){
-      currentLabel = label || "unknown";
-      if (ctaLabelInput) ctaLabelInput.value = currentLabel;
-
-      // pré-seleciona problema se o botão informar
-      if (problem && problemaSelect){
-        const opts = Array.from(problemaSelect.options).map(o => o.value);
-        if (opts.includes(problem)) problemaSelect.value = problem;
-        else problemaSelect.value = "Recusa";
-      } else if (problemaSelect){
-        problemaSelect.value = "Recusa";
-      }
-
-      if (leadModal){
-        leadModal.classList.add("is-open");
-        leadModal.setAttribute("aria-hidden","false");
-        setTimeout(() => document.getElementById("nome")?.focus(), 60);
-      }
-    }
-
-    function closeLeadModal(){
-      if (!leadModal) return;
-      leadModal.classList.remove("is-open");
-      leadModal.setAttribute("aria-hidden","true");
-    }
-
-    document.querySelectorAll(".js-open-lead").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const label = btn.getAttribute("data-label") || "cta";
-        const problem = btn.getAttribute("data-problem") || "Recusa";
-        openLeadModal(label, problem);
-      }, { passive: true });
     });
 
-    if (modalClose) modalClose.addEventListener("click", closeLeadModal, { passive: true });
-    if (leadModal) {
-      leadModal.addEventListener("click", (e) => {
-        if (e.target === leadModal) closeLeadModal();
-      });
-    }
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeLeadModal();
+    btnClose.addEventListener('click', () => {
+      modal.classList.remove('is-open');
     });
 
-    /* ============================
-      SUBMIT: envia FormSubmit e depois Whats
-    ============================ */
-    async function postFormSubmit(endpoint, formData){
-      const res = await fetch(endpoint, {
-        method: "POST",
-        body: formData,
-        headers: { "Accept": "application/json" }
+    // 2. Máscara para o campo de telefone (Deixa no formato (11) 99999-9999 automático)
+    const inputTelefone = document.getElementById('telefone');
+    inputTelefone.addEventListener('input', function (e) {
+      let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+      e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
+
+    // 3. Envio para a Planilha e Redirecionamento para o WhatsApp
+    const form = document.getElementById('leadForm');
+    const btnSubmit = document.getElementById('btnSubmit');
+
+    // URL da sua implantação do Google Apps Script
+    const urlGoogleScript = "https://script.google.com/macros/s/AKfycbwunp-UABxbzAPGcNcNi9jZH4WF8FEWpLFC-25luKNf2Fuia4VZMl3gzknFmN7QHIWNRw/exec";
+    
+    // Seu número de WhatsApp atualizado
+    const numeroWhatsApp = "5511994187695";
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const textoOriginal = btnSubmit.innerText;
+      btnSubmit.innerText = "Conectando...";
+      btnSubmit.disabled = true;
+
+      const formData = new FormData(form);
+      const nomeCliente = document.getElementById('nome').value;
+
+      fetch(urlGoogleScript, {
+        method: 'POST',
+        body: formData
+      })
+      .then(() => {
+        // Envio bem sucedido: Redireciona para o WhatsApp
+        const mensagem = `Olá, me chamo ${nomeCliente} e recebi uma multa por recusa ao bafômetro. Gostaria de ajuda!`;
+        const linkWhats = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+        
+        window.location.href = linkWhats;
+      })
+      .catch(error => {
+        console.error('Erro ao enviar:', error);
+        alert("Ocorreu um erro ao enviar. Tente novamente.");
+        btnSubmit.innerText = textoOriginal;
+        btnSubmit.disabled = false;
       });
-      return res.ok;
-    }
-
-    if (leadForm) {
-      leadForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const nome = (document.getElementById("nome")?.value || "").trim();
-        const telefoneInput = (document.getElementById("telefone")?.value || "").trim();
-        const telefone = cleanPhone(telefoneInput); // só dígitos (até 11)
-        const problema = (document.getElementById("problema")?.value || "Recusa").trim();
-
-        // valida mínimo: DDD + 8/9 dígitos
-        if (!nome || telefone.length < 10 || !problema){
-          alert("⚠️ Preencha Nome e um Telefone válido (com DDD) para continuar.");
-          return;
-        }
-
-        // mantém campo visível formatado
-        const telEl = document.getElementById("telefone");
-        if (telEl) telEl.value = formatPhoneBR(telefone);
-
-        // salva telefone limpo no hidden
-        const telLimpo = document.getElementById("telefone_limpo");
-        if (telLimpo) telLimpo.value = telefone;
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = "ENVIANDO...";
-
-        const endpoint = leadForm.getAttribute("action") || "https://formsubmit.co/cnhemdiasolucoes@gmail.com";
-        const formData = new FormData(leadForm);
-
-        fillTrackingFields();
-
-        const whatsMsg = buildWhatsMessage({ nome, telefone, problema });
-
-        try{
-          const ok = await postFormSubmit(endpoint, formData);
-
-          closeLeadModal();
-
-          trackConversion(currentLabel, () => {
-            openWhats(whatsMsg);
-          });
-
-          leadForm.reset();
-          if (problemaSelect) problemaSelect.value = "Recusa ao Bafômetro";
-
-          if (!ok){
-            console.warn("FormSubmit não confirmou OK (prosseguindo pro Whats).");
-          }
-
-        }catch(err){
-          console.warn("Falha no envio via fetch. Prosseguindo pro Whats.", err);
-          closeLeadModal();
-          trackConversion(currentLabel, () => openWhats(whatsMsg));
-        }finally{
-          submitBtn.disabled = false;
-          submitBtn.textContent = "ENVIAR E IR PRO WHATSAPP";
-        }
-      }, { passive: false });
-    }
+    });
 
     /* ============================
       REVIEWS CAROUSEL (IMAGENS) - 3s
