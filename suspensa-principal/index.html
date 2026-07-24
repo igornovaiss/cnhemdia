@@ -1160,12 +1160,6 @@
             <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999">
           </div>
 
-          <!-- Substituído 'Problema' por 'Email' para padronizar perfeitamente a sua Planilha -->
-          <div class="form-group">
-            <label for="email">E-mail *</label>
-            <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
-          </div>
-
           <!-- Tracking (preenchido via JS) -->
           <input type="hidden" name="cta_label" id="cta_label" value="">
           <input type="hidden" name="pagina" value="CNH Suspensa"> <!-- Nome da página para a Planilha -->
@@ -1395,10 +1389,9 @@
         const nome = (document.getElementById("nome")?.value || "").trim();
         const telefoneInput = (document.getElementById("telefone")?.value || "").trim();
         const telefone = cleanPhone(telefoneInput); 
-        const email = (document.getElementById("email")?.value || "").trim();
 
-        if (!nome || telefone.length < 10 || !email){
-          alert("⚠️ Preencha Nome, E-mail e um Telefone válido para continuar.");
+        if (!nome || telefone.length < 10){
+          alert("⚠️ Preencha Nome e um Telefone válido para continuar.");
           return;
         }
 
