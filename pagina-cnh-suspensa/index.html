@@ -1173,7 +1173,8 @@
       </div>
 
       <div class="modal-body">
-        <form id="leadForm" class="lead-form" action="https://formsubmit.co/cnhemdiasolucoes@gmail.com" method="POST" autocomplete="off" spellcheck="false">
+        <!-- Action e Method removidos (agora o JS faz o envio) -->
+        <form id="leadForm" class="lead-form" autocomplete="off" spellcheck="false">
           <div class="form-group">
             <label for="nome">Nome *</label>
             <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
@@ -1184,26 +1185,15 @@
             <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999">
           </div>
 
+          <!-- Substituído 'Problema' por 'Email' para padronizar perfeitamente a sua Planilha -->
           <div class="form-group">
-            <label for="problema">Qual o seu problema? *</label>
-            <select id="problema" name="problema" required>
-              <option value="Recusa" selected>Recusa ao Bafômetro</option>
-              <option value="Suspensao">Suspensão Da CNH</option>
-              <option value="Cassação Da CNH">Cassação Da CNH</option>
-              <option value="Multas">Multas</option>
-              <option value="Pontuação Alta">Pontuação Alta</option>
-              <option value="Outro">Outro</option>
-            </select>
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
           </div>
-
-          <!-- FormSubmit (mantém o padrão) -->
-          <input type="hidden" name="_subject" value="Nova solicitação de contato - Suspensão | CNH em Dia Soluções">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="box">
 
           <!-- Tracking (preenchido via JS) -->
           <input type="hidden" name="cta_label" id="cta_label" value="">
-          <input type="hidden" name="page" value="Landing - Suspensão">
+          <input type="hidden" name="pagina" value="Landing - Suspensão"> <!-- Nome da página para a Planilha -->
 
           <input type="hidden" name="utm_term" id="utm_term" value="">
           <input type="hidden" name="utm_campaign" id="utm_campaign" value="">
@@ -1215,7 +1205,6 @@
           <input type="hidden" name="utm_network" id="utm_network" value="">
           <input type="hidden" name="gclid" id="gclid" value="">
 
-          <!-- ✅ Atualização: telefone limpo (só dígitos) -->
           <input type="hidden" name="telefone_limpo" id="telefone_limpo" value="">
 
           <button type="submit" class="submit" id="leadSubmitBtn">ENVIAR E IR PRO WHATSAPP</button>
@@ -1238,10 +1227,13 @@
     }
 
     /* ============================
-      CONFIG
+      CONFIGURAÇÕES GERAIS
     ============================ */
     const WHATS_NUMBER = "5511994187695";
     const CONVERSION_SEND_TO = "AW-17709604708/3A1hCK-KneYbEOS-zPxB";
+    
+    // 🚨 URL DA SUA PLANILHA (APPS SCRIPT)
+    const URL_GOOGLE_SCRIPT = "https://script.google.com/macros/s/AKfycbyf9hqrdYFM-f2QNZ34ph-oYJZp33mpcXxHyq2ZCGd09ORjIWtCo964A1zESFRDeKP6MA/exec";
 
     function isIOS(){
       return /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -1294,14 +1286,14 @@
     }
 
     /* ============================
-      ✅ Atualização: TELEFONE com máscara (11 dígitos)
+      TELEFONE com máscara
     ============================ */
     function digitsOnly(s){
       return (s || "").replace(/\D/g, "");
     }
 
     function formatPhoneBR(value){
-      const d = digitsOnly(value).slice(0, 13); // DDD + 9
+      const d = digitsOnly(value).slice(0, 13);
       if (!d) return "";
       const ddd = d.slice(0,2);
       const rest = d.slice(2);
@@ -1309,7 +1301,6 @@
       if (d.length <= 2) return `(${ddd}`;
       if (rest.length === 0) return `(${ddd})`;
 
-      // 8 (fixo): 4-4 | 9 (cel): 5-4
       if (rest.length <= 8){
         return `(${ddd}) ${rest.slice(0,4)}-${rest.slice(4)}`;
       }
@@ -1320,12 +1311,11 @@
       return digitsOnly(s).slice(0, 13);
     }
 
-    // aplica máscara enquanto digita
     const telInput = document.getElementById("telefone");
     if (telInput){
       telInput.setAttribute("inputmode", "numeric");
       telInput.setAttribute("autocomplete", "tel");
-      telInput.setAttribute("maxlength", "15"); // (11) 99418-7695
+      telInput.setAttribute("maxlength", "15");
 
       telInput.addEventListener("input", (e) => {
         e.target.value = formatPhoneBR(e.target.value);
@@ -1333,7 +1323,7 @@
     }
 
     /* ============================
-      ✅ Atualização: Whats com quebras e tracking só se existir
+      WHATSAPP (Texto Inteligente)
     ============================ */
     function encodeWhatsText(text){
       return encodeURIComponent(text).replace(/%0A/g, "%0D%0A");
@@ -1349,13 +1339,11 @@
 
     function buildWhatsMessage(data){
       const t = getParams();
-
       const telPretty = formatPhoneBR(data.telefone) || data.telefone;
 
       const linhas = [
-        `Olá! Me chamo ${data.nome}.`,
-        `Quero resolver meu problema de: ${data.problema}.`,
-        `Telefone/WhatsApp: ${telPretty}.`
+        `Olá! Me chamo ${data.nome} e estou com a CNH Suspensa. Gostaria de ajuda!`,
+        `Telefone: ${telPretty}.`
       ];
 
       const trackingPairs = [
@@ -1378,29 +1366,19 @@
     }
 
     /* ============================
-      MODAL + CTA (todo botão abre o form)
+      MODAL LÓGICA
     ============================ */
     const leadModal = document.getElementById("leadModal");
     const modalClose = document.getElementById("modalClose");
     const leadForm = document.getElementById("leadForm");
     const ctaLabelInput = document.getElementById("cta_label");
-    const problemaSelect = document.getElementById("problema");
     const submitBtn = document.getElementById("leadSubmitBtn");
 
     let currentLabel = "unknown";
 
-    function openLeadModal(label, problem){
+    function openLeadModal(label){
       currentLabel = label || "unknown";
       if (ctaLabelInput) ctaLabelInput.value = currentLabel;
-
-      // pré-seleciona problema se o botão informar
-      if (problem && problemaSelect){
-        const opts = Array.from(problemaSelect.options).map(o => o.value);
-        if (opts.includes(problem)) problemaSelect.value = problem;
-        else problemaSelect.value = "Suspensao";
-      } else if (problemaSelect){
-        problemaSelect.value = "Suspensao";
-      }
 
       if (leadModal){
         leadModal.classList.add("is-open");
@@ -1416,11 +1394,11 @@
     }
 
     document.querySelectorAll(".js-open-lead").forEach(btn => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
         const label = btn.getAttribute("data-label") || "cta";
-        const problem = btn.getAttribute("data-problem") || "Suspensao";
-        openLeadModal(label, problem);
-      }, { passive: true });
+        openLeadModal(label);
+      }, { passive: false });
     });
 
     if (modalClose) modalClose.addEventListener("click", closeLeadModal, { passive: true });
@@ -1434,77 +1412,54 @@
     });
 
     /* ============================
-      SUBMIT: envia FormSubmit e depois Whats
+      ENVIO PARA A PLANILHA E WHATSAPP
     ============================ */
-    async function postFormSubmit(endpoint, formData){
-      const res = await fetch(endpoint, {
-        method: "POST",
-        body: formData,
-        headers: { "Accept": "application/json" }
-      });
-      return res.ok;
-    }
-
     if (leadForm) {
       leadForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const nome = (document.getElementById("nome")?.value || "").trim();
         const telefoneInput = (document.getElementById("telefone")?.value || "").trim();
-        const telefone = cleanPhone(telefoneInput); // só dígitos (até 11)
-        const problema = (document.getElementById("problema")?.value || "Suspensao").trim();
+        const telefone = cleanPhone(telefoneInput); 
+        const email = (document.getElementById("email")?.value || "").trim();
 
-        // valida mínimo: DDD + 8/9 dígitos
-        if (!nome || telefone.length < 10 || !problema){
-          alert("⚠️ Preencha Nome e um Telefone válido (com DDD) para continuar.");
+        if (!nome || telefone.length < 10 || !email){
+          alert("⚠️ Preencha Nome, E-mail e um Telefone válido para continuar.");
           return;
         }
 
-        // mantém campo visível formatado
         const telEl = document.getElementById("telefone");
         if (telEl) telEl.value = formatPhoneBR(telefone);
 
-        // salva telefone limpo no hidden
         const telLimpo = document.getElementById("telefone_limpo");
         if (telLimpo) telLimpo.value = telefone;
 
         submitBtn.disabled = true;
         submitBtn.textContent = "ENVIANDO...";
 
-        const endpoint = leadForm.getAttribute("action") || "https://formsubmit.co/cnhemdiasolucoes@gmail.com";
-        const formData = new FormData(leadForm);
-
         fillTrackingFields();
+        const formData = new FormData(leadForm);
+        const whatsMsg = buildWhatsMessage({ nome, telefone });
 
-        const whatsMsg = buildWhatsMessage({ nome, telefone, problema });
-
-        try{
-          const ok = await postFormSubmit(endpoint, formData);
-
+        try {
+          // 1. Envia os dados para a sua Planilha do Google
+          await fetch(URL_GOOGLE_SCRIPT, { method: "POST", body: formData });
+        } catch(err) {
+          console.warn("Falha no envio para planilha. Prosseguindo pro Whats.", err);
+        } finally {
+          // 2. Independente de tudo, fecha o modal, marca conversão Ads e joga pro Whats
           closeLeadModal();
-
+          
           trackConversion(currentLabel, () => {
             openWhats(whatsMsg);
           });
 
           leadForm.reset();
-          if (problemaSelect) problemaSelect.value = "Suspensão Da CNH";
-
-          if (!ok){
-            console.warn("FormSubmit não confirmou OK (prosseguindo pro Whats).");
-          }
-
-        }catch(err){
-          console.warn("Falha no envio via fetch. Prosseguindo pro Whats.", err);
-          closeLeadModal();
-          trackConversion(currentLabel, () => openWhats(whatsMsg));
-        }finally{
           submitBtn.disabled = false;
           submitBtn.textContent = "ENVIAR E IR PRO WHATSAPP";
         }
       }, { passive: false });
     }
-
     /* ============================
       REVIEWS CAROUSEL (IMAGENS) - 3s
     ============================ */
