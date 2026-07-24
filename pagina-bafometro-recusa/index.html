@@ -1234,12 +1234,15 @@
       btnSubmit.disabled = true;
 
       const formData = new FormData(form);
-      const nomeCliente = document.getElementById('nome').value;
-
-      fetch(urlGoogleScript, {
-        method: 'POST',
-        body: formData
-      })
+    const nomeCliente = document.getElementById('nome').value;
+  
+    // 👈 ADICIONE ESTA LINHA (defina o nome da página de cada site aqui)
+    formData.append('pagina', 'Lei Seca / Bafômetro'); 
+  
+    fetch(urlGoogleScript, {
+      method: 'POST',
+      body: formData
+    })
       .then(() => {
         // Envio bem sucedido: Redireciona para o WhatsApp
         const mensagem = `Olá, me chamo ${nomeCliente} e recebi uma multa por recusa ao bafômetro. Gostaria de ajuda!`;
