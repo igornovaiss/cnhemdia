@@ -1193,7 +1193,7 @@
 
           <!-- Tracking (preenchido via JS) -->
           <input type="hidden" name="cta_label" id="cta_label" value="">
-          <input type="hidden" name="pagina" value="Landing - Suspensão"> <!-- Nome da página para a Planilha -->
+          <input type="hidden" name="pagina" value="CNH Suspensa"> <!-- Nome da página para a Planilha -->
 
           <input type="hidden" name="utm_term" id="utm_term" value="">
           <input type="hidden" name="utm_campaign" id="utm_campaign" value="">
@@ -1333,8 +1333,7 @@
       const msg = encodeWhatsText(message);
       const url = `https://api.whatsapp.com/send/?phone=${WHATS_NUMBER}&text=${msg}`;
 
-      if (isIOS()) window.location.href = url;
-      else window.open(url, "_blank", "noopener,noreferrer");
+      window.location.href = url;
     }
 
     function buildWhatsMessage(data){
@@ -1342,7 +1341,7 @@
       const telPretty = formatPhoneBR(data.telefone) || data.telefone;
 
       const linhas = [
-        `Olá! Me chamo ${data.nome} e estou com a CNH Suspensa. Gostaria de ajuda!`,
+        `Olá! Me chamo ${data.nome} e estou com a CNH Suspensa.`,
         `Telefone: ${telPretty}.`
       ];
 
