@@ -1,429 +1,1283 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Ads Pixel - NÃO ALTERAR -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17709604708"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag( ){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-17709604708');
-
-        // TAG NOVA 👇
-  gtag('config', 'AW-17233810162');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-17709604708');
     </script>
-
-    <!-- Event snippet for WhatsApp - Clique (Página) conversion page
-In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
-<script>
-function gtag_report_conversion(url, target) {
-  var go = function () {
-    if (typeof url !== 'undefined') {
-      if (target === '_blank') window.open(url, '_blank');
-      else window.location = url;
-    }
-  };
-
-  try {
-    if (typeof gtag === 'function') {
-      gtag('event', 'conversion', {
-        'send_to': 'AW-17709604708/3A1hCK-KneYbEOS-zPxB',
-        'event_callback': go
-      });
-      return false;
-    }
-  } catch (e) {}
-
-  // Se o gtag não existir, não bloqueia o usuário
-  go();
-  return false;
-}
-</script>
-
-    <!-- Event snippet for TESTE (clique) -->
-<script>
-function gtag_report_conversion_teste(url) {
-  var callback = function () {
-    if (url) window.open(url, "_blank", "noopener,noreferrer");
-  };
-
-  gtag('event', 'conversion', {
-    'send_to': 'AW-17709604708/QwdoCMSHu_obEOS-zPxB',
-    'value': 1.0,
-    'currency': 'BRL',
-    'event_callback': callback
-  });
-
-  return false;
-}
-</script>
-
-
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CNH em Dia Soluções - Sua CNH em Dia, Sua Vida Em Movimento.</title>
-    <meta name="description" content="Estamos focados em resolver o seu problema. Seja ele: Lei seca, Recusa ao bafômetro, suspensão, cassação, multas, perda da provisoria, documentação do veiculo, entre outras.">
+    <meta name="description" content="CNH em Dia Soluções - Assessoria especializada em multa de bafômetro, suspensão, cassação e perda da CNH. Análise gratuita do seu caso.">
+    <title>CNH em Dia Soluções - Assessoria de Trânsito</title>
     
-    <!-- CSS Unificado -->
-    <link rel="stylesheet" href="/static/styles.css">
-    
-    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
-    <link rel="shortcut icon" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0d1117;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 24px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 32px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        @keyframes pulseCTA {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(2, 20, 9, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        @keyframes pulseWhats {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        @keyframes respiracaoLuz {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #30363d;
+            padding: 16px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(120deg, #0066cc, #1a8cff, #0066cc);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInDown 0.8s ease forwards, shine 3s linear infinite, pulse 4s ease-in-out infinite;
+        }
+
+        .header-cta {
+            display: none;
+            background: linear-gradient(135deg, #0066cc 0%, #1a8cff 100%);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 100, 204, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .header-cta {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(rgba(13, 17, 23, 0.82), rgba(0, 51, 102, 0.6)), url('https://images.unsplash.com/photo-1589519160732-57fc498494f8?w=1200&h=800&fit=crop');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeInUp 1s ease-out;
+            z-index: 10;
+            position: relative;
+        }
+
+        .badge {
+            background: rgba(248, 81, 73, 0.15);
+            color: #f85149;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 24px;
+            border: 1px solid #f85149;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, #00b4d8 0%, #1a8cff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #c9d1d9;
+            margin-bottom: 40px;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #0066cc 0%, #1a8cff 100%);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(0, 100, 204, 0.3);
+            animation: pulseCTA 2s infinite;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 100, 204, 0.5);
+        }
+
+        .btn-primary svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-tag {
+            color: #00b4d8;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #c9d1d9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 40px 20px;
+            border-top: 1px solid #30363d;
+            border-bottom: 1px solid #30363d;
+            background-color: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trust-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(20, 50, 90, 0.3) 0%, transparent 60%);
+            animation: respiracaoLuz 4s ease-in-out infinite alternate;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .trust-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .trust-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 140px;
+            height: 120px;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.25s ease;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .trust-item:hover {
+            border-color: #0066cc;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 100, 204, 0.15);
+        }
+
+        .trust-item img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 8px;
+            opacity: 0.9;
+            transition: 0.3s ease;
+        }
+
+        .trust-item:hover img {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .trust-item span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: #161b22;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #0066cc, #00b4d8);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            border-color: #0066cc;
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0, 100, 204, 0.2);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            color: #00b4d8;
+            margin-bottom: 24px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: #c9d1d9;
+            line-height: 1.8;
+        }
+
+        .card strong {
+            color: #ffffff;
+        }
+
+        /* Urgency Banner */
+        .urgency-section {
+            background: linear-gradient(135deg, rgba(0, 100, 204, 0.1) 0%, rgba(0, 180, 216, 0.05) 100%);
+            border: 1px solid #30363d;
+            border-left: 4px solid #f85149;
+            padding: 60px;
+            border-radius: 8px;
+            margin: 80px 0;
+        }
+
+        .urgency-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .urgency-icon {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: rgba(248, 81, 73, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f85149;
+        }
+
+        .urgency-icon svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .urgency-text h3 {
+            color: #f85149;
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .urgency-text p {
+            color: #c9d1d9;
+            margin-bottom: 12px;
+        }
+
+        .urgency-text strong {
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .urgency-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .urgency-section {
+                padding: 40px 20px;
+            }
+        }
+
+        /* Steps Grid */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            position: relative;
+        }
+
+        .step-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #0066cc 0%, #1a8cff 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            margin: 0 auto 24px;
+            box-shadow: 0 8px 24px rgba(0, 100, 204, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .step-item:hover .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 12px 32px rgba(0, 100, 204, 0.5);
+        }
+
+        .step-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .step-item p {
+            color: #c9d1d9;
+            line-height: 1.8;
+        }
+
+        /* Storytelling */
+        .storytelling {
+            background: linear-gradient(rgba(13, 17, 23, 0.85), rgba(0, 51, 102, 0.7)), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .storytelling-content {
+            max-width: 700px;
+        }
+
+        .story-text {
+            color: #c9d1d9;
+            margin-bottom: 40px;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            background: #0a0a0a;
+            border-top: 1px solid #30363d;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .social-proof p {
+            color: #c9d1d9;
+            font-size: 1.1rem;
+        }
+
+        .social-proof strong {
+            color: #ffffff;
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            padding: 15px 20px;
+            background: transparent;
+        }
+
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: "▼";
+            font-size: 0.8rem;
+            transition: transform 0.2s ease;
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-item p {
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        /* Location Section */
+        .location-section {
+            border-bottom: 1px solid #30363d;
+            background: #0a0a0a;
+            padding: 100px 0;
+        }
+
+        .location-map {
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            margin-bottom: 48px;
+        }
+
+        .location-map iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        .location-cards {
+            display: grid;
+            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .location-card {
+            border: 1px solid #30363d;
+            background: #161b22;
+            padding: 32px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .location-card:hover {
+            border-color: #0066cc;
+            transform: translateY(-8px);
+        }
+
+        .location-card-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .location-card h3 {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .location-card p {
+            font-size: 0.9rem;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        .location-card a {
+            color: #00b4d8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .location-card a:hover {
+            color: #1a8cff;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(22, 27, 34, 0.8);
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid #30363d;
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            margin-bottom: 30px;
+        }
+
+        .legal-text {
+            font-size: 0.8rem;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 100, 204, 0.05);
+            border-radius: 8px;
+            border: 1px solid #30363d;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #161b22;
+            padding: 40px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            border: 1px solid #30363d;
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #8b949e;
+            cursor: pointer;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-close:hover {
+            color: #ffffff;
+        }
+
+        .modal-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .modal-content > p {
+            color: #c9d1d9;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #0066cc;
+            background: rgba(0, 100, 204, 0.05);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #0066cc 0%, #1a8cff 100%);
+            color: white;
+            padding: 14px;
+            border-radius: 6px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 100, 204, 0.3);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            animation: pulseWhats 2s infinite;
+        }
+
+        .whatsapp-float svg {
+            width: 36px;
+            height: 36px;
+            fill: white;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 60px 0; }
+            .section-title { font-size: 1.8rem; }
+            h1 { font-size: 2rem; }
+            .hero { margin-top: 70px; min-height: 80vh; }
+            .grid { grid-template-columns: 1fr; }
+            .whatsapp-float {
+                width: 70px;
+                height: 70px;
+                bottom: 20px;
+                right: 10px;
+            }
+            .whatsapp-float svg {
+                width: 40px;
+                height: 40px;
+            }
+            .modal {
+                align-items: flex-start;
+                overflow-y: auto;
+                padding: 20px;
+            }
+            .modal-content {
+                padding: 30px 20px;
+                margin-top: auto;
+                margin-bottom: auto;
+                width: 95%;
+                max-width: none;
+            }
+            .modal-content h2 { font-size: 1.3rem; }
+            .modal-close { top: 10px; right: 15px; }
+        }
+
+        @media (max-width: 500px) {
+            .modal-content h2 { display: none; }
+            .form-group { margin-bottom: 12px; }
+            .modal-content > p { margin-bottom: 15px; }
+            .form-group label { margin-bottom: 4px; font-size: 0.85rem; }
+            .form-control { padding: 10px 12px; }
+            .btn-submit { padding: 12px; }
+        }
+    </style>
 </head>
 <body>
+
     <header>
-        <nav>
-            <a href="/" class="logo">CNH em <span>Dia Soluções</span></a>
-            <ul class="nav-links">
-                <li><a href="/">Início</a></li>
-                <li><a href="/servicos/">Serviços</a></li>
-                <li><a href="/sobre/">Sobre</a></li>
-                <li><a href="/contato/">Contato</a></li>
-            </ul>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">CNH em Dia Soluções</div>
+                <button class="header-cta js-open-lead">FALAR COM ESPECIALISTA</button>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <!-- HERO SECTION CORRIGIDA -->
     <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Sua CNH em Dia, Sua Vida em Movimento</h1>
-                <p>Não deixe que os problemas com <strong>multa de bafômetro, ultrapassagem, manobra perigosa, suspensão ou cassação da CNH</strong> te paralisem. Somos a consultoria especializada em reverter penalidades, com expertise, agilidade e segurança.</p>
-                <div class="hero-highlight">
-                    <strong>✓ Análise Gratuita</strong> - Avalie seu caso agora mesmo!
-                </div>
-                <a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." 
-                   target="_blank" rel="noopener noreferrer" 
-                   class="cta-button"
-                    onclick="return gtag_report_conversion_teste('https://wa.me/5511994187695');">
-                   Entrar Em Contato
-                   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-                        alt="WhatsApp" 
-                        width="30" 
-                        height="30" 
-                        style="vertical-align: middle; margin-left: 8px;">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">Assessoria de Trânsito Especializada</div>
+                <h1>Proteja seu direito de <span>dirigir</span>.</h1>
+                <p>Especialistas em multa de bafômetro, suspensão, cassação e perda da CNH. Encontramos as falhas técnicas no seu processo e montamos uma estratégia de defesa. Análise gratuita agora.</p>
+                <button class="btn-primary js-open-lead">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                    ANÁLISE GRATUITA AGORA
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-container">
+                <a href="https://instagram.com/cnhemdiasolucoes" target="_blank" class="trust-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                    <span>Instagram</span>
+                </a>
+                <a href="https://g.page/r/CZtDohOj5jHOEAE/" target="_blank" class="trust-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Avaliações">
+                    <span>Avaliações</span>
+                </a>
+                <a href="https://www.cnhemdiasolucoes.com.br" target="_blank" class="trust-item">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlechrome.svg" alt="Site Oficial" style="filter: invert(34%) sepia(98%) saturate(2000%) hue-rotate(200deg);">
+                    <span>Site Oficial</span>
                 </a>
             </div>
-            <div class="imagempessoal"> 
-                <img src="/static/images/cnh.jpg" alt="Especialista Igor Novais" loading="lazy"> 
-            </div> 
         </div>
     </section>
 
-    <!-- SEÇÃO DE SERVIÇOS -->
-    <section>
-        <h2>Nossos Serviços</h2>
-        <p class="section-subtitle">Soluções completas e personalizadas para resolução do seu problema.</p>
-        <div class="cards-container">
-            <div class="card">
-                <div class="card-icon">🚗</div>
-                <h3>Multas de Trânsito em Geral</h3>
-                <p>Elaboração de recursos administrativos, recurso técnico e orientação especializada para contestar autuações indevidas ou injustas.</p>
-                <a href="/multas/" class="card-link">Saiba mais</a>
+    <section style="border-bottom: 1px solid #30363d;">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Nossos Serviços</div>
+                <h2 class="section-title">Problemas que resolvemos para você</h2>
+                <p class="section-subtitle">Atuamos em todas as instâncias para proteger seu direito de dirigir. Clique no serviço para saber mais.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">🍺</div>
-                <h3>Lei Seca (Embriaguez )</h3>
-                <p>Estratégias administrativas especializadas em infrações de alcoolemia, com análise técnica do auto de infração e explicação detalhada.</p>
-                <a href="/lei-seca/" class="card-link">Saiba mais</a>
-            </div>
-            <div class="card">
-                <div class="card-icon">⚠️</div>
-                <h3>Suspensão da CNH</h3>
-                <p>Suporte completo em processos de suspensão, com análise documental e estratégias técnicas para minimizar impactos administrativos.</p>
-                <a href="/suspensao/" class="card-link">Saiba mais</a>
-            </div>
-            <div class="card">
-                <div class="card-icon">🚫</div>
-                <h3>Cassação da CNH</h3>
-                <p>Atuação administrativa em processos de cassação, com acompanhamento técnico e suporte especializado.</p>
-                <a href="/cassacao/" class="card-link">Saiba mais</a>
-            </div>
-            <div class="card">
-                <div class="card-icon">📋</div>
-                <h3>Perda da Provisória</h3>
-                <p>Orientação técnica para condutores que perderam a permissão durante o período probatório e desejam regularizar sua situação.</p>
-                <a href="/provisoria/" class="card-link">Saiba mais</a>
-            </div>
-        </div>
-     </section>
 
-     <section style="background: rgba(0, 0, 0, 0.822); padding: 40px 5%;" class="cta-final-section">
-        <a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." 
-           target="_blank" rel="noopener noreferrer"
-           class="cta-button"
-            onclick="return gtag_report_conversion_teste('https://wa.me/5511994187695');">
-           Falar Com Especialista
-           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-                alt="WhatsApp" 
-                width="30" 
-                height="30" 
-                style="vertical-align: middle; margin-left: 8px;">
-        </a>
-    </section>
+            <div class="grid">
+                <a href="#" class="card reveal" style="text-decoration: none; color: inherit;">
+                    <div style="position: absolute; right: 24px; top: 24px; background: rgba(0, 100, 204, 0.15); padding: 6px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; color: #1a8cff;">MAIS PROCURADO</div>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    </div>
+                    <h3>Multa de Bafômetro</h3>
+                    <p>Recusou ou deu positivo no teste? Existem diversos procedimentos rigorosos que precisam ser seguidos. Identificamos falhas técnicas que podem anular sua multa completamente.</p>
+                </a>
 
-    <!-- SEÇÃO DE ESTATÍSTICAS -->
-    <section class="stats-section">
-        <h2>Nossos Números</h2>
-        <p class="section-subtitle">Sempre melhorando a cada passo.</p>
-        <div class="stats-container">
-            <div class="stat-card">
-                <div class="stat-number" data-target="2000">+ 2.000</div>
-                <div class="stat-label">Consultas Realizadas</div>
-                <p class="stat-description">Confiança construída com atendimento real</p>
+                <a href="#" class="card reveal" style="text-decoration: none; color: inherit;">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <h3>Suspensão da CNH</h3>
+                    <p>Notificado por suspensão? Não entregue sua CNH antes de esgotar todas as instâncias de defesa. Enquanto recorremos, você mantém o direito de dirigir.</p>
+                </a>
+
+                <a href="#" class="card reveal" style="text-decoration: none; color: inherit;">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h3>Cassação da CNH</h3>
+                    <p>A cassação é a penalidade mais grave. Mas existem caminhos para reverter. Analisamos seu caso detalhadamente e montamos uma estratégia de defesa técnica.</p>
+                </a>
+
+                <a href="#" class="card reveal" style="text-decoration: none; color: inherit;">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" /></svg>
+                    </div>
+                    <h3>Perda da CNH</h3>
+                    <p>Está correndo risco de perder sua habilitação? Não deixe o sistema vencer por WO. Faça uma análise gratuita e descubra como proteger seu direito de dirigir.</p>
+                </a>
             </div>
-            <div class="stat-card">
-                <div class="stat-number" data-target="92">92%</div>
-                <div class="stat-label">Resolução em Casos Elegíveis</div>
-                <p class="stat-description">Quando o caso tem solução, nós vamos até o fim</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" data-target="100">100%</div>
-                <div class="stat-label">Suporte Humanizado</div>
-                <p class="stat-description">Acompanhamento em cada etapa</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" data-target="0">0</div>
-                <div class="stat-label">Problemas com Sigilo de Dados</div>
-                <p class="stat-description">Seu caso é tratado com a máxima confidencialidade</p>
+
+            <div class="urgency-section reveal">
+                <div class="urgency-content">
+                    <div class="urgency-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div class="urgency-text">
+                        <h3>O Relógio Está Correndo!</h3>
+                        <p>Você tem um <strong>prazo curto e inegociável</strong> para apresentar sua defesa. Se perder esse prazo, a penalidade será aplicada automaticamente.</p>
+                        <p style="margin: 0;">Não deixe o sistema vencer por WO.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO "POR QUE ESCOLHER" -->
-    <section class="why-choose-section">
-        <h2>Por que Escolher a CNH em Dia Soluções?</h2>
-        <p class="section-subtitle">Experiência, transparência e compromisso.</p>
-        <div class="cards-container">
-            <div class="card">
-                <div class="card-icon">✓</div>
-                <h3>Especialização</h3>
-                <p>Profissionais especializados nos trâmites administrativos de trânsito, com suporte jurídico parceiro quando necessário.</p>
+    <section style="background: #0a0a0a;">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Processo</div>
+                <h2 class="section-title">Como Blindamos Sua CNH</h2>
+                <p class="section-subtitle">Estratégia técnica em todas as etapas, do diagnóstico à defesa.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">⚡</div>
-                <h3>Agilidade</h3>
-                <p>Atendimento rápido e eficaz, com acompanhamento próximo de cada etapa.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🎯</div>
-                <h3>Resultados</h3>
-                <p>Histórico consistente de regularizações e soluções bem-sucedidas para nossos clientes.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">💼</div>
-                <h3>Atendimento Personalizado</h3>
-                <p>Cada caso é analisado individualmente para oferecer a melhor orientação técnica e estratégica possível.</p>
+
+            <div class="steps-grid">
+                <div class="step-item reveal">
+                    <div class="step-number">1</div>
+                    <h3>Análise Gratuita</h3>
+                    <p>Você envia a notificação pelo WhatsApp. Analisamos seu caso sem cobrar nada e identificamos os pontos fracos da autuação.</p>
+                </div>
+
+                <div class="step-item reveal">
+                    <div class="step-number">2</div>
+                    <h3>Busca por Falhas</h3>
+                    <p>Nossa equipe procura erros no processo, irregularidades no equipamento e violações de procedimentos que podem anular a autuação.</p>
+                </div>
+
+                <div class="step-item reveal">
+                    <div class="step-number">3</div>
+                    <h3>Estratégia e Ação</h3>
+                    <p>Montamos a defesa técnica e atuamos em todas as instâncias. Você continua dirigindo enquanto recorremos.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO DE PROCESSO -->
-    <section>
-        <h2>Como Funciona o Processo De Regularização</h2>
-        <p class="section-subtitle">Etapas simples e transparentes para resolver sua situação</p>
-        <div class="cards-container">
-            <div class="card">
-                <div class="card-icon">1️⃣</div>
-                <h3>Análise Inicial</h3>
-                <p>Você entra em contato conosco e realizamos uma análise gratuita e confidencial do seu caso.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">2️⃣</div>
-                <h3>Proposta Personalizada</h3>
-                <p>Apresentamos uma estratégia específica com prazos, custos e expectativas realistas para seu caso.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">3️⃣</div>
-                <h3>Execução</h3>
-                <p>Iniciamos a estratégia para regularização com suporte contínuo e atualizações regulares sobre o andamento.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">4️⃣</div>
-                <h3>Resolução</h3>
-                <p>Acompanhamos até a conclusão do processo de regularização e entrega de toda a documentação necessária.</p>
+    <section class="storytelling">
+        <div class="container">
+            <div class="storytelling-content reveal">
+                <div class="section-tag" style="color: #00b4d8;">Histórias Reais</div>
+                <h2 class="section-title" style="color: white; margin-bottom: 40px;">A Transformação de João</h2>
+                <p class="story-text">"Fui pego na Lei Seca injustamente. Minha CNH foi suspensa e perdi meu emprego como motorista de aplicativo. Tentei recorrer sozinho, mas me perdi em prazos e burocracias. Quando chamei a CNH em Dia Soluções, a equipe encontrou erros graves no auto de infração. Montaram uma defesa impecável em todas as instâncias. O resultado? Meu processo foi anulado. Hoje, dirijo com a paz de quem tem seus direitos protegidos."</p>
+                <button class="btn-primary js-open-lead">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                    QUERO MINHA CNH DE VOLTA
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- CTA FINAL -->
-    <section class="cta-final-section">
-        <h2>Precisa de Ajuda com sua CNH?</h2>
-        <p class="section-subtitle">Entre em contato agora e receba uma análise gratuita da sua situação administrativa</p>
-        <a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." 
-           target="_blank" rel="noopener noreferrer"
-           class="cta-button"
-            onclick="return gtag_report_conversion_teste('https://wa.me/5511994187695');">
-           Falar Com Especialista
-           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-                alt="WhatsApp" 
-                width="30" 
-                height="30" 
-                style="vertical-align: middle; margin-left: 8px;">
-        </a>
+    <section class="social-proof">
+        <div class="container reveal">
+            <div class="stars">★★★★★</div>
+            <p><strong>Nota 5.0 no Google</strong> | + de 1.000 clientes atendidos em todo o Brasil</p>
+        </div>
     </section>
 
-    <!-- AVISO LEGAL -->
-    <main style="padding: 20px 5%; background: var(--light-gray );">
-        <div class="legal-note" style="max-width: 1400px; margin: 0 auto;">
-            <p style="text-align: center;"><strong>⚠️ Aviso Legal:</strong> A CNH em Dia Soluções atua como consultoria administrativa e suporte técnico em parceria com advogados regularmente inscritos na OAB, responsáveis pela condução e representação judicial dos clientes quando necessário. Todos os serviços prestados seguem rigorosamente as normas e regulamentações aplicáveis.</p>
+    <section style="padding: 100px 0;">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Diferenciais</div>
+                <h2 class="section-title">Por que escolher a CNH em Dia?</h2>
+            </div>
+
+            <div class="grid">
+                <div class="card reveal">
+                    <div style="margin-bottom: 16px; display: flex; justify-content: center; height: 40px; width: 40px; align-items: center; border-radius: 9999px; background: rgba(0, 100, 204, 0.15); color: #1a8cff;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h3>Análise Gratuita</h3>
+                    <p>Avaliamos seu caso sem custo. Você só decide depois de saber se há solução.</p>
+                </div>
+                <div class="card reveal">
+                    <div style="margin-bottom: 16px; display: flex; justify-content: center; height: 40px; width: 40px; align-items: center; border-radius: 9999px; background: rgba(0, 100, 204, 0.15); color: #1a8cff;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h3>Atendimento Rápido</h3>
+                    <p>Resposta em minutos pelo WhatsApp. O tempo é o seu maior aliado.</p>
+                </div>
+                <div class="card reveal">
+                    <div style="margin-bottom: 16px; display: flex; justify-content: center; height: 40px; width: 40px; align-items: center; border-radius: 9999px; background: rgba(0, 100, 204, 0.15); color: #1a8cff;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h3>Atuação em Todo Brasil</h3>
+                    <p>Independente de onde você está, podemos ajudar com seu processo.</p>
+                </div>
+                <div class="card reveal">
+                    <div style="margin-bottom: 16px; display: flex; justify-content: center; height: 40px; width: 40px; align-items: center; border-radius: 9999px; background: rgba(0, 100, 204, 0.15); color: #1a8cff;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h3>Você Continua Dirigindo</h3>
+                    <p>Enquanto recorremos, seu direito de dirigir fica mantido.</p>
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
 
-    <!-- BOTÃO WHATSAPP -->
-    <a href="https://wa.me/5511994187695?text=Ol%C3%A1%2C%20estava%20no%20site%20da%20CNH%20em%20Dia%20Solu%C3%A7%C3%B5es%20e%20gostaria%20de%20uma%20consultoria%20sobre%20o%20meu%20problema." class="whatsapp-float" target="_blank" rel="noopener noreferrer" onclick="return gtag_report_conversion(this.href, this.target);"
-        target="_blank" rel="noopener noreferrer"
-       onclick="return gtag_report_conversion_teste('https://wa.me/5511994187695');">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-    </a>
+    <section style="background: #0a0a0a; border-top: 1px solid #30363d;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Perguntas Frequentes</h2>
+            </div>
 
-    <!-- FOOTER -->
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary>Como funciona a análise gratuita?</summary>
+                    <p>Você nos envia a notificação pelo WhatsApp. Nossa equipe analisa seu caso sem cobrar nada e identifica os pontos fracos da autuação. Só depois disso decidimos juntos os próximos passos.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Se eu recorrer, posso continuar dirigindo?</summary>
+                    <p>Sim. Ao entrar com a defesa, o processo fica suspenso. Você continua dirigindo normalmente enquanto o recurso está em andamento.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>O que acontece se eu não fizer nada?</summary>
+                    <p>Você segue direto para a penalidade. Pode ficar meses sem dirigir ou até perder a CNH por anos. Não deixe o prazo passar.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Quanto tempo eu tenho para recorrer?</summary>
+                    <p>O prazo é curto e inegociável. Se perder o prazo, a penalidade será aplicada automaticamente. Por isso, quanto antes você nos procurar, melhor.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Vou gastar muito com isso?</summary>
+                    <p>A análise inicial é gratuita. Na maioria dos casos, o custo do serviço é menor que o prejuízo de perder a CNH.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="location-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Nossa Localização</h2>
+                <p class="section-subtitle">Avenida Salgado Filho, 1056 - Centro, Guarulhos - SP, 07115-000</p>
+            </div>
+
+            <div class="location-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.8523891234567!2d-46.5!3d-23.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef5f5f5f5f5f5%3A0x1234567890abcdef!2sAv.%20Salgado%20Filho%2C%201056%20-%20Centro%2C%20Guarulhos%20-%20SP%2C%2007115-000!5e0!3m2!1spt-BR!2sbr!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div class="location-cards">
+                <div class="location-card reveal">
+                    <div class="location-card-icon">📍</div>
+                    <h3>Endereço</h3>
+                    <p>Avenida Salgado Filho, 1056<br>Centro, Guarulhos - SP<br>07115-000</p>
+                </div>
+                <div class="location-card reveal">
+                    <div class="location-card-icon">📞</div>
+                    <h3>WhatsApp</h3>
+                    <p><a href="https://wa.me/5511994187695" target="_blank">(11) 99418-7695</a></p>
+                </div>
+                <div class="location-card reveal">
+                    <div class="location-card-icon">🕐</div>
+                    <h3>Horário</h3>
+                    <p>Seg - Sex: 08h às 18h<br>Sábado: 09h às 13h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(rgba(13, 17, 23, 0.88), rgba(0, 51, 102, 0.75)), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop'); background-size: cover; background-position: center; padding: 100px 0;">
+        <div class="container">
+            <div class="reveal" style="max-width: 600px; text-align: center; margin: 0 auto;">
+                <h2 class="section-title" style="color: white;">Não perca tempo. O prazo não espera.</h2>
+                <p class="section-subtitle" style="margin-top: 24px; margin-bottom: 40px;">Faça agora uma análise gratuita do seu caso. Descubra como podemos ajudar a proteger sua CNH.</p>
+                <button class="btn-primary js-open-lead">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                    FALAR COM ESPECIALISTA
+                </button>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>CNH em Dia Soluções</h3>
-                <p>CPNJ: 63.687.598/0001-59</p>
-                <p>Soluções especializadas para resolver questões com lei seca, multas, suspensão, cassação e perda de provisória. Conte com nosso suporte técnico para regularizar sua habilitação com segurança e confiança.</p>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 <strong>CNH em Dia Soluções</strong>. Todos os direitos reservados.</p>
             </div>
-            <div class="footer-section">
-                <h3>Serviços</h3>
-                <ul>
-                    <li><a href="/lei-seca/">Lei Seca</a></li>
-                    <li><a href="/multas/">Multas de Trânsito</a></li>
-                    <li><a href="/suspensao/">Suspensão da CNH</a></li>
-                    <li><a href="/cassacao/">Cassação da CNH</a></li>
-                    <li><a href="/provisoria/">Perda da Provisória</a></li>
-                </ul>
+            <div class="legal-text">
+                <strong>⚠️ Aviso:</strong> A CNH em Dia Soluções atua como consultoria administrativa e suporte técnico em parceria com advogados regularmente inscritos na OAB, responsáveis pela condução e representação judicial dos clientes quando necessário. Todos os serviços prestados seguem rigorosamente as normas e regulamentações aplicáveis.
             </div>
-            <div class="footer-section">
-                <h3>Institucional</h3>
-                <ul>
-                    <li><a href="/sobre/">Sobre Nós</a></li>
-                    <li><a href="/servicos/">Nossos Serviços</a></li>
-                    <li><a href="/contato/">Contato</a></li>
-                    <li><a href="/curso-de-reciclagem/">Reciclagem</a></li>
-                    <li><a href="/lei-seca/">Lei Seca</a></li>
-                    <li><a href="/pontuacao-cnh/">Pontuação</a></li>
-                    <li><a href="/indicacao-de-condutor/">Indicação De Condutor</a></li>
-                    <li><a href="/recurso-multa-vencida/">Recurso Multa Vencido</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contato</h3>
-                <ul>
-                    <li>📞 (11 ) 9 9418-7695</li>
-                    <li>✉️ cnhemdiasolucoes@gmail.com</li>
-                    <li>📍 Guarulhos - SP</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 CNH em Dia Soluções. Todos os direitos reservados.</p>
         </div>
     </footer>
 
+    <button class="whatsapp-float js-open-lead" title="Falar com especialista">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    </button>
+
+    <div class="modal" id="leadModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2>Análise do seu Problema.</h2>
+            <p>Preencha para ir ao WhatsApp.</p>
+            
+            <form id="leadForm">
+                <div class="form-group">
+                    <label for="nome">Seu Nome Completo</label>
+                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Digite seu nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">WhatsApp (com DDD)</label>
+                    <input type="tel" id="telefone" name="telefone" class="form-control" placeholder="Ex.: (11) 994523658" inputmode="numeric" required>
+                </div>
+
+                <button type="submit" class="btn-submit" id="btnSubmit">INICIAR ATENDIMENTO</button>
+            </form>
+        </div>
+    </div>
+
     <script>
-        // Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        const NUMERO_WHATS = "5511994187695";
+        const CONVERSION_ID = "AW-17709604708/3A1hCK-KneYbEOS-zPxB";
+        const URL_GOOGLE_SCRIPT = "https://script.google.com/macros/s/AKfycbzaGmVZKyIo280jUu2LK9Ap0kuMeRWM3GZ6Rs8wjlidTHO0YS0Akdhzx6UH2u_ll2L8AA/exec";
 
-        // Header Scroll Effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth Scroll para Links Âncora
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer para Animações
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+        // Reveal Animations on Scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
+                    entry.target.classList.add('active');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.card, .stat-card').forEach(element => {
-            observer.observe(element);
-        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Animação de Contagem para Estatísticas
-        const animateStats = () => {
-            const statNumbers = document.querySelectorAll('.stat-number');
-            statNumbers.forEach((element) => {
-                const targetText = element.getAttribute('data-target');
-                const target = parseInt(targetText.replace(/[^0-9]/g, ''));
-                if (isNaN(target)) return;
+        // Modal Logic
+        const modal = document.getElementById('leadModal');
+        const openBtns = document.querySelectorAll('.js-open-lead');
+        const closeBtn = document.getElementById('modalClose');
 
-                const originalText = element.textContent;
-                const suffix = originalText.includes('%') ? '%' : '';
-                const prefix = originalText.includes('+') ? '+' : '';
-                
-                let start = 0;
-                const duration = 2000; // 2 segundos
-                let startTime = null;
-
-                const step = (timestamp) => {
-                    if (!startTime) startTime = timestamp;
-                    const progress = timestamp - startTime;
-                    const percentage = Math.min(progress / duration, 1);
-                    const value = Math.floor(percentage * target);
-
-                    element.textContent = prefix + ' ' + value.toLocaleString('pt-BR') + suffix;
-
-                    if (percentage < 1) {
-                        window.requestAnimationFrame(step);
-                    } else {
-                        element.textContent = originalText; // Garante o valor final exato
-                    }
-                };
-                window.requestAnimationFrame(step);
-            });
+        const fecharModal = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; 
         };
 
-        // Iniciar animação de estatísticas quando visível
-        const statsSection = document.querySelector('.stats-section');
-        if (statsSection) {
-            const statsObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                        animateStats();
-                        entry.target.classList.add('animated');
+        openBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; 
+                setTimeout(() => document.getElementById('nome').focus(), 100);
+            });
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', fecharModal);
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) fecharModal();
+        });
+
+        // Phone Mask
+        const phoneInput = document.getElementById('telefone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', (e) => {
+                let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+                e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+            });
+        }
+
+        // Form Submission
+        const form = document.getElementById('leadForm');
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = document.getElementById('btnSubmit');
+                btn.disabled = true;
+                btn.innerText = "ENVIANDO...";
+
+                const nome = document.getElementById('nome').value;
+                
+                const formData = new FormData(form);
+                formData.append('pagina', 'Principal'); 
+                
+                const msg = encodeURIComponent(`Olá, me chamo ${nome} e preciso de assessoria para minha CNH.`);
+                const link = `https://wa.me/${NUMERO_WHATS}?text=${msg}`;
+
+                try {
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'conversion', { 'send_to': CONVERSION_ID });
                     }
-                });
-            }, { threshold: 0.5 });
-            statsObserver.observe(statsSection);
+                    
+                    await fetch(URL_GOOGLE_SCRIPT, { method: 'POST', body: formData });
+                    
+                } catch(error) {
+                    console.error("Erro ao enviar formulário", error);
+                } finally {
+                    fecharModal();
+                    btn.disabled = false;
+                    btn.innerText = "INICIAR ATENDIMENTO";
+                    form.reset();
+                    window.location.href = link; 
+                }
+            });
         }
     </script>
 </body>
