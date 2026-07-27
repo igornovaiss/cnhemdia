@@ -887,6 +887,38 @@
             .form-control { padding: 10px 12px; }
             .btn-submit { padding: 12px; }
         }
+
+        @media (max-width: 768px) {
+    /* Coloca os itens lado a lado e centraliza */
+    .trust-section .trust-container {
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-around; /* Espalha os itens por igual */
+        align-items: center;
+        gap: 10px; /* Espaço entre os itens */
+    }
+
+    /* Ajusta o formato de cada botão individual */
+    .trust-section .trust-item {
+        display: flex;
+        flex-direction: column; /* Coloca o ícone em cima e o texto embaixo */
+        align-items: center;
+        text-align: center;
+        width: 30%; /* Cada item ocupa cerca de um terço do espaço */
+    }
+
+    /* Diminui os ícones para caberem bem na tela */
+    .trust-section .trust-item img {
+        width: 30px; /* Ajuste este valor conforme necessário */
+        height: auto;
+        margin-bottom: 5px; /* Espaço entre o ícone e o texto */
+    }
+
+    /* Diminui um pouco o texto para não quebrar o layout */
+    .trust-section .trust-item span {
+        font-size: 12px; /* Ajuste o tamanho da fonte se ficar grande */
+    }
+}
     </style>
 </head>
 <body>
