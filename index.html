@@ -887,17 +887,17 @@
 
 
         .new-container {
-        background-color: #1a8cff;
-        color: #ffffff; /* Adicionado para o texto e ícones ficarem brancos sobre o azul */
-        display: flex;
-        flex-wrap: wrap; 
-        justify-content: center; 
-        gap: 20px; 
-        font-size: 14px; 
-        padding: 8px 20px; /* Adicionado para a faixa azul ter altura e não espremer o texto */
-        width: 100%; /* Garante que a faixa ocupe 100% da tela */
-        box-sizing: border-box; /* Impede que o padding crie barra de rolagem horizontal */
-}
+            display: none; /* Esconde a barra no celular */
+            background-color: #1a8cff;
+            color: #ffffff; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 20px; 
+            font-size: 14px; 
+            padding: 8px 20px; 
+            width: 100%; 
+            box-sizing: border-box; 
+        }
 
         .contato-item {
             display: flex;
@@ -910,6 +910,16 @@
             height: 18px;
             flex-shrink: 0; /* Impede que o ícone fique espremido em telas muito pequenas */
         }
+
+        @media (min-width: 768px) {
+    .header-cta {
+        display: block;
+    }
+    
+    .new-container {
+        display: flex; /* Faz a barra azul voltar a aparecer no computador */
+    }
+}
     </style>
 </head>
 <body>
