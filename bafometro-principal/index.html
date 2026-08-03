@@ -173,6 +173,16 @@
             overflow: hidden;
         }
 
+        @media (max-width: 768px) {
+    .hero {
+        /* Diminui a altura da seção no celular para o navegador não precisar dar tanto zoom */
+        min-height: 70vh; 
+        
+        /* Desloca o foco da imagem para a direita, garantindo que o colete do agente apareça */
+        background-position: 80% center; 
+    }
+}
+
         .hero::before {
             content: '';
             position: absolute;
