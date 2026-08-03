@@ -1,6 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNH em Dia Soluções - Resolver CNH Suspensa</title>
+    <meta name="description" content="Especialistas em multa de bafômetro, suspensão, cassação e perda da CNH. Análise gratuita do seu caso.">
+    <meta name="keywords" content="Assessoria de Trânsito, CNH, Bafômetro, Suspensão, Cassação">
+
+    <!-- Google Ads Pixel -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17709604708"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -9,12 +16,6 @@
         gtag('config', 'AW-17709604708');
     </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Assessoria sobre a Lei Seca - CNH em Dia Soluções</title>
-    <meta name="description" content="Recusou o bafômetro ou deu positivo? Evite a multa de R$ 2.934,70 e a suspensão da CNH por 12 meses. Fale com especialistas para uma análise gratuita.">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
@@ -24,24 +25,6 @@
     <link rel="apple-touch-icon" href="/favicon.png">
 
     <style>
-        :root {
-            --whats-green: #25D366;
-            --whats-hover: #1EBE5D;
-            --primary-blue: #0066cc;
-            --dark-blue: #003d99;
-            --light-blue: #1a8cff;
-            --cyan: #00b4d8;
-            --dark-bg: #0d1117;
-            --card-bg: #161b22;
-            --text-primary: #ffffff;
-            --text-secondary: #c9d1d9;
-            --text-muted: #8b949e;
-            --accent-red: #f85149;
-            --border-color: #30363d;
-            --radius: 8px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -54,8 +37,8 @@
         }
 
         body {
-            background-color: var(--dark-bg);
-            color: var(--text-primary);
+            background-color: #ffffff;
+            color: #1a1a1a;
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -66,67 +49,22 @@
             padding: 0 20px;
         }
 
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 24px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 32px;
+            }
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-40px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 100, 204, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(0, 100, 204, 0.6); }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: var(--transition);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(13, 17, 23, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-            padding: 16px 0;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 900;
-            font-size: 1.3rem;
-            letter-spacing: -0.5px;
-            background: linear-gradient(120deg, var(--primary-blue), var(--light-blue), var(--primary-blue));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(-15px);
-            animation: fadeInDown 0.8s ease forwards, shine 3s linear infinite, pulse 4s ease-in-out infinite;
         }
 
         @keyframes fadeInDown {
@@ -142,18 +80,63 @@
             50% { transform: scale(1.03); }
         }
 
-        @media (max-width: 768px) {
-            .logo {
-                width: 100%;
-                font-size: 1.6rem;
-            }
-            .header-cta {
-                display: none;
-            }
+        @keyframes pulseCTA {
+            0% { box-shadow: 0 0 0 0 rgba(0, 100, 204, 0.3); }
+            70% { box-shadow: 0 0 0 20px rgba(0, 100, 204, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 100, 204, 0); }
+        }
+
+        @keyframes pulseWhats {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            /* padding: 16px 0;  <-- ESTA LINHA FOI REMOVIDA DAQUI */
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px; /* O padding que estava no header foi movido para cá */
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(120deg, #0066cc, #1a8cff, #0066cc);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .header-cta {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            display: none;
+            background: linear-gradient(135deg, #0066cc 0%, #1a8cff 100%);
             color: white;
             padding: 10px 24px;
             border-radius: 50px;
@@ -161,12 +144,18 @@
             font-size: 0.9rem;
             border: none;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .header-cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(0, 100, 204, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .header-cta {
+                display: block;
+            }
         }
 
         /* Hero Section */
@@ -176,11 +165,25 @@
             display: flex;
             align-items: center;
             position: relative;
-            /* Alterado para WebP para performance */
-            background: linear-gradient(rgba(13, 17, 23, 0.8), rgba(0, 51, 102, 0.6)), url('/static/images-new-page/hero-bafometro.jpg');
-            background-size: cover;
-            background-position: center;
+            /* Adicionando o linear-gradient antes da URL da imagem para criar o efeito de opacidade */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/static/imagens-principal/lei-seca.jpg');
+            background-size: cover;      /* Faz a imagem cobrir 100% do espaço, mantendo a proporção */
+            background-position: center; /* Centraliza a imagem para não cortar os detalhes principais */
+            background-repeat: no-repeat;/* Impede que a imagem se repita em telas muito grandes */
             overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(0, 100, 204, 0.1) 0%, rgba(26, 140, 255, 0.05) 100%);
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: 0;
         }
 
         .hero-content {
@@ -191,15 +194,15 @@
         }
 
         .badge {
-            background: rgba(248, 81, 73, 0.15);
-            color: var(--accent-red);
+            background: rgba(0, 100, 204, 0.1);
+            color: #0066cc;
             padding: 8px 16px;
             border-radius: 50px;
             font-weight: 700;
             font-size: 0.85rem;
             display: inline-block;
             margin-bottom: 24px;
-            border: 1px solid var(--accent-red);
+            border: 1px solid #0066cc;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -210,10 +213,11 @@
             line-height: 1.1;
             margin-bottom: 24px;
             letter-spacing: -1px;
+            color: #ffffff;
         }
 
         h1 span {
-            background: linear-gradient(135deg, var(--cyan) 0%, var(--light-blue) 100%);
+            background: linear-gradient(135deg, #0066cc 0%, #1a8cff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -221,15 +225,15 @@
 
         .hero p {
             font-size: 1.25rem;
-            color: var(--text-secondary);
+            color: #ffffff;
             margin-bottom: 40px;
             max-width: 600px;
             line-height: 1.8;
         }
 
-        /* CTA Button */
+        /* Buttons */
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            background: linear-gradient(135deg, #0066cc 0%, #1a8cff 100%);
             color: white;
             padding: 18px 40px;
             border-radius: 50px;
@@ -239,17 +243,11 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            transition: var(--transition);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             cursor: pointer;
             box-shadow: 0 8px 24px rgba(0, 100, 204, 0.3);
             animation: pulseCTA 2s infinite;
-        }
-
-        @keyframes pulseCTA {
-            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(2, 20, 9, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
         .btn-primary:hover {
@@ -273,7 +271,7 @@
         }
 
         .section-tag {
-            color: var(--cyan);
+            color: #0066cc;
             font-weight: 700;
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -287,37 +285,90 @@
             font-weight: 900;
             margin-bottom: 16px;
             letter-spacing: -1px;
+            color: #1a1a1a;
         }
 
         .section-subtitle {
             font-size: 1.1rem;
-            color: var(--text-secondary);
+            color: #4a4a4a;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        /* Problems Section */
-        .problems {
-            background: var(--dark-bg);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+        /* Trust Section */
+        .trust-section {
+            padding: 40px 20px;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            background-color: black;
+            position: relative;
+            overflow: hidden;
         }
 
+        .trust-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 140px;
+            height: 120px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #1a1a1a;
+            transition: all 0.25s ease;
+            background: #ffffff;
+        }
+
+        .trust-item:hover {
+            border-color: #0066cc;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 100, 204, 0.15);
+        }
+
+        .trust-item img {
+            width: 35px;
+            height: 35px;
+            margin-bottom: 8px;
+            opacity: 0.8;
+            transition: 0.3s ease;
+        }
+
+        .trust-item:hover img {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .trust-item span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Grid */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 32px;
             margin-bottom: 60px;
         }
 
         .card {
-            background: var(--card-bg);
+            background: #ffffff;
             padding: 40px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .card::before {
@@ -327,15 +378,15 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--cyan));
+            background: linear-gradient(90deg, #0066cc, #1a8cff);
             opacity: 0;
-            transition: var(--transition);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .card:hover {
-            border-color: var(--primary-blue);
+            border-color: #0066cc;
             transform: translateY(-8px);
-            box-shadow: 0 16px 40px rgba(0, 100, 204, 0.2);
+            box-shadow: 0 16px 40px rgba(0, 100, 204, 0.15);
         }
 
         .card:hover::before {
@@ -343,7 +394,7 @@
         }
 
         .card-icon {
-            color: var(--cyan);
+            color: #0066cc;
             margin-bottom: 24px;
             width: 48px;
             height: 48px;
@@ -361,24 +412,25 @@
             font-size: 1.5rem;
             margin-bottom: 16px;
             font-weight: 700;
+            color: #1a1a1a;
         }
 
         .card p {
-            color: var(--text-secondary);
+            color: #4a4a4a;
             line-height: 1.8;
         }
 
         .card strong {
-            color: var(--text-primary);
+            color: #1a1a1a;
         }
 
         /* Urgency Banner */
         .urgency-section {
-            background: linear-gradient(135deg, rgba(0, 100, 204, 0.1) 0%, rgba(0, 180, 216, 0.05) 100%);
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--accent-red);
+            background: linear-gradient(135deg, rgba(0, 100, 204, 0.08) 0%, rgba(26, 140, 255, 0.04) 100%);
+            border: 1px solid #0066cc;
+            border-left: 4px solid #0066cc;
             padding: 60px;
-            border-radius: var(--radius);
+            border-radius: 8px;
             margin: 80px 0;
         }
 
@@ -392,12 +444,12 @@
             flex-shrink: 0;
             width: 80px;
             height: 80px;
-            background: rgba(248, 81, 73, 0.15);
+            background: rgba(0, 100, 204, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-red);
+            color: #0066cc;
         }
 
         .urgency-icon svg {
@@ -406,18 +458,18 @@
         }
 
         .urgency-text h3 {
-            color: var(--accent-red);
+            color: #0066cc;
             font-size: 1.8rem;
             margin-bottom: 12px;
         }
 
         .urgency-text p {
-            color: var(--text-secondary);
+            color: #4a4a4a;
             margin-bottom: 12px;
         }
 
         .urgency-text strong {
-            color: var(--text-primary);
+            color: #1a1a1a;
         }
 
         @media (max-width: 768px) {
@@ -430,11 +482,7 @@
             }
         }
 
-        /* How It Works */
-        .how-it-works {
-            background: var(--dark-bg);
-        }
-
+        /* Steps Grid */
         .steps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -450,7 +498,7 @@
         .step-number {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            background: linear-gradient(135deg, #0066cc 0%, #1a8cff 100%);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -460,7 +508,7 @@
             font-weight: 900;
             margin: 0 auto 24px;
             box-shadow: 0 8px 24px rgba(0, 100, 204, 0.3);
-            transition: var(--transition);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .step-item:hover .step-number {
@@ -472,42 +520,155 @@
             font-size: 1.3rem;
             margin-bottom: 12px;
             font-weight: 700;
+            color: #1a1a1a;
         }
 
         .step-item p {
-            color: var(--text-secondary);
+            color: #4a4a4a;
             line-height: 1.8;
         }
 
-        /* Storytelling Section */
-        .storytelling {
-            /* Alterado para WebP */
-            background: linear-gradient(rgba(13, 17, 23, 0.85), rgba(0, 51, 102, 0.7)), url('/static/images-new-page/storytelling-v2.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            position: relative;
-        }
+        /* Storytelling */
+.storytelling {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('/static/images/imagem-pagina-inicial.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Cria um leve efeito de profundidade ao rolar a página */
+    padding: 80px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .storytelling-content {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
+.storytelling-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 
-        .story-text {
-            font-size: 1.3rem;
-            line-height: 2;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            font-style: italic;
-            font-weight: 300;
-        }
+.storytelling-card {
+    background: rgba(30, 30, 30, 0.65); /* Fundo escuro transparente */
+    backdrop-filter: blur(10px); /* Efeito de vidro (desfoque) */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 50px 40px;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.quote-icon {
+    color: #1a8cff; /* Azul da sua marca */
+    width: 42px;
+    height: 42px;
+    margin: 0 auto 20px auto;
+    opacity: 0.9;
+}
+
+.story-text {
+    color: #f8f9fa;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+.client-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.client-avatar {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #0066cc, #1a8cff);
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(26, 140, 255, 0.3);
+}
+
+.client-info {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.client-name {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.client-status {
+    color: #ffc107; /* Amarelo das estrelas */
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+/* Estilo do Botão Específico para o WhatsApp */
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #25D366; /* Verde Oficial do WhatsApp */
+    color: white;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+    transform: translateY(-3px);
+    background: #1ebe57;
+    box-shadow: 0 12px 28px rgba(37, 211, 102, 0.45);
+}
+
+.btn-whatsapp svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Responsividade para Celular */
+@media (max-width: 768px) {
+    .storytelling {
+        padding: 60px 15px;
+    }
+    
+    .storytelling-card {
+        padding: 40px 20px;
+    }
+    
+    .story-text {
+        font-size: 1.05rem;
+    }
+    
+    .btn-whatsapp {
+        width: 100%;
+        padding: 16px 20px;
+    }
+}
 
         /* Social Proof */
         .social-proof {
-            background: var(--dark-bg);
-            border-top: 1px solid var(--border-color);
+            background: #f9f9f9;
+            border-top: 1px solid #e0e0e0;
             text-align: center;
             padding: 60px 0;
         }
@@ -520,33 +681,32 @@
         }
 
         .social-proof p {
-            color: var(--text-secondary);
+            color: #4a4a4a;
             font-size: 1.1rem;
         }
 
-        .social-proof strong {
-            color: var(--text-primary);
-        }
-
-        /* FAQ Section */
+        /* FAQ */
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
         }
 
         .faq-item {
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
             margin-bottom: 12px;
             padding: 15px 20px;
-            background: transparent;
+            background: #ffffff;
         }
 
         .faq-item summary {
             list-style: none;
             cursor: pointer;
             font-weight: 700;
-            color: var(--text-primary);
+            color: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .faq-item summary::-webkit-details-marker {
@@ -555,9 +715,9 @@
 
         .faq-item summary::after {
             content: "▼";
-            float: right;
             font-size: 0.8rem;
             transition: transform 0.2s ease;
+            color: #0066cc;
         }
 
         .faq-item[open] summary::after {
@@ -567,18 +727,92 @@
         .faq-item p {
             margin-top: 10px;
             font-size: 0.95rem;
-            color: var(--text-secondary);
+            color: #4a4a4a;
             line-height: 1.6;
+        }
+
+        /* Location Section */
+        .location-section {
+            border-bottom: 1px solid #e0e0e0;
+            background: #f9f9f9;
+            padding: 100px 0;
+        }
+
+        .location-map {
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            margin-bottom: 48px;
+        }
+
+        .location-map iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        .location-cards {
+            display: grid;
+            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .location-card {
+            border: 1px solid #e0e0e0;
+            background: #ffffff;
+            padding: 32px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .location-card:hover {
+            border-color: #0066cc;
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 100, 204, 0.15);
+        }
+
+        .location-card-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .location-card h3 {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .location-card p {
+            font-size: 0.9rem;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        .location-card a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .location-card a:hover {
+            color: #1a8cff;
         }
 
         /* Footer */
         footer {
-            background: rgba(22, 27, 34, 0.8);
+            background: #1a1a1a;
             padding: 60px 0;
             text-align: center;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
+            border-top: 1px solid #333;
+            color: #999;
             font-size: 0.9rem;
+        }
+
+        footer p {
+            color: #ccc;
         }
 
         .footer-content {
@@ -590,9 +824,9 @@
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            background: rgba(0, 100, 204, 0.05);
-            border-radius: var(--radius);
-            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid #333;
         }
 
         /* Modal */
@@ -602,7 +836,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.5);
             display: none;
             align-items: center;
             justify-content: center;
@@ -615,39 +849,41 @@
         }
 
         .modal-content {
-            background: var(--card-bg);
+            background: #ffffff;
             padding: 40px;
-            border-radius: var(--radius);
+            border-radius: 8px;
             width: 100%;
             max-width: 500px;
             position: relative;
-            border: 1px solid var(--border-color);
-            animation: slideInLeft 0.4s ease-out;
+            border: 1px solid #e0e0e0;
+            animation: fadeInUp 0.4s ease-out;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
         .modal-close {
             position: absolute;
             top: 20px;
             right: 20px;
-            color: var(--text-muted);
+            color: #999;
             cursor: pointer;
             font-size: 1.8rem;
             background: none;
             border: none;
-            transition: var(--transition);
+            transition: all 0.3s ease;
         }
 
         .modal-close:hover {
-            color: var(--text-primary);
+            color: #1a1a1a;
         }
 
         .modal-content h2 {
             font-size: 1.5rem;
             margin-bottom: 12px;
+            color: #1a1a1a;
         }
 
         .modal-content > p {
-            color: var(--text-secondary);
+            color: #4a4a4a;
             margin-bottom: 30px;
         }
 
@@ -660,35 +896,38 @@
             margin-bottom: 8px;
             font-weight: 600;
             font-size: 0.95rem;
+            color: #1a1a1a;
         }
 
         .form-control {
             width: 100%;
             padding: 12px 16px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border-color);
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
             border-radius: 6px;
-            color: var(--text-primary);
+            color: #1a1a1a;
             font-size: 0.95rem;
-            transition: var(--transition);
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--primary-blue);
-            background: rgba(0, 100, 204, 0.05);
+            border-color: #0066cc;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(0, 100, 204, 0.1);
         }
 
         .btn-submit {
             width: 100%;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            background: linear-gradient(135deg, #0066cc 0%, #1a8cff 100%);
             color: white;
             padding: 14px;
             border-radius: 6px;
             font-weight: 700;
             border: none;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             font-size: 1rem;
         }
 
@@ -700,16 +939,6 @@
         .btn-submit:disabled {
             opacity: 0.6;
             cursor: not-allowed;
-        }
-
-        select.form-control {
-            background: rgba(0, 0, 0, 0.3);
-            color: var(--text-primary);
-        }
-
-        select.form-control option {
-            background: #0b3d91;
-            color: #ffffff;
         }
 
         /* Floating WhatsApp Button */
@@ -726,11 +955,10 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
-            transition: var(--transition);
+            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             text-decoration: none;
-            animation: pulseWhats 2s infinite;
         }
 
         .whatsapp-float svg {
@@ -741,133 +969,22 @@
 
         .whatsapp-float:hover {
             transform: translateY(-5px) scale(1.05);
-            background-color: var(--whats-hover);
         }
 
-        @keyframes pulseWhats {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        /* Trust Section Animations */
-        .trust-section {
-            padding: 40px 20px;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            background-color: #0a0a0a; 
-            position: relative;
-            overflow: hidden;
-        }
-
-        .trust-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(20, 50, 90, 0.3) 0%, transparent 60%);
-            animation: respiracaoLuz 4s ease-in-out infinite alternate;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .trust-section > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes respiracaoLuz {
-            0% { opacity: 0.3; }
-            100% { opacity: 1; transform: scale(1.05); }
-        }
-
-        .trust-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .trust-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 140px;
-            height: 120px;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: all 0.25s ease;
-            background: rgba(255,255,255,0.02);
-        }
-
-        .trust-icon {
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-
-        .trust-item span {
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .trust-item:hover {
-            border-color: var(--primary-blue);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0, 100, 204, 0.15);
-        }
-
-        .trust-item img {
-            width: 32px;
-            height: 32px;
-            margin-bottom: 8px;
-            opacity: 0.9;
-            transition: 0.3s ease;
-        }
-
-        .trust-item:hover img {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        .site-icon {
-            filter: invert(34%) sepia(98%) saturate(2000%) hue-rotate(200deg);
-        }
-
-        /* Media Queries Globais - Mobile */
         @media (max-width: 768px) {
             section { padding: 60px 0; }
             .section-title { font-size: 1.8rem; }
             h1 { font-size: 2rem; }
-            .hero { margin-top: 70px; min-height: 80vh; }
+            .hero { min-height: 80vh; }
             .grid { grid-template-columns: 1fr; }
-            
             .whatsapp-float {
                 width: 70px;
                 height: 70px;
                 bottom: 20px;
                 right: 10px;
             }
-            .whatsapp-float svg {
-                width: 40px;
-                height: 40px;
-            }
-
-            .trust-item {
-                width: 100px;
-                height: 100px;
-            }
-            .trust-icon { font-size: 24px; }
-            .trust-item span { font-size: 0.8rem; }
-
-            /* Ajustes Modal Mobile */
             .modal {
-                align-items: flex-start; 
+                align-items: flex-start;
                 overflow-y: auto;
                 padding: 20px;
             }
@@ -878,27 +995,84 @@
                 width: 95%;
                 max-width: none;
             }
-            .modal-content h2 { font-size: 1.3rem; }
-            .modal-close { top: 10px; right: 15px; }
         }
 
         @media (max-width: 500px) {
             .modal-content h2 { display: none; }
             .form-group { margin-bottom: 12px; }
-            .modal-content > p { margin-bottom: 15px; }
-            .form-group label { margin-bottom: 4px; font-size: 0.85rem; }
-            .form-control { padding: 10px 12px; }
-            .btn-submit { padding: 12px; }
         }
+
+
+        .new-container {
+            display: none; /* Esconde a barra no celular */
+            background-color: #1a8cff;
+            color: #ffffff; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 20px; 
+            font-size: 14px; 
+            padding: 8px 20px; 
+            width: 100%; 
+            box-sizing: border-box; 
+        }
+
+        .contato-item {
+            display: flex;
+            align-items: center; /* Alinha perfeitamente o ícone com o centro do texto */
+            gap: 8px; /* Dá um espacinho exato entre o ícone e a palavra */
+        }
+
+        .icone-contato {
+            width: 18px; /* Tamanho um pouco menor para ficar elegante no rodapé */
+            height: 18px;
+            flex-shrink: 0; /* Impede que o ícone fique espremido em telas muito pequenas */
+        }
+
+        @media (min-width: 768px) {
+        .header-cta {
+            display: block;
+        }
+        
+        .new-container {
+            display: flex; /* Faz a barra azul voltar a aparecer no computador */
+        }
+    }
     </style>
 </head>
 <body>
 
     <header>
+            <div class="new-container">
+        <!-- Endereço -->
+        <div class="contato-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icone-contato">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Av. Salgado Filho, 1056 - Centro - Guarulhos / SP</span>
+        </div>
+
+        <!-- Telefone -->
+        <div class="contato-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icone-contato">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>(11) 99418-7695</span>
+        </div>
+
+        <!-- E-mail -->
+        <div class="contato-item">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icone-contato">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>cnhemdiasolucoes@gmail.com</span>
+        </div>
+    </div>
         <div class="container">
             <div class="header-content">
                 <div class="logo">CNH em Dia Soluções</div>
-                <button class="header-cta js-open-lead">FALAR COM ESPECIALISTA</button>
+                <button class="header-cta js-open-lead">CONVERSE CONOSCO AGORA</button>
             </div>
         </div>
     </header>
@@ -906,109 +1080,138 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="badge">⚠️ Atenção ao Prazo</div>
-                <h1>Não perca sua <span>CNH</span> por causa do Bafômetro.</h1>
-                <p>Recusou ou deu positivo? Nós encontramos as falhas técnicas para anular sua multa e evitar a suspensão de 12 meses. Análise gratuita agora.</p>
+                <div class="badge">Assessoria de Trânsito Especializada</div>
+                <h1>FOI PEGO NA LEI SECA OU RECUSOU AO <span>BAFÔMETRO?</span></h1>
+                <p>A penalidade da Lei Seca pode suspender sua CNH por até 1 ano, mas você tem direito à defesa.
+A CNH em Dia Soluções é especializada em recursos administrativos de trânsito, atuando com estratégia jurídica para reverter a autuação e proteger seu direito de dirigir dentro da lei.</p>
                 <button class="btn-primary js-open-lead">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-                    ANÁLISE GRATUITA AGORA
+                    CONVERSE CONOSCO AGORA
                 </button>
             </div>
         </div>
     </section>
 
-    <section class="problems">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-tag">Diagnóstico</div>
-                <h2 class="section-title">Como podemos ajudar você?</h2>
-                <p class="section-subtitle">Especialistas em Lei Seca com atuação em todas as instâncias.</p>
+    
+
+    <section style="border-bottom: 1px solid #e0e0e0;">
+    <div class="container">
+        <div class="section-header reveal" >
+            <h2 class="section-title">Por que nos escolher?</h2>
+            <p class="section-subtitle">Descubra por que somos referência no mercado e acumulamos um alto índice de vitórias.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card reveal" style="background-color: #000000;">
+                <div style="position: absolute; right: 24px; top: 24px; background: rgb(243, 241, 241); padding: 6px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; color: #0066cc;">NOSSO DIFERENCIAL</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <h3 style="color: white;">Especialistas em Brechas Legais</h3>
+                <p style="color: white;">Dominamos as normas rigorosas do Código de Trânsito. Identificamos falhas processuais e erros técnicos dos agentes de trânsito que outros deixam passar, aumentando drasticamente suas chances de anulação.</p>
             </div>
 
-            <div class="grid">
-                <div class="card reveal">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                    </div>
-                    <h3>Recusa ao Bafômetro</h3>
-                    <p>Muitos acreditam que recusar é aceitar a culpa. <strong>Errado.</strong> A recusa exige procedimentos rigorosos que raramente são seguidos. Nós exploramos essas falhas processuais.</p>
+            <div class="card reveal" style="background-color: #000000;">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 </div>
-
-                <div class="card reveal">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                    </div>
-                    <h3>Teste Positivo</h3>
-                    <p>O etilômetro precisa estar <strong>aferido e calibrado pelo INMETRO.</strong> Qualquer irregularidade no aparelho ou no procedimento pode anular a multa completamente.</p>
-                </div>
-
-                <div class="card reveal">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    </div>
-                    <h3>Suspensão de 12 Meses</h3>
-                    <p>Não entregue sua CNH antes de esgotar todas as instâncias de defesa. <strong>Enquanto recorremos, você mantém o direito de dirigir.</strong></p>
-                </div>
+                <h3 style="color: white;">Foco em Manter Você Dirigindo</h3>
+                <p style="color: white;">Nosso objetivo imediato é deixar sua CNH ativa. Atuamos com estratégias defensivas sólidas para garantir que você não precise entregar sua CNH enquanto esgotamos todos os recursos possíveis.</p>
             </div>
 
-            <div class="urgency-section reveal">
-                <div class="urgency-content">
-                    <div class="urgency-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                    </div>
-                    <div class="urgency-text">
-                        <h3>O Relógio Está Correndo!</h3>
-                        <p>Você tem um <strong>prazo legal curto e inegociável</strong> para apresentar sua defesa. Se perder esse prazo, a penalidade será aplicada automaticamente.</p>
-                        <p style="margin: 0;">Não deixe o sistema vencer por WO.</p>
-                    </div>
+            <div class="card reveal" style="background-color: #000000;">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <h3 style="color: white;">Representações 100% Personalizadas</h3>
+                <p style="color: white;">Usamos a melhor estratégia atual. Cada processo é estudado minuciosamente pela nossa equipe de especialistas para montar uma estratégia única, focada exclusivamente no seu caso e nas suas necessidades.</p>
+            </div>
+
+            <div class="card reveal" style="background-color: #000000;">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" /></svg>
+                </div>
+                <h3 style="color: white;">Atendimento Ágil e Especializado</h3>
+                <p style="color: white;">Sabemos que o tempo é inimigo nos processos do DETRAN. Oferecemos um acompanhamento rápido e direto ao ponto, mantendo você sempre informado sobre cada etapa do seu processo.</p>
+            </div>
+        </div>
+
+        <div class="urgency-section reveal">
+            <div class="urgency-content">
+                <div class="urgency-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <div class="urgency-text">
+                    <h3>O Prazo Está Correndo!</h3>
+                    <p>Você tem um <strong>prazo curto</strong> para resolver seu problema. Se perder esse prazo, a penalidade pode não ser mais revertida.</p>
+                    <p style="margin: 0;">Não deixe o DETRAN tirar seu direito de dirigir e ainda te arrencar R$2.934,70.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="how-it-works">
+    <section style="background: #000000;">
         <div class="container">
             <div class="section-header reveal">
-                <div class="section-tag">Processo</div>
-                <h2 class="section-title">Como Blindamos Sua CNH</h2>
-                <p class="section-subtitle">Estratégia técnica e jurídica em todas as instâncias.</p>
+                <h2 class="section-title" style="color: white;">Como podemos ajudar?</h2>
+                <p class="section-subtitle" style="color: white;">Estratégia técnica em todas as etapas, do começo ao fim.</p>
             </div>
 
-            <div class="steps-grid">
+            <div class="steps-grid" >
                 <div class="step-item reveal">
                     <div class="step-number">1</div>
-                    <h3>Análise Gratuita</h3>
-                    <p>Você envia a notificação pelo WhatsApp. Analisamos seu caso sem cobrar nada e identificamos os pontos fracos da autuação.</p>
+                    <h3 style="color: white;">Transparência total do início ao fim.</h3>
+                    <p style="color: white;">Você sabe exatamente o que está acontecendo com seu processo. Na CNH em Dia Soluções, mantemos você informado em cada etapa.</p>
                 </div>
 
                 <div class="step-item reveal">
                     <div class="step-number">2</div>
-                    <h3>Busca por Falhas</h3>
-                    <p>Nossos especialistas procuram erros processuais, irregularidades no equipamento e violações de direitos fundamentais.</p>
+                    <h3 style="color: white;">Estratégia para reverter o seu caso.</h3>
+                    <p style="color: white;">Na CNH em Dia, cada processo é analisado por especialistas que entendem os detalhes das leis de trânsito e dos procedimentos do DETRAN.</p>
                 </div>
 
                 <div class="step-item reveal">
                     <div class="step-number">3</div>
-                    <h3>Estratégia e Ação</h3>
-                    <p>Montamos a defesa técnica e atuamos em todas as instâncias. Você continua dirigindo enquanto recorremos.</p>
+                    <h3 style="color: white;">Referência em direito de trânsito.</h3>
+                    <p style="color: white;">Ampla atuação em recursos de suspensão e cassação de CNH, nossa equipe domina os procedimentos e prazos exigidos.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="storytelling">
-        <div class="container">
-            <div class="storytelling-content reveal">
-                <div class="section-tag" style="color: var(--cyan);">Histórias Reais</div>
-                <h2 class="section-title" style="color: white; margin-bottom: 40px;">A Transformação de João</h2>
-                <p class="story-text">"Fui pego na Lei Seca injustamente. Minha CNH foi suspensa e perdi meu emprego como motorista de aplicativo. Tentei recorrer sozinho, mas me perdi em prazos e burocracias. Quando chamei a CNH em Dia Soluções, a equipe encontrou erros graves no auto de infração. Montaram uma defesa impecável em todas as instâncias. O resultado? Meu processo foi anulado. Hoje, dirijo com a paz de quem tem seus direitos protegidos."</p>
-                <button class="btn-primary js-open-lead">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-                    QUERO MINHA CNH DE VOLTA
-                </button>
+    <div class="container storytelling-wrapper">
+        <div class="storytelling-card reveal">
+            
+            <!-- Ícone de Aspas decorativo -->
+            <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+
+            <!-- Relato -->
+            <p class="story-text">
+                "Fui parado em uma blitz da Lei Seca, acabei me recusando a fazer o teste do bafômetro e entrei em desespero com a multa altíssima e o risco de perder minha habilitação. Procurei a CNH em Dia Soluções, eles analisaram cada detalhe do meu auto de infração e encontraram falhas na autuação. Conseguiram deferir meu recurso e salvaram meu direito de dirigir. Recomendo o trabalho deles de olhos fechados!"
+            </p>
+
+            <!-- Perfil do Cliente -->
+            <div class="client-profile">
+                <div class="client-avatar">R</div>
+                <div class="client-info">
+                    <span class="client-name">Ricardo</span>
+                    <span class="client-status">★★★★★ Cliente Atendido</span>
+                </div>
             </div>
+
+            <!-- Botão CTA -->
+            <button class="btn-whatsapp js-open-lead">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                CONVERSE CONOSCO AGORA
+            </button>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="social-proof">
         <div class="container reveal">
@@ -1017,52 +1220,152 @@
         </div>
     </section>
 
+    <section style="padding: 100px 0; background-color: black;">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title" style="color: white;">Por que entrar em contato agora?</h2>
+            </div>
+
+            <div class="grid">
+                <div class="card reveal">
+                    <div style="margin-bottom: 16px; display: flex; justify-content: center; height: 40px; width: 40px; align-items: center; border-radius: 9999px; background: rgba(0, 100, 204, 0.1); color: #0066cc;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h3>Prazo</h3>
+                    <p>Seu prazo com certeza está correndo. Entre em contato rapidamente. "Clique no botão de WhatsApp agora!"</p>
+                </div>
+                <div class="card reveal">
+                    <div style="margin-bottom: 16px; display: flex; justify-content: center; height: 40px; width: 40px; align-items: center; border-radius: 9999px; background: rgba(0, 100, 204, 0.1); color: #0066cc;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h3>Honestidade</h3>
+                    <p>Se a sua CNH não estiver em risco algum, informaremos! Honestidade é um dos nossos valores.</p>
+                </div>
+                <div class="card reveal">
+                    <div style="margin-bottom: 16px; display: flex; justify-content: center; height: 40px; width: 40px; align-items: center; border-radius: 9999px; background: rgba(0, 100, 204, 0.1); color: #0066cc;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h3>Qualidade</h3>
+                    <p>A melhor qualidade do mercado do começo ao fim. Você merece o melhor, por isso entregamos o melhor.</p>
+                </div>
+                <div class="card reveal">
+                    <div style="margin-bottom: 16px; display: flex; justify-content: center; height: 40px; width: 40px; align-items: center; border-radius: 9999px; background: rgba(0, 100, 204, 0.1); color: #0066cc;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h3>Acompanhamento</h3>
+                    <p>Enquanto o seu problema está sendo tratado, te mantemos sempre informado. Temos uma equipe única para tratar como prioridade sempre.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f8 100%); padding: 100px 0;">
+        <div class="container">
+            <div style="max-width: 600px; text-align: center; margin: 0 auto;">
+                <h2 class="section-title" style="color: #1a1a1a;">Estamos Esperando por você.</h2>
+                <p class="section-subtitle" style="margin-top: 24px; margin-bottom: 40px;">Clique no botão abaixo e fale conosco.</p>
+                <button class="btn-primary js-open-lead">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                    FALAR NO WHATSAPP
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="location-section" style="background-color: black">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title" style="color: white;">Nossa Localização</h2>
+                <p class="section-subtitle" style="color: white;">Avenida Salgado Filho, 1056 - Centro, Guarulhos - SP, 07115-000</p>
+            </div>
+
+            <div class="location-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.8523891234567!2d-46.5!3d-23.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef5f5f5f5f5f5%3A0x1234567890abcdef!2sAv.%20Salgado%20Filho%2C%201056%20-%20Centro%2C%20Guarulhos%20-%20SP%2C%2007115-000!5e0!3m2!1spt-BR!2sbr!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div class="location-cards">
+                <div class="location-card reveal">
+                    <div class="location-card-icon">📍</div>
+                    <h3>Endereço</h3>
+                    <p>Avenida Salgado Filho, 1056<br>Centro, Guarulhos - SP<br>07115-000</p>
+                </div>
+                <div class="location-card reveal">
+                    <div class="location-card-icon">📞</div>
+                    <h3>WhatsApp/Telefone</h3>
+                    <p><a href="https://wa.me/5511994187695" target="_blank">(11) 99418-7695</a></p>
+                </div>
+                <div class="location-card reveal">
+                    <div class="location-card-icon">🕐</div>
+                    <h3>Horário de Atendimento</h3>
+                    <p>Segunda à Sexta: 08h às 18h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f8 100%); padding: 100px 0;">
+        <div class="container">
+            <div style="max-width: 600px; text-align: center; margin: 0 auto;">
+                <h2 class="section-title" style="color: #1a1a1a;">Não deixe para depois! A hora é agora.</h2>
+                <p class="section-subtitle" style="margin-top: 24px; margin-bottom: 40px;">Clique no botão abaixo, siga os passos e fale conosco.</p>
+                <button class="btn-primary js-open-lead">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                    FALAR COM ESPECIALISTA
+                </button>
+            </div>
+        </div>
+    </section>
+
     <section class="trust-section">
         <div class="container">
+            <h2 class="section-title" style="color: white; text-align: center;">Nossas redes:</h2>
             <div class="trust-container">
                 <a href="https://instagram.com/cnhemdiasolucoes" target="_blank" class="trust-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Ícone do Instagram CNH em Dia">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
                     <span>Instagram</span>
                 </a>
-
                 <a href="https://g.page/r/CZtDohOj5jHOEAE/" target="_blank" class="trust-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Logo do Google Avaliações">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Avaliações" style="width: 50px; height: 50px;">
                     <span>Avaliações</span>
                 </a>
-
                 <a href="https://www.cnhemdiasolucoes.com.br" target="_blank" class="trust-item">
-                    <img class="site-icon" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlechrome.svg" alt="Ícone Site Oficial">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlechrome.svg" alt="Site Oficial">
                     <span>Site Oficial</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <section class="faq-section">
+        <section style="background: #f9f9f9; border-top: 1px solid #e0e0e0;">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Perguntas Frequentes</h2>
+            <div class="section-header reveal">
+                <h2 class="section-title">Dúvidas Frequentes<h2>
             </div>
 
             <div class="faq-container">
                 <details class="faq-item">
-                    <summary>Fui pego na Lei Seca. Ainda posso evitar perder minha CNH?</summary>
-                    <p>Sim. Existem diversos erros técnicos que podem invalidar o processo, como falhas no bafômetro, abordagem irregular ou erro no auto. <strong>É possível recorrer e manter o direito de dirigir.</strong></p>
+                    <summary>Como funciona a análise?</summary>
+                    <p>Você nos manda uma mensagem pelo WhatsApp. Nossa equipe analisa seu caso sem cobrar nada e verifica tudo o que preciso para saber como resolver da forma mais rápida possível.</p>
                 </details>
 
                 <details class="faq-item">
-                    <summary>Se eu recorrer, posso continuar dirigindo?</summary>
-                    <p>Sim. Ao entrar com a defesa, o processo fica suspenso. <strong>Você continua dirigindo normalmente enquanto o recurso está em andamento.</strong></p>
+                    <summary>Demora para resolver?</summary>
+                    <p>Isso é relativo. Dependerá da análise do seu caso por completo. Entre em contato conosco que tiraremos sua dúvida.</p>
                 </details>
 
                 <details class="faq-item">
                     <summary>O que acontece se eu não fizer nada?</summary>
-                    <p>Você segue direto para penalidade. <strong>Pode ficar meses sem dirigir ou até perder a CNH por anos.</strong></p>
+                    <p>Você vai abrir mão do seu direito e sofrer as penalidades previstas. Eu no seu lugar tomaria a decisão de entrar em contato.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Posso conversar com vocês pessoalmente?</summary>
+                    <p>Claro que sim! Ficamos situado na Avenida Salgado Filho, 1056 - Centro, Guarulhos - SP. Entre em contato e marque uma reunião conosco.</p>
                 </details>
 
                 <details class="faq-item">
                     <summary>Vou gastar muito com isso?</summary>
-                    <p>A análise inicial é gratuita. <strong>Na maioria dos casos, o custo é menor que o prejuízo de perder a CNH.</strong></p>
+                    <p>Não! Você vai investir num serviço de qualidade 5 estrelas.</p>
                 </details>
             </div>
         </div>
@@ -1070,11 +1373,12 @@
 
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2026 <strong>CNH em Dia Soluções</strong>. Todos os direitos reservados.</p>
-            </div>
             <div class="legal-text">
-                <strong>⚠️ Aviso Legal:</strong> A CNH em Dia Soluções atua como consultoria administrativa e suporte técnico em parceria com advogados regularmente inscritos na OAB, responsáveis pela condução e representação judicial dos clientes quando necessário. Todos os serviços prestados seguem rigorosamente as normas e regulamentações aplicáveis.   
+                <strong>⚠️ Aviso Legal:</strong> A CNH em Dia Soluções atua como assessoria administrativa e suporte técnico. Demandas que exigem representação específica são conduzidas por profissionais parceiros devidamente habilitados e inscritos. Atuamos em estrita conformidade com a legislação de trânsito vigente.
+            </div>
+            <div class="footer-content">
+                <p>CNPJ: 63.687.598/0001-59</p>
+                <p>&copy; 2026 <strong>CNH em Dia Soluções</strong>. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -1083,34 +1387,31 @@
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
     </button>
 
-<div class="modal" id="leadModal">
-    <div class="modal-content">
-        <button class="modal-close" id="modalClose">&times;</button>
-        <h2>Análise do seu Problema.</h2>
-        <p>Preencha para ir ao WhatsApp.</p>
-        
-        <form id="leadForm">
-            <div class="form-group">
-                <label for="nome">Seu Nome Completo</label>
-                <input type="text" id="nome" name="nome" class="form-control" placeholder="Digite seu nome" required>
-            </div>
+    <div class="modal" id="leadModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2>Análise do seu Problema.</h2>
+            <p>Preencha para ir ao WhatsApp.</p>
+            
+            <form id="leadForm">
+                <div class="form-group">
+                    <label for="nome">Seu Nome Completo</label>
+                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Digite seu nome" required>
+                </div>
 
-            <div class="form-group">
-                <label for="telefone">WhatsApp (com DDD)</label>
-                <input type="tel" id="telefone" name="telefone" class="form-control" placeholder="Ex.: (11) 994523658" inputmode="numeric" required>
-            </div>
+                <div class="form-group">
+                    <label for="telefone">WhatsApp (com DDD)</label>
+                    <input type="tel" id="telefone" name="telefone" class="form-control" placeholder="Ex.: (11) 994523658" inputmode="numeric" required>
+                </div>
 
-            <button type="submit" class="btn-submit" id="btnSubmit">INICIAR ATENDIMENTO</button>
-        </form>
+                <button type="submit" class="btn-submit" id="btnSubmit">INICIAR ATENDIMENTO</button>
+            </form>
+        </div>
     </div>
-</div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
+    <script>
         const NUMERO_WHATS = "5511994187695";
         const CONVERSION_ID = "AW-17709604708/3A1hCK-KneYbEOS-zPxB";
-        
-        // 🚨 MESMA URL DO GOOGLE SCRIPT (Aspa de fechamento corrigida!)
         const URL_GOOGLE_SCRIPT = "https://script.google.com/macros/s/AKfycbzaGmVZKyIo280jUu2LK9Ap0kuMeRWM3GZ6Rs8wjlidTHO0YS0Akdhzx6UH2u_ll2L8AA/exec";
 
         // Reveal Animations on Scroll
@@ -1124,7 +1425,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Modal Logic e Bloqueio de Scroll
+        // Modal Logic
         const modal = document.getElementById('leadModal');
         const openBtns = document.querySelectorAll('.js-open-lead');
         const closeBtn = document.getElementById('modalClose');
@@ -1158,7 +1459,7 @@
             });
         }
 
-        // Form Submission Integrado
+        // Form Submission
         const form = document.getElementById('leadForm');
         if (form) {
             form.addEventListener('submit', async (e) => {
@@ -1169,38 +1470,30 @@
 
                 const nome = document.getElementById('nome').value;
                 
-                // Adiciona o nome da página dinamicamente
                 const formData = new FormData(form);
-                formData.append('pagina', 'Lei Seca / Bafômetro'); 
+                formData.append('pagina', 'Lei Seca/Bafômetro'); 
                 
-                // Mensagem formatada igual à da sua outra página
-                const msg = encodeURIComponent(`Olá, me chamo ${nome} e estou com problema de: *Lei Seca / Bafômetro*`);
+                const msg = encodeURIComponent(`Olá, me chamo ${nome} e tomei uma multa de: *Lei Seca/Bafômetro*.`);
                 const link = `https://wa.me/${NUMERO_WHATS}?text=${msg}`;
 
                 try {
-                    // 1. Marca a conversão no Google Ads
                     if (typeof gtag === 'function') {
                         gtag('event', 'conversion', { 'send_to': CONVERSION_ID });
                     }
                     
-                    // 2. Envia os dados para a Planilha do Google
                     await fetch(URL_GOOGLE_SCRIPT, { method: 'POST', body: formData });
                     
                 } catch(error) {
                     console.error("Erro ao enviar formulário", error);
                 } finally {
-                    // 3. Joga pro Whats (Funciona mesmo se a internet oscilar)
                     fecharModal();
                     btn.disabled = false;
                     btn.innerText = "INICIAR ATENDIMENTO";
                     form.reset();
-
-                    // Direcionamento Inteligente (Apenas na mesma aba para evitar bloqueio)
                     window.location.href = link; 
                 }
             });
         }
-    });
-</script>
+    </script>
 </body>
 </html>
