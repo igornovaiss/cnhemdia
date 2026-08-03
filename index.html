@@ -165,7 +165,11 @@
             display: flex;
             align-items: center;
             position: relative;
-            background:  url('/static/imagens-principal/defesa.jpg');
+            /* Adicionando as propriedades de controle da imagem: */
+            background-image: url('/static/imagens-principal/defesa.jpg');
+            background-size: cover;      /* Faz a imagem cobrir 100% do espaço, mantendo a proporção */
+            background-position: center; /* Centraliza a imagem para não cortar os detalhes principais */
+            background-repeat: no-repeat;/* Impede que a imagem se repita em telas muito grandes */
             overflow: hidden;
         }
 
